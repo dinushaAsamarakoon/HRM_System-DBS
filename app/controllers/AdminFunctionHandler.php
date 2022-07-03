@@ -1,22 +1,22 @@
 <?php
 
-class UserRegister extends Controller
+class AdminFunctionHandler extends Controller
 {
 
     public function __construct($controller, $action)
     {
         parent::__construct($controller, $action);
-        $this->load_model('User');
+        $this->load_model('Admin');
     }
 
     public function loginAction()
     {
         Session::delete();
         if ($_POST) {
-            $this->UserModel->findByUserName($_POST['username']);
-            if ($this->UserModel && password_verify(Input::get('password'), $this->UserModel->password)) {
-                $this->UserModel->login();
-                Router::redirect('UserDashboard');
+            $this->EmployeeModel->findByUserName($_POST['username']);
+            if ($this->EmployeeModel && password_verify(Input::get('password'), $this->EmployeeModel->password)) {
+                $this->EmployeeModel->login();
+                Router::redirect('AdminDashboard');
             } else {
                 $this->view->message = "Check Your Username and Password";
                 $this->view->render('register/login');
@@ -28,12 +28,13 @@ class UserRegister extends Controller
 
     public function logoutAction()
     {
-        $user = User::currentLoggedInUser();
-        $this->UserModel->logout();
+        $user = Admin::currentLoggedInEmployee();
+        $user->logout();
+//        $this->EmployeeModel->logout();
         Router::redirect('home/index');
     }
 
-    public function addUserAction()
+    public function addHRManagerAction()
     {
 
         $validation = new Validate();
@@ -52,10 +53,6 @@ class UserRegister extends Controller
                     'display' => 'Confirm Password',
                     'matches' => 'password'
                 ],
-                'username' => [
-                    'display' => 'Username',
-                    'unique' => 'customer'
-                ],
                 'contact_no' => [
                     'display' => 'Mobile Number',
                     'valid_contact' => true
@@ -67,20 +64,20 @@ class UserRegister extends Controller
             ]);
 
             if ($validation->passed()) {
-                $this->UserModel = new User();
-                $this->UserModel->registerNewUser($_POST);
-                Router::redirect('UserDashboard');
-                $_SESSION['message'] = "User added";
+                $this->EmployeeModel = Admin::currentLoggedInEmployee()->createNewHRManager();
+                $this->EmployeeModel->registerNewHRManager($_POST);
+                Router::redirect('AdminDashboard');
+                $_SESSION['message'] = "HR Manager added";
             } else {
                 $this->view->displayErrors = $validation->displayErrors();
-                $this->view->render('register/addUser');
+                $this->view->render('register/addEmployee');
             }
         } else {
-            $this->view->render('register/addUser');
+            $this->view->render('register/addEmployee');
         }
     }
 
-    public function removeUserAction()
+    public function removeEmployeeAction()
     {
         $validation = new Validate();
         if ($_POST) {
@@ -93,38 +90,40 @@ class UserRegister extends Controller
             ]);
 //                dnd($validation->passed());
             if ($validation->passed()) {
-                $this->UserModel = new User();
-                $removingUser = $this->UserModel->showRemovingUser($_POST);
-                $this->view->removingUser = $removingUser;
-                $this->view->render('register/addUser');
+                $admin = Admin::currentLoggedInEmployee();
+                $this->EmployeeModel = $admin->createNewHRManager();
+                $removingEmployee = $admin->showRemovingEmployee($_POST);
+                $this->view->removingEmployee = $removingEmployee;
+                $this->view->render('register/addEmployee');
             } else {
                 $this->view->displayErrors = $validation->displayErrors();
-                $this->view->render('register/addUser');
+                $this->view->render('register/addEmployee');
             }
         } else {
-            $this->view->render('register/addUser');
+            $this->view->render('register/addEmployee');
         }
 
 
     }
 
-    public function confirmRemoveUserAction()
+    public function confirmRemoveEmployeeAction()
     {
         if ($_POST) {
-            $this->UserModel = new User();
+            $this->EmployeeModel = Admin::currentLoggedInEmployee()->createNewHRManager();
             if ($_POST['username']) {
-                $this->UserModel->removeUser($_POST);
-                $_SESSION['message'] = "User is removed";
-                Router::redirect('UserDashboard');
+                $this->EmployeeModel->removeEmployee($_POST);
+                $_SESSION['message'] = "Employee is removed";
+                Router::redirect('AdminDashboard');
             }
             if ($_POST['cancel']) {
-                Router::redirect('UserDashboard');
+                Router::redirect('AdminDashboard');
             }
         }
     }
 
-    public function cancelRemoveUserAction()
+    public function cancelRemoveEmployeeAction()
     {
-        $this->view->render('register/addUser');
+        $this->view->render('register/addEmployee');
     }
+
 }

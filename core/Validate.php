@@ -76,24 +76,12 @@ class Validate
                             break;
 
                         case 'valid_username':
-                            $check = $this->_db->query("SELECT {$item} FROM {$rule_value} WHERE {$item} = ? and is_closed = ?", [$value,0]);
+                            $check = $this->_db->query("SELECT {$item} FROM {$rule_value} WHERE {$item} = ? and is_closed = ?", [$value, 0]);
                             if (!$check->count()) {
                                 $this->addError(["{$display} does not exists. please check the {$display} again.", $item]);
                             }
                             break;
-                        case 'valid_reservationid':
-                            $table = 'room_reservation';
-                            $check = $this->_db->query("SELECT * FROM {$table} WHERE id = ? and status != 'closed'", [$value]);
-                            if (!$check->count()) {
-                                $this->addError(["Enter a valid {$display}", $item]);
-                            }else {
-                                $roomReservation = new Room_reservation();
-                                $roomReservation->findById($value);
-                                if (Customer::currentLoggedInCustomer()->id !== $roomReservation->customer_id){
-                                    $this->addError(["Enter a valid {$display}", $item]);
-                                }
-                            }
-                            break;
+
                     }
                 }
             }
@@ -120,7 +108,7 @@ class Validate
         $html = '<ul>';
         foreach ($this->_errors as $error) {
             if (is_array($error)) {
-                $html  .= '<li>' . $error[0] . '</li>';
+                $html .= '<li>' . $error[0] . '</li>';
                 // $html .='<script>jQuery("document").ready(function(){jQuery("#'.$error[1].'").parent().closest("div").addClass("has-error");});</script>';
             } else {
                 $html .= '<li>' . $error . '</li>';
@@ -181,7 +169,8 @@ class Validate
         }
     }
 
-    public function buffetDateCheck($date){
+    public function buffetDateCheck($date)
+    {
         date_default_timezone_set('Asia/Colombo');
         if ($date <= date('Y-m-d')) {
             $this->addError(["Date must be after the Current Date " . date('Y/m/d')]);

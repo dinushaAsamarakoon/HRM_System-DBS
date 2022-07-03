@@ -1,5 +1,6 @@
 <?php
-class UserDashboard extends Controller{
+
+class AdminDashboard extends Controller{
 
     public function __construct($controller,$action)
     {
@@ -7,7 +8,7 @@ class UserDashboard extends Controller{
     }
 
     public function indexAction() {
-        $this->view->render('dashboard/user');
+        $this->view->render('dashboard/admin');
     }
 
 
