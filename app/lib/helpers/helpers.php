@@ -5,3 +5,11 @@ function dnd($data){
     echo '</prev>';
     die();
 }
+
+function sanitize($dirty){
+    return htmlentities($dirty,ENT_QUOTES,'UTF-8');
+}
+
+function currentUser(){
+    return User::currentLoggedInUser();
+}

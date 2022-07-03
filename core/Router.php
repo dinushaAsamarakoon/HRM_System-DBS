@@ -17,14 +17,14 @@ class Router
         //params
         $queryParams = $url;
 
-        $dispacth  = new $controller($controller_name, $action);
+        $dispatch  = new $controller($controller_name, $action);
 
         if (method_exists($controller, $action)) {
-            call_user_func_array([$dispacth, $action], $queryParams);
+            call_user_func_array([$dispatch, $action], $queryParams);
         } else {
 
 //            include(ROOT.DS.'app'.DS.'views'.DS.'home'.DS.'404'.'.php');
-            die('That method does not exist in the contoller \"' . $controller_name . '\"');
+            die('That method does not exist in the controller \"' . $controller_name . '\"');
         }
     }
 
