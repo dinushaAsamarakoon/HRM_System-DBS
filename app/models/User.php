@@ -18,6 +18,7 @@ class User extends Model
         $this->findFirst(['conditions' => 'username=? and is_closed=?', 'bind' => [$username, 0]]);
     }
 
+
     public static function currentLoggedInUser()
     {
         $user = new User();
