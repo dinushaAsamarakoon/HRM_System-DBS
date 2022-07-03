@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e1a277b7-b597-4c13-bc44-d441df8910e0" name="Changes" comment="user classes controllers">
+      <change afterPath="$PROJECT_DIR$/app/controllers/AdminDashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/AdminFunctionHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/HRManagerDashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/HRManagerFunctionHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/NMEmployeeDashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/NMEmployeeFunctionHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/SupervisorDashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/SupervisorFunctionHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/HRManager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/NMEmployee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Supervisor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/dashboard/employee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/dashboard/hrmanager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/dashboard/nmemployee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/dashboard/supervisor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/UserDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/EmployeeDashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/UserRegister.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/EmployeeRegister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/helpers/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/helpers/helpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/register/addUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/register/addEmployee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Validate.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Validate.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2BPb5wv7LTK8MypvvA1l0Cxa0aX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1a277b7-b597-4c13-bc44-d441df8910e0" name="Changes" comment="" />
+      <created>1656810487902</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656810487902</updated>
+      <workItem from="1656810489222" duration="2321000" />
+      <workItem from="1656812842512" duration="642000" />
+      <workItem from="1656813509763" duration="702000" />
+      <workItem from="1656824587613" duration="12049000" />
+      <workItem from="1656868608386" duration="32000" />
+      <workItem from="1656868643243" duration="232000" />
+      <workItem from="1656868911592" duration="484000" />
+      <workItem from="1656869443044" duration="81000" />
+      <workItem from="1656877504375" duration="22000" />
+      <workItem from="1656882350177" duration="421000" />
+    </task>
+    <task id="LOCAL-00001" summary="project initiate with mvc struct.">
+      <created>1656812476167</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1656812476167</updated>
+    </task>
+    <task id="LOCAL-00002" summary="project initiate with mvc struct.">
+      <created>1656813435832</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656813435832</updated>
+    </task>
+    <task id="LOCAL-00003" summary="project initiate with mvc struct.">
+      <created>1656813611894</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656813611894</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="project initiate with mvc struct." />
+    <MESSAGE value="user classes controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="user classes controllers" />
+  </component>
+</project>
