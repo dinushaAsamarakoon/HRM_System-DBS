@@ -58,7 +58,7 @@
                 <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-circle-question"></i> Help</a>
+                <a href="../help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
     </nav>
@@ -103,7 +103,7 @@
                             </button>
                             <div class="p-0">
                             <div class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
-                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Employee by department report</button>
+                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../employeeDept/EmployeeByDept.php" Employee by department report</button>
                                 <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Total leave report</button>
                                 <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Employee report</button>
                                 <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Custom report</button>

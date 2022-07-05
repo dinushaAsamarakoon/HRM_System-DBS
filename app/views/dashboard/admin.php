@@ -52,7 +52,7 @@
 <!--                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>-->
 <!--            </li>-->
             <li>
-                <a href="#"><i class="fa-solid fa-circle-question"></i> Help</a>
+                <a href="../help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
     </nav>

@@ -58,7 +58,7 @@
                 <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-circle-question"></i> Help</a>
+                <a href="../help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
     </nav>
@@ -73,7 +73,7 @@
                     <div class="card-body shadow  px-lg-5">
                         <h5 class="card-title">Request leave</h5>
                         <p class="card-text">You can request leave from the system</p>
-                        <a href="" class="btn btn-primary justify-content-center">Request leave</a>
+                        <a href="../applyLeave/ApplyLeave.php" class="btn btn-primary justify-content-center">Request leave</a>
                     </div>
                 </div>
             </div>
