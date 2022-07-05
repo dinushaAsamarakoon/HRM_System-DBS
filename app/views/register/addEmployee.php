@@ -9,12 +9,11 @@ if (isset($_SESSION['username'])){
 <html lang="en">
 <head>
    <?php include('../header/headerFile.php') ?>
+
     <title>Add Employee</title>
 </head>
 <style>
-    .error{
-        color : #FF0000;
-    }
+
     h1{
 
         text-align: center;
@@ -56,7 +55,7 @@ if (isset($_SESSION['username'])){
         <div class="container rounded bg-white mt-5 mb-5 ">
             <div class="row justify-content-center">
 
-                <div class="col-md-11 border-right shadow text_area shadow" >
+                <div class="col-md-11 border-right shadow text_area shadow " style="background-color:  #ecf0f9; ">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h2 class="text-right">Create Account</h2>
