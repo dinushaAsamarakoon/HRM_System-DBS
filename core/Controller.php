@@ -7,7 +7,7 @@ class Controller
 
     public function __construct($controller, $action)
     {
-        parent::__construct();
+//        parent::__construct();
         $this->_controller = $controller;
         $this->_action = $action;
         $this->view = new View();
