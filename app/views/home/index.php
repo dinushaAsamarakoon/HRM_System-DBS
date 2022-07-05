@@ -32,7 +32,7 @@
 
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-end">
                 <li class="nav-item ">
-                    <a class="nav-link " href="../register/login.php" style="color: #0c63e4;font-size: 20px;">Sign In</a>
+                    <a class="nav-link " href="<?=SROOT?>EmployeeRegister/login" style="color: #0c63e4;font-size: 20px;">Sign In</a>
                 </li>
 
             </ul>

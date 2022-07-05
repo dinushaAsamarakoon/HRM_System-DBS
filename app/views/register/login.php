@@ -30,7 +30,7 @@
 
                 <ul class="nav nav-link  " id="pills-tab" role="tablist">
                     <li class="nav-item">
-                           <a class="nav-link active " id="pills-home-tab"  aria-current="page" href="../home/index.php" style="color: #0c63e4;font-size: 20px;">Home</a>
+                           <a class="nav-link active " id="pills-home-tab"  aria-current="page" href="<?=SROOT?>" style="color: #0c63e4;font-size: 20px;">Home</a>
                     </li>
 
 
@@ -51,7 +51,7 @@
             <div  id="pills-login" role="tabpanel" aria-labelledby="pills-profile-tab" >
                 <div class="d-flex justify-content-center w-100  p-3"  >
                     <div class="login w-25  p-3 shadow-lg p-3 mb-5 rounded h-100 d-inline-block">
-                        <form action="" method="POST">
+                        <form action="<?=SROOT?>EmployeeRegister/login" method="POST">
                             <div class="mb-3 ">
 
                                 <h3>Login</h3>
