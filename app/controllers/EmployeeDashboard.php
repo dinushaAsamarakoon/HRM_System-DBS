@@ -1,13 +1,16 @@
 <?php
-class EmployeeDashboard extends Controller{
 
-    public function __construct($controller,$action)
+class EmployeeDashboard extends Controller
+{
+
+    public function __construct($controller, $action)
     {
-        parent::__construct($controller,$action);
+        parent::__construct($controller, $action);
     }
 
-    public function indexAction() {
-        $this->view->render('dashboard/employee');
+    public function indexAction()
+    {
+
     }
 
 

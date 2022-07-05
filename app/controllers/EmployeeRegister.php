@@ -16,6 +16,10 @@ class EmployeeRegister extends Controller
             $this->EmployeeModel->findByUserName($_POST['username']);
             if ($this->EmployeeModel && password_verify(Input::get('password'), $this->EmployeeModel->password)) {
                 $this->EmployeeModel->login();
+                switch ($_SESSION['job_title']){
+                    case "hr_manager":
+
+                }
                 Router::redirect('EmployeeDashboard');
             } else {
                 $this->view->message = "Check Your Username and Password";
