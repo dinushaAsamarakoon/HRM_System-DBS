@@ -18,9 +18,21 @@ class EmployeeRegister extends Controller
                 $this->EmployeeModel->login();
                 switch ($_SESSION['job_title']){
                     case "hr_manager":
-
+                        Router::redirect('HRManagerDashboard');
+                        break;
+                    case "admin":
+                        Router::redirect('AdminDashboard');
+                        break;
+                    case "nm_employee":
+                        Router::redirect('NMEmployeeDashboard');
+                        break;
+                    case "supervisor":
+                        Router::redirect('SupervisorDashboard');
+                        break;
+                    default:
+                        $this->view->message = "Check Your Username and Password";
+                        $this->view->render('register/login');
                 }
-                Router::redirect('EmployeeDashboard');
             } else {
                 $this->view->message = "Check Your Username and Password";
                 $this->view->render('register/login');
