@@ -7,6 +7,7 @@ class NMEmployeeFunctionHandler extends Controller
     {
         parent::__construct($controller, $action);
         $this->load_model('NMEmployee');
+        $this->load_model('Notification');
     }
 
     public function loginAction()
@@ -31,6 +32,14 @@ class NMEmployeeFunctionHandler extends Controller
         $user = HRManager::currentLoggedInEmployee();
         $user->logout();
         Router::redirect('home/index');
+    }
+
+    public function readNotificationAction()
+    {
+        $this->NotificationModel->update($_POST['id'],[
+            'status'=>'read'
+        ]);
+        Router::redirect('NMEmployeeDashboard');
     }
 
 }
