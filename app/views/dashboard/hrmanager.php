@@ -103,7 +103,7 @@
                             </button>
                             <div class="p-0">
                             <div class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
-                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../employeeDept/EmployeeByDept.php" Employee by department report</button>
+                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../employeeDept/EmployeeByDept.php">Employee by department report</a></button>
                                 <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Total leave report</button>
                                 <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Employee report</button>
                                 <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Custom report</button>

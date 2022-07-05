@@ -22,10 +22,10 @@
                 </a>
             </div>
 
-            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll2">
-                <button class="btn btn-secondary" style="margin-right: 5px;" type="submit">Search</button> 
-                <form class="form-inline"> <input class="form-control" type="text" placeholder="Search Employee"> </form>
-            </div>
+<!--            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll2">-->
+<!--                <button class="btn btn-secondary" style="margin-right: 5px;" type="submit">Search</button> -->
+<!--                <form class="form-inline"> <input class="form-control" type="text" placeholder="Search Employee"> </form>-->
+<!--            </div>-->
             
             <div class="collapse navbar-collapse justify-content-end  " id="navbarScroll3" style="padding-top: 9px;height: 50px;">
 
@@ -54,13 +54,28 @@
                                 <h2 class="text-right"><b>Employee By Department</b></h2>
                             </div>
 
-                            <table class="table table-hover">
+                            <select class="custom-select mr-3" style="width:300px;" >
+                                <option disabled selected hidden>Choose the department</option>
+                                <option>Management department</option>
+                                <option>Marketing department</option>
+                                <option>Sampling Department</option>
+                            </select>
+
+                            <button type="submit" class="btn btn-primary text-center ml-10"  name="submit">Filter</button></div>
+
+                            <h4 class="text-lg-center"><i>Employees of the Department "selected dept"</i></h4>
+
+
+                                <button class="btn btn-secondary" style="margin-right: 0px;" type="submit">Search</button>
+                                <input class="form-control w-25" type="text" placeholder="Search Employee">
+
+
+                            <table class="table table-hover mt-5">
                                 <thead class="table-info">
                                   <tr class="text-center">
                                     <th scope="col">Employee ID</th>
                                     <th scope="col">First Name</th>
                                     <th scope="col">Last Name</th>
-                                    <th scope="col">Department Name</th>
                                   </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -68,19 +83,17 @@
                                     <th scope="row">1</th>
                                     <td>Dinusha</td>
                                     <td>Samrakoon</td>
-                                    <td>Management</td>
                                   </tr>
                                   <tr>
                                     <th scope="row">2</th>
                                     <td>Udith</td>
                                     <td>Kaushalya</td>
-                                    <td>Cleaning</td>
                                   </tr>
 
                                 </tbody>
                             </table>
 
-                            <div class="col  d-flex justify-content-end align-items-start">
+                            <div class="col  d-flex justify-content-end align-items-start mb-4">
                             <button type="submit" class="btn btn-success text-center"  name="submit" >Download the Report</button></div> 
                         </div>
                     </div>
