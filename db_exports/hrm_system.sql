@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2022 at 04:58 AM
+-- Generation Time: Jul 05, 2022 at 02:48 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -33,6 +33,13 @@ CREATE TABLE `department` (
   `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`dept_name`, `building`, `description`) VALUES
+('Mechanical', 'Sumanadasa', 'desc dept');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +56,13 @@ CREATE TABLE `employee` (
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`emp_id`, `job_title`, `pay_grade`, `emp_status_id`, `sup_id`, `dept_name`, `username`, `password`) VALUES
+(1, 'hr_manager', 'level-2', 1, 2, 'Mechanical', 'kapila', '$2y$10$9fAWJyStAEl2QJi58QO0kO7SnIdQWsK.APel6ruhg5blGQ.HtLWsC');
 
 -- --------------------------------------------------------
 
@@ -116,6 +130,14 @@ CREATE TABLE `emp_record` (
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `emp_record`
+--
+
+INSERT INTO `emp_record` (`emp_id`, `first_name`, `last_name`, `birth_date`, `marital_status`, `email`, `{phone_number}`, `address`, `emergency_contact`, `duration`, `qualification`, `current_employee`, `description`) VALUES
+(1, 'Kapila', 'Perera', '1990-12-20', 'single', 'kapila@gmail.com', '769409309', '65, Katubedda, Moratuwa', '332281106', '10', 'sample qualification ', 1, 'sample description'),
+(2, 'Indika ', 'Perera', '1989-12-25', 'married', 'indika@gmail.com', '789305682', '56, Gampaha, Colonbo', '334579323', '20', 'qualification ', 1, 'desc');
+
 -- --------------------------------------------------------
 
 --
@@ -129,6 +151,13 @@ CREATE TABLE `emp_status` (
   `part_time` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `emp_status`
+--
+
+INSERT INTO `emp_status` (`emp_status_id`, `emp_status`, `full_time`, `part_time`) VALUES
+(1, 'permanant', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -140,6 +169,14 @@ CREATE TABLE `job_title` (
   `req_qualification` varchar(100) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `job_title`
+--
+
+INSERT INTO `job_title` (`title_name`, `req_qualification`, `description`) VALUES
+('hr_manager', 'PHD in HR management', 'desc jobtitle'),
+('supervisor', 'sup phd', 'sample desc1');
 
 -- --------------------------------------------------------
 
@@ -177,6 +214,13 @@ CREATE TABLE `pay_grade` (
   `no-pay_leaves` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pay_grade`
+--
+
+INSERT INTO `pay_grade` (`pay_grade`, `salary`, `req_qualification`, `description`, `annual_leaves`, `casual_leaves`, `maternity_leaves`, `no-pay_leaves`) VALUES
+('level-2', '50000', 'managerial', 'desc paygrade', 50, 10, 100, 20);
+
 -- --------------------------------------------------------
 
 --
@@ -187,6 +231,13 @@ CREATE TABLE `supervisor` (
   `emp_id` int(10) NOT NULL,
   `sup_level` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `supervisor`
+--
+
+INSERT INTO `supervisor` (`emp_id`, `sup_level`) VALUES
+(2, '3');
 
 -- --------------------------------------------------------
 
