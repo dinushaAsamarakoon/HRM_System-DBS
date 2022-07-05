@@ -78,7 +78,7 @@ class Employee extends Model
 
     public function getPersonalInfo($id) {
         return $this->_db->find('employee',[
-            'conditions' => 'emp_id=?',
+            'conditions' => 'id=?',
             'bind' => [$id]
         ]);
     }

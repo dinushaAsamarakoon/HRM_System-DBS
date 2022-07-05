@@ -30,7 +30,7 @@
                 <input type="hidden" name="emp_id" value="<?php echo $l['emp_id']?>">
                 <input type="hidden" name="sup_id" value="<?php echo $l['sup_id']?>">
                 <button type="submit" name="status" value="approved">Approve</button>
-                <button type="submit" name="status" value="declined">Decline</button>
+                <button type="submit" name="status" value="rejected">Decline</button>
             </form>
         <?php          
         }

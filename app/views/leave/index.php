@@ -10,19 +10,19 @@
     
     <h3>Leave Details</h3>
 
+    <?php if ($this->details) { ?>
     <?php $d = (array) $this->details[0]; ?>
-
     <?php echo 'pay grade: ' . $d['pay_grade']; ?>
-
     <p>Remaining Leaves</p>
     <?php echo 'Annual: ' . $d['rem_annual']; ?> <br>
     <?php echo 'Casual: ' . $d['rem_casual']; ?> <br>
     <?php echo 'Maternity: ' . $d['rem_maternity']; ?> <br>
     <?php echo 'No Pay: ' . $d['rem_no_pay']; ?> <br>
-    
-    <p>Leave Requests</p>
-    <?php if ($this->requests && count($this->requests)) { 
-            foreach($this->requests as $request)
+    <?php } ?>
+
+    <?php if ($this->requests && count($this->requests)) { ?>
+        <p>Leave Requests</p>
+            <?php foreach($this->requests as $request)
             {
                 $r = (array) $request;
             ?>

@@ -9,7 +9,7 @@
 <body>
     <h3>Employee Profile</h3>
     <?php $p = (array) $this->profile[0];
-    echo 'Employee ID: ' . $p['emp_id'];
+    echo 'Employee ID: ' . $p['id'];
     echo 'Job title: ' . $p['job_title'];
     echo 'Pay grade: ' . $p['pay_grade'];
     echo 'Employee status ID: ' . $p['emp_status_id'];
