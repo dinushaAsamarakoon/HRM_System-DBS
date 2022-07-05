@@ -1,0 +1,13 @@
+.form-check-label{
+    margin-right: 15px;
+}
+
+.hero-image {
+    background-image: url("../../images/back.jpg");
+    height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
