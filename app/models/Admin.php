@@ -7,6 +7,7 @@ class Admin extends Employee
         parent::__construct();
 
     }
+
     public static function currentLoggedInEmployee()
     {
         $user = new Admin();
@@ -15,22 +16,30 @@ class Admin extends Employee
         return self::$currentLoggedInEmployee;
     }
 
-    public function createNewHRManager(){
+    public function createNewHRManager()
+    {
         return new HRManager();
     }
 
-    public function registerNewHRManager($params)
+//    public function registerNewHRManager($params)
+//    {
+//        $params['is_closed'] = 0;
+//        $params['status'] = "available";
+//        $this->assign($params);
+//        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+//        $this->save();
+//    }
+
+//    public function removeEmployee($params)
+//    {
+//        if ($params['username']) {
+//            $this->_db->query("UPDATE employee SET is_closed = ? WHERE username = ?", [1, $params['username']]);
+//        }
+//    }
+    public function removeEmployee($field, $value)
     {
-        $params['is_closed'] = 0;
-        $params['status'] = "available";
-        $this->assign($params);
-        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
-        $this->save();
-    }
-    public function removeEmployee($params)
-    {
-        if ($params['username']) {
-            $this->_db->query("UPDATE employee SET is_closed = ? WHERE username = ?", [1, $params['username']]);
+        if ($field) {
+            $this->delete($this->_table, $field, $value);
         }
     }
 
@@ -40,6 +49,13 @@ class Admin extends Employee
             return $this->_db->find('employee', [
                 'conditions' => 'username=?',
                 'bind' => [$params['username']]]);
+        }
+    }
+
+    public function addEmployeeAttribute($attributeName, $fields)
+    {
+        if ($attributeName) {
+            $this->create($attributeName, $fields);
         }
     }
 

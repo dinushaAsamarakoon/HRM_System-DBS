@@ -29,7 +29,8 @@ class HRManagerFunctionHandler extends Controller
     public function logoutAction()
     {
         $user = HRManager::currentLoggedInEmployee();
-        $this->EmployeeModel->logout();
+        $user->logout();
+//        $this->EmployeeModel->logout();
         Router::redirect('home/index');
     }
 
@@ -72,9 +73,6 @@ class HRManagerFunctionHandler extends Controller
                     $this->EmployeeModel->registerNewEmployee($_POST);
                     Router::redirect('HRManagerDashboard');
                 }
-//                $this->EmployeeModel = new Employee();
-//                $this->EmployeeModel->registerNewEmployee($_POST);
-//                Router::redirect('EmployeeDashboard');
                 $_SESSION['message'] = "Employee added";
             } else {
                 $this->view->displayErrors = $validation->displayErrors();
@@ -118,7 +116,7 @@ class HRManagerFunctionHandler extends Controller
         if ($_POST) {
             $this->EmployeeModel = HRManager::currentLoggedInEmployee();
             if ($_POST['username']) {
-                $this->EmployeeModel->removeEmployee($_POST);
+                $this->EmployeeModel->removeEmployee($_POST['tableName'], 'username', $_POST['username']);
                 $_SESSION['message'] = "Employee is removed";
                 Router::redirect('EmployeeDashboard');
             }
@@ -132,4 +130,77 @@ class HRManagerFunctionHandler extends Controller
     {
         $this->view->render('register/addEmployee');
     }
+
+    public function addAttributeTypeAction()
+    {
+        if ($_POST) {
+            $tableName = $_POST["tableName"];
+            $employee = HRManager::currentLoggedInEmployee();
+            $employee->addNewAttributeType($tableName, $_POST);
+            Router::redirect('HRManagerDashboard');
+
+            $_SESSION['message'] = "Attribute added";
+        } else {
+            $this->view->render('attribute/addAttribute');
+        }
+    }
+
+    public function removeAttributeTypeAction()
+    {
+
+        if ($_POST) {
+            $this->EmployeeModel = HRManager::currentLoggedInEmployee();
+            $removingAttributeType = $this->EmployeeModel->showRemovingAttributeType($_POST['tableName'],$_POST);
+            $this->view->removingAttributeType = $removingAttributeType;
+            $this->view->render('attribute/addAttribute');
+
+        } else {
+            $this->view->render('attribute/addAttribute');
+        }
+
+
+    }
+
+    public function confirmRemoveAttributeTypeAction()
+    {
+        if ($_POST) {
+            $this->EmployeeModel = HRManager::currentLoggedInEmployee();
+            if ($_POST['field']) {
+                $this->EmployeeModel->removeAttributeType($_POST['tableName'], 'username', $_POST['username']);
+                $_SESSION['message'] = "Attribute is removed";
+                Router::redirect('HRManagerDashboard');
+            }
+            if ($_POST['cancel']) {
+                Router::redirect('HRManagerDashboard');
+            }
+        }
+    }
+
+    public function cancelRemoveAttributeTypeAction()
+    {
+        $this->view->render('attribute/addAttribute');
+    }
+
+    public function reportGenerationAction(){
+        if($_POST){
+            $this->EmployeeModel = HRManager::currentLoggedInEmployee();
+            switch ($_POST['report']){
+                case 'empByDepartment':
+                    $this->view->report = $this->EmployeeModel->reportGeneration('emp_info');
+                    $this->view->render('');
+                    break;
+                case 'totalLeave':
+                    $this->view->report = $this->EmployeeModel->reportGeneration('leave_request');
+                    $this->view->render('');
+                    break;
+                case 'empReports':
+                    $this->view->report = $this->EmployeeModel->reportGeneration('employee');
+                    $this->view->render('');
+                    break;
+                case 'customReports':
+                    break;
+            }
+        }
+    }
+
 }
