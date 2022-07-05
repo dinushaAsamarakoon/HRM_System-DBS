@@ -27,6 +27,11 @@ class Model
     {
         return $this->_db->get_columns($this->_table);
     }
+    public function get_columns_table($table)
+    {
+        return $this->_db->get_columns($table);
+    }
+
 
     public function find($params = [])
     {
@@ -36,6 +41,20 @@ class Model
         //dnd($resultsQuery);
         foreach ($resultsQuery as $result) {
             $obj = new $this->_modelName($this->_table);
+            $obj->populateObjData($result);
+            $results[] = $obj;
+        }
+
+        return $results;
+    }
+    public function findWithTable($table, $params = [])
+    {
+        $results = [];
+        $resultsQuery = $this->_db->find($table, $params);
+        if (!$resultsQuery) return $results;
+        //dnd($resultsQuery);
+        foreach ($resultsQuery as $result) {
+            $obj = new $this->_modelName($table);
             $obj->populateObjData($result);
             $results[] = $obj;
         }
@@ -60,10 +79,10 @@ class Model
         }
     }
 
-    public function findById($id)
-    {
-        $this->findFirst(['conditions' => 'id=? and is_closed=?', 'bind' => [$id, 0]]);
-    }
+//    public function findById($id)
+//    {
+//        $this->findFirst(['conditions' => 'id=? and is_closed=?', 'bind' => [$id, 0]]);
+//    }
 
     public function save()
     {
@@ -73,10 +92,34 @@ class Model
         }
 
         // determine whether to update or insert
-        if (property_exists($this, 'id') && $this->id != '') {
-            return $this->update($this->id, $fields);
+        if (property_exists($this, 'emp_id') && $this->emp_id != '') {
+            return $this->update($this->emp_id, $fields);
         } else {
             return $this->insert($fields);
+        }
+    }
+
+//    public function saveWithoutId($table, $columns)
+//    {
+//        $fields = [];
+//        foreach ($columns as $column) {
+//            $fields[$column] = $this->$column;
+//        }
+//
+//        // determine whether to update or insert
+////        if (property_exists($this, 'id') && $this->id != '') {
+////            return $this->update($this->id, $fields);
+////        } else {
+//        return $this->insertAttributeType($table, $fields);
+////        }
+//    }
+
+    public function create($tableName, $fields)
+    {
+        if (empty($fields)) {
+            return false;
+        } else {
+            return $this->_db->create($tableName, $fields);
         }
     }
 
@@ -89,6 +132,15 @@ class Model
         }
     }
 
+    public function insertAttributeType($table, $fields)
+    {
+        if (empty($fields)) {
+            return false;
+        } else {
+            return $this->_db->insert($table, $fields);
+        }
+    }
+
     public function update($id, $fields)
     {
         if (empty($fields) || $id == '') {
@@ -97,14 +149,11 @@ class Model
         return $this->_db->update($this->_table, $id, $fields);
     }
 
-    public function delete($id)
+    public function delete($table, $field, $value)
     {
-        if ($id == '' && $this->id == '') return false;
-        $id = ($id == '') ? $this->id : $id;
+        if ($table == '' || $field == '' || $value == '') return false;
 
-        $this->update($id, ['deleted' => 1]);
-
-        return $this->_db->delete($this->table, $id);
+        return $this->_db->delete($table, $field, $value);
     }
 
     public function query($sql, $bind = [])
@@ -133,5 +182,19 @@ class Model
             return true;
         }
         return false;
+    }
+
+    public function assignInd($table, $params)
+    {
+        $columns = [];
+        if (!empty($params)) {
+            $table_columns = $this->get_columns_table($table);
+            foreach ($params as $key => $val) {
+                if (in_array($key, $table_columns)) {
+                    $columns[$key] = sanitize($val);
+                }
+            }
+        }
+        return $columns;
     }
 }

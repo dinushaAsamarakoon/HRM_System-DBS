@@ -50,6 +50,20 @@ class DB
         return $this;
     }
 
+    public function create($table, $fields = [])
+    {
+        $fieldString = '';
+        foreach ($fields as $field => $value) {
+            $fieldString .= '`' . $field . ' ' . $value . '`,';
+        }
+        $fieldString = rtrim($fieldString, ',');
+        $sql = "CREATE TABLE {$table} ({$fieldString} );";
+        if (!$this->query($sql)->error()) {
+            return true;
+        }
+        return false;
+    }
+
     public function insert($table, $fields = [])
     {
         $fieldString = '';
@@ -89,14 +103,25 @@ class DB
         return false;
     }
 
-    public function delete($table, $id)
+    public function delete($table, $field, $value)
     {
-        $sql = "DELETE FROM {$table} WHERE id = {$id}";
+        $sql = "DELETE FROM {$table} WHERE {$field} = {$value}";
         if (!$this->query($sql)->error()) {
             return true;
         }
         return false;
     }
+
+    public function deleteTable($table)
+    {
+        $sql = "DROP TABLE {$table}";
+        if (!$this->query($sql)->error()) {
+            return true;
+        }
+        return false;
+    }
+
+
 
     public function results()
     {
@@ -131,18 +156,18 @@ class DB
         $limit = '';
 
         // added to avoid closed accounts
-        if (isset($params['conditions'])) {
-            if (is_array($params['conditions'])) {
-                foreach ($params['conditions'] as $condition) {
-                    $conditionString .= ' ' . $condition . ' AND';
-                }
-                $conditionString = trim($conditionString);
-                $conditionString = rtrim($conditionString, ' AND');
-                // dnd($params['conditions']);
-            } else {
-                $conditionString = $params['conditions'];
-            }
-        }
+//        if (isset($params['conditions'])) {
+//            if (is_array($params['conditions'])) {
+//                foreach ($params['conditions'] as $condition) {
+//                    $conditionString .= ' ' . $condition . ' AND';
+//                }
+//                $conditionString = trim($conditionString);
+//                $conditionString = rtrim($conditionString, ' AND');
+//                // dnd($params['conditions']);
+//            } else {
+//                $conditionString = $params['conditions'];
+//            }
+//        }
 
         //conditions
         if (isset($params['conditions'])) {
