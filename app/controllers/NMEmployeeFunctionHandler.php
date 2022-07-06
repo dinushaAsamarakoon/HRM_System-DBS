@@ -34,10 +34,10 @@ class NMEmployeeFunctionHandler extends Controller
         Router::redirect('home/index');
     }
 
-    public function readNotificationAction()
+    public function completeRequestAction()
     {
-        $this->NotificationModel->update($_POST['id'],[
-            'status'=>'read'
+        $this->EmployeeLeaveModel->update($_POST['id'],[
+            'completed'=>'true'
         ]);
         Router::redirect('NMEmployeeDashboard');
     }

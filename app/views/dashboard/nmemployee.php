@@ -79,7 +79,7 @@
                     <div class="card-body shadow px-lg-5">
                         <h5 class="card-title">View profile details</h5>
                         <p class="card-text">You can view your profile details </p>
-                        <a href="../profile/employee.php" class="btn btn-primary"><i class="fa-light fa-file-circle-info"></i> View profile</a>
+                        <a href="<?=SROOT?>Profile" class="btn btn-primary"><i class="fa-light fa-file-circle-info"></i> View profile</a>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,6 @@
     </div>
 
 </div>
-<a href="<?=SROOT?>Profile">Personal Information</a>
     <a href="<?=SROOT?>EmployeeLeave/application">Leave Application</a>
     <a href="<?=SROOT?>EmployeeLeave/details">Leave Details</a>
     <button onclick="showNotifications()"><?php if ($this->notifications){echo count($this->notifications);} else {echo 0;} ?></button>
@@ -99,9 +98,9 @@
          foreach($notifications as $notification) {
              $n = (array) $notification;
              ?>
-             <a href="<?=SROOT?>EmployeeLeave/request/<?php echo $n['id'] ?>"><?php echo $n['message'] . ' ' . $n['time']; ?> </a>
+             <a href="<?=SROOT?>EmployeeLeave/request/<?php echo $n['id'] ?>"><?php echo ucfirst($n['status']) . ': ' . $n['reason']; ?> </a>
 
-             <form action="<?=SROOT?>NMEmployeeFunctionHandler/readNotification" method="post">
+             <form action="<?=SROOT?>NMEmployeeFunctionHandler/completeRequest" method="post">
                 <input type="hidden" name="id" value="<?php echo $n['id'] ?>">
                 <button type="submit">Mark as read</button>
              </form>

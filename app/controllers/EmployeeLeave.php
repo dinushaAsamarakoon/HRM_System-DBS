@@ -49,4 +49,6 @@ class EmployeeLeave extends Controller {
         $this->view->render('leave/index');
     }
 
+   
+
 }

@@ -43,4 +43,11 @@ class LeaveRequest extends Model {
         ]);
     }
     
+    public function getIncompleteRequests($id){
+        return $this->_db->find('leave_request',[
+            'conditions' => 'id=? and completed=?',
+            'bind' => [$id, false]
+        ]);
+    }
+
 }
