@@ -7,7 +7,6 @@ class NMEmployeeFunctionHandler extends Controller
     {
         parent::__construct($controller, $action);
         $this->load_model('NMEmployee');
-        $this->load_model('Notification');
     }
 
     public function loginAction()

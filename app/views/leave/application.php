@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../content/mystyles.css">
     <link rel="stylesheet" href="../bootstrap/css/custom.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>ApplyLeave</title>
+    <title>Leave Application</title>
 </head>
 <body>
     <div class="shadow p-3"  >
@@ -42,7 +42,7 @@
 </div>
 
      <div class="container " >
-        <form action="" method="">
+        <form action="<?=SROOT?>EmployeeLeave/application" method="post">
             <div class="container rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center">
     
@@ -52,8 +52,8 @@
                                 <h2 class="text-right"><b>Apply For Leave</b></h2>
                             </div>
                             <div class="row mt-2" >
-                                <div class="col-md-6"><label class="labels">From</label><input type="date" class="form-control" ></div>
-                                <div class="col-md-6"><label class="labels">To</label><input type="date" class="form-control"></div>
+                                <div class="col-md-6"><label class="labels">From</label><input type="date" name="from" class="form-control" ></div>
+                                <div class="col-md-6"><label class="labels">To</label><input type="date" name="to" class="form-control"></div>
                             </div>
 
                             <div class="row mt-3" >
@@ -73,7 +73,7 @@
                             </div>
                             
                             <div  class="row mt-3">
-                                <div class="col-md-6"><label class="labels" >Reason</label><input type="text" class="form-control"  value="" placeholder="Reason..."></div>
+                                <div class="col-md-6"><label class="labels" >Reason</label><input type="text" name="reason" class="form-control"  value="" placeholder="Reason..."></div>
                             </div>
                             <div  class="row mt-3">
                                 <div class="col-md-6">
