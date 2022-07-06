@@ -15,7 +15,7 @@ class Employee extends Model
 
     public function findByUserName($username)
     {
-        $this->findFirst(['conditions' => 'username=? and is_closed=?', 'bind' => [$username, 0]]);
+        $this->findFirst(['conditions' => 'username=? ', 'bind' => [$username]]);
     }
 
 
@@ -29,7 +29,7 @@ class Employee extends Model
 
     public function login()
     {
-        Session::set($this->_sessionName,$this->id);
+        Session::set($this->_sessionName,$this->emp_id);
         Session::set('username',$this->username);
         Session::set('job_title',$this->job_title);
     }
