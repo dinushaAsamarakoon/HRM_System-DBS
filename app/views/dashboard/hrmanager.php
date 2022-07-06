@@ -46,13 +46,23 @@
 <div class="wrapper">
     <!-- Sidebar -->
     <nav id="sidebar">
-        <div class="sidebar-header">
-            <!--            <h3>Bootstrap Sidebar</h3>-->
-            <button type="button" id="sidebarCollapse" class="btn " style="background-color: #7386D5;">
-                <i class="fa-solid fa-align-justify"></i>
-            </button>
+        <div class="sidebar-header w-100 bg-opacity-75 bg-gradient shadow ">
+            <div class="container shadow d-flex justify-content-center">
+                <div class="row  ">
+                    <div class="col-md-10">
+                       <h4> Dashboard</h4>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" id="sidebarCollapse" class="btn " style="background-color: #7386D5;">
+                            <i class="fa-solid fa-align-justify"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <br> <br> <br> <br>
+        <br> <br> <br>
+
 
         <ul class="list-unstyled components " id="list1">
 
