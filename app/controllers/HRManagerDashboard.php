@@ -11,5 +11,4 @@ class HRManagerDashboard extends Controller{
         $this->view->render('dashboard/hrmanager');
     }
 
-
 }
