@@ -8,6 +8,7 @@ class Home extends Controller{
     }
 
     public function indexAction(){
+        Session::delete();
         $message = $_SESSION['message'] ?? "";
         if(isset($_SESSION['username'])){
             Router::redirect("EmployeeDashboard");
