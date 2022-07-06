@@ -10,7 +10,7 @@ class EmployeeLeave extends Controller {
     }
 
     public function indexAction() {
-        $this->view->leaves = $this->LeaveRequestModel->getPendingRequests();
+        $this->view->leaves = $this->LeaveRequestModel->getPendingRequests(Supervisor::currentLoggedInEmployee()->id);
         $this->view->render('leave/index');
     }
 
@@ -29,10 +29,9 @@ class EmployeeLeave extends Controller {
                 'status'=>$_POST['status']
             ]);
             $message = 'Leave ' . $_POST['status'] . ': ' . $_POST['reason'];
-            // $this->NotificationModel->create($_POST['sup_id'], $_POST['emp_id'], $message);
-            Router::redirect('EmployeeLeave/approve');
+            Router::redirect('EmployeeLeave/approval');
         } else {
-            $this->view->requests = $this->LeaveRequestModel->getPendingRequests();
+            $this->view->requests = $this->LeaveRequestModel->getPendingRequests(Supervisor::currentLoggedInEmployee()->id);
             $this->view->render('leave/requests');
         }
     }
