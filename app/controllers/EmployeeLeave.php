@@ -7,7 +7,6 @@ class EmployeeLeave extends Controller {
         parent::__construct($controller,$action);
         $this->load_model('LeaveRequest');
         $this->load_model('LeaveDetails');
-        $this->load_model('Notification');
     }
 
     public function indexAction() {
@@ -18,9 +17,9 @@ class EmployeeLeave extends Controller {
     public function applicationAction() {
         if ($_POST) {
             $this->LeaveRequestModel->request($_POST);
-            Router::redirect('home');
+            Router::redirect('NMEmployeeDashboard');
         } else {
-            $this->view->render('leave/apply');
+            $this->view->render('leave/application');
         }
     }
 
@@ -30,7 +29,7 @@ class EmployeeLeave extends Controller {
                 'status'=>$_POST['status']
             ]);
             $message = 'Leave ' . $_POST['status'] . ': ' . $_POST['reason'];
-            $this->NotificationModel->create($_POST['sup_id'], $_POST['emp_id'], $message);
+            // $this->NotificationModel->create($_POST['sup_id'], $_POST['emp_id'], $message);
             Router::redirect('EmployeeLeave/approve');
         } else {
             $this->view->requests = $this->LeaveRequestModel->getPendingRequests();
