@@ -60,7 +60,7 @@
                 <a href="../profile/employee.php"><i class="fa-solid fa-user"></i> Profile </a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>
+                <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
             </li>
             <li>
                 <a href="#"><i class="fa-solid fa-circle-question"></i> Help</a>
@@ -91,7 +91,7 @@
                     <div class="card-body shadow px-lg-5">
                         <h5 class="card-title">View Employee details</h5>
                         <p class="card-text">You can view the all the employees details of the system </p>
-                        <a href="#" class="btn btn-primary"><i class="fa-light fa-file-circle-info"></i> View
+                        <a href="../employeeDetails/EmployeeDetails.php" class="btn btn-primary"><i class="fa-light fa-file-circle-info"></i> View
                             Details</a>
                     </div>
                 </div>
@@ -113,9 +113,9 @@
 
                             <div class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
                                 <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../employeeDept/EmployeeByDept.php">Employee by department report</a></button>
-                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Total leave report</button>
-                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Employee report</button>
-                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i> Custom report</button>
+                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../leavesDept/LeavesDept.php">Total leave report</a></button>
+                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../employeeReport/EmployeeReport.php">Employee report</a></button>
+                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../customReport/CustomReport.php">Custom report</a></button>
                             </div>
                             </div>
                             </div>

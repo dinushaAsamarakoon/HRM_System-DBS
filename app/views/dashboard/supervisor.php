@@ -54,7 +54,7 @@
                 <a href="../profile/employee.php"><i class="fa-solid fa-user" ></i> Profile </a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>
+                <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
             </li>
             <li>
                 <a href="../help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
