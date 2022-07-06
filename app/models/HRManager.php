@@ -24,8 +24,7 @@ class HRManager extends Employee
     {
         return new NMEmployee();
     }
-
-    public function registerNewEmployee($params)
+    public function registerNewHRManager($params)
     {
         $params['is_closed'] = 0;
         $params['status'] = "available";
@@ -34,10 +33,12 @@ class HRManager extends Employee
         $this->save();
     }
 
-    public function removeEmployee($params)
+
+
+    public function removeEmployee($table, $field, $value)
     {
-        if ($params['username']) {
-            $this->_db->query("UPDATE employee SET is_closed = ? WHERE username = ?", [1, $params['username']]);
+        if ($field) {
+            $this->delete($table, $field, $value);
         }
     }
 
@@ -48,5 +49,31 @@ class HRManager extends Employee
                 'conditions' => 'username=?',
                 'bind' => [$params['username']]]);
         }
+    }
+
+    public function addNewAttributeType($table, $params)
+    {
+        $columns = $this->assignInd($table, $params);
+        $this->insertAttributeType($table, $columns);
+    }
+
+    public function showRemovingAttributeType($table, $params)
+    {
+        if ($params['field']) {
+            return $this->_db->find($table, [
+                'conditions' => 'field=?',
+                'bind' => [$params['field']]]);
+        }
+    }
+
+    public function removeAttributeType($table, $field, $value)
+    {
+        if ($field) {
+            $this->delete($table, $field, $value);
+        }
+    }
+
+    public function reportGeneration($table, $params=[]){
+        return $this->findWithTable($table,$params);
     }
 }

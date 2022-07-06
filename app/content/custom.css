@@ -1,0 +1,33 @@
+body{
+   background-color: #ecf0f9;
+}
+
+
+.login{
+    margin-top: 0px;
+    border-color: #0a53be;
+    border-width: 40px;
+    /*background-color: #0a53be;*/
+    background-color:  #ecf0f9;
+    mso-border-shadow: yes;
+    padding-top: 50px;
+
+
+}
+.login h3{
+    text-align: center;
+}
+
+.login form{
+    height: 450px;
+    padding-top: 7px;
+
+}
+/*This css parts are available in navigation bar of the page*/
+.image {
+    border-radius: 4000px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 7px;
+}
+

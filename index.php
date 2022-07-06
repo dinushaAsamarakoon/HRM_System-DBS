@@ -6,6 +6,7 @@ define('ROOT', dirname(__FILE__));
 // load configurations and helper functions
 require_once(ROOT . DS . 'config' . DS . 'env.php');
 require_once(ROOT . DS . 'config' . DS . 'config.php');
+require_once(ROOT . DS . 'config' . DS . 'env.php');
 require_once(ROOT . DS . 'app' . DS . 'lib' . DS . 'helpers' . DS . 'functions.php');
 
 //Autoload classes
@@ -24,6 +25,7 @@ spl_autoload_register(function ($className) {
 session_start();
 
 $url = isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'], '/')) : [];
+
 
 $db = DB::getInstance(HOST,DB_NAME,DB_USER,DB_PASSWORD);
 

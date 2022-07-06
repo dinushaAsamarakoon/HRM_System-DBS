@@ -109,7 +109,7 @@ class AdminFunctionHandler extends Controller
     public function confirmRemoveEmployeeAction()
     {
         if ($_POST) {
-            $this->EmployeeModel = Admin::currentLoggedInEmployee()->createNewHRManager();
+            $this->EmployeeModel = Admin::currentLoggedInEmployee();
             if ($_POST['username']) {
                 $this->EmployeeModel->removeEmployee($_POST);
                 $_SESSION['message'] = "Employee is removed";
@@ -124,6 +124,14 @@ class AdminFunctionHandler extends Controller
     public function cancelRemoveEmployeeAction()
     {
         $this->view->render('register/addEmployee');
+    }
+
+    public function addEmployeeAttributeAction()
+    {
+        if ($_POST) {
+            $admin = Admin::currentLoggedInEmployee();
+            $admin->addEmployeeAttribute($_POST['tableName'], $_POST['fields']);
+        }
     }
 
 }
