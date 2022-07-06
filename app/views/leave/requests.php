@@ -25,7 +25,7 @@
                 <?php echo $l['reason']; ?>
                 <?php echo $l['status']; ?>
             </div>
-            <form action="<?=SROOT?>EmployeeLeave/approve" method="post">
+            <form action="<?=SROOT?>EmployeeLeave/approval" method="post">
                 <input type="hidden" name="id" value="<?php echo $l['id']?>">
                 <input type="hidden" name="emp_id" value="<?php echo $l['emp_id']?>">
                 <input type="hidden" name="sup_id" value="<?php echo $l['sup_id']?>">

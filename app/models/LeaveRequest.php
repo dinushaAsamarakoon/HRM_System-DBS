@@ -9,15 +9,17 @@ class LeaveRequest extends Model {
     }
 
     public function request($params){
-        // $params['emp_id'] = Customer::currentLoggedInCustomer()->id;
-        // $params['emp_id'] = '1';
-        $params['duration'] = '1';
         date_default_timezone_set('Asia/Colombo');
-        $params['apply_date'] = date('Y-m-d H:i:s');
+        $emp = NMEmployee::currentLoggedInEmployee();
+        $params['emp_id'] = $emp->id;
+        $sup_id = $emp->sup_id;
+        $params['sup_id'] = $sup_id;
+        $params['sup_id'] = '3';
+        $params['apply_date'] = date('Y-m-d');
+        $params['duration'] = 1 + (strtotime($params['end_date']) - strtotime($params['start_date'])) / (60*60*24);
         $params['status'] = 'pending';
-        // $params['sup_id'] = '1';
-        // $params['dept_name'] = '1';
-
+        $params['dept_name'] = 'NMI';
+        $params['completed'] = '0';
         $this->assign($params);
         $this->save();
     }
@@ -29,10 +31,10 @@ class LeaveRequest extends Model {
         ]);
     }
     
-    public function getPendingRequests(){
+    public function getPendingRequests($sup_id){
         return $this->_db->find('leave_request',[
             'conditions' => 'sup_id=? and status=?',
-            'bind' => ['3', 'pending']
+            'bind' => [$sup_id, 'pending']
         ]);
     }
     

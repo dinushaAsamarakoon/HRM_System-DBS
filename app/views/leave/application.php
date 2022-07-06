@@ -52,28 +52,29 @@
                                 <h2 class="text-right"><b>Apply For Leave</b></h2>
                             </div>
                             <div class="row mt-2" >
-                                <div class="col-md-6"><label class="labels">From</label><input type="date" name="from" class="form-control" ></div>
-                                <div class="col-md-6"><label class="labels">To</label><input type="date" name="to" class="form-control"></div>
+                                <input type="hidden" name="emp_id" value="11">
+                                <div class="col-md-6"><label class="labels">From</label><input type="date" name="start_date" class="form-control" required></div>
+                                <div class="col-md-6"><label class="labels">To</label><input type="date" name="end_date" class="form-control" required></div>
                             </div>
 
                             <div class="row mt-3" >
                                 <div class="col-md-12"><div class="mb-3">
                                         <label class="form-label">Leave type</label><br>
                                         <div class="form-check" style="margin-bottom: 20px;">
-                                            <input  type="radio" name="leave-type" value="annual" id="annual" />
+                                            <input  type="radio" name="type" value="annual" id="annual" required/>
                                             <label class="form-check-label" for="annual">Annual</label>
-                                            <input  type="radio" name="leave-type" value="casual" id="casual" />
+                                            <input  type="radio" name="type" value="casual" id="casual" required/>
                                             <label class="form-check-label" for="casual">Casual</label>
-                                            <input type="radio" name="leave-type" value="maternity" id="maternity" />
+                                            <input type="radio" name="type" value="maternity" id="maternity" reqiured/>
                                             <label class="form-check-label" for="maternity">Maternity</label>
-                                            <input  type="radio" name="leave-type" value="noPay" id="noPay" />
+                                            <input  type="radio" name="type" value="nopay" id="noPay" required/>
                                             <label class="form-check-label" for="noPay">No Pay</label>
                                         </div>
                                     </div></div>
                             </div>
                             
                             <div  class="row mt-3">
-                                <div class="col-md-6"><label class="labels" >Reason</label><input type="text" name="reason" class="form-control"  value="" placeholder="Reason..."></div>
+                                <div class="col-md-6"><label class="labels" >Reason</label><input type="text" name="reason" class="form-control"  value="" placeholder="Reason..." required></div>
                             </div>
                             <div  class="row mt-3">
                                 <div class="col-md-6">
