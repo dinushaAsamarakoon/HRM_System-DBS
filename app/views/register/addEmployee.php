@@ -140,6 +140,12 @@ if (isset($_SESSION['username'])){
 
                         </div>
                         <div class="row mt-2">
+                            <div class="col-md-12">
+                                <label for=" Idnumber" class="form-label">National Identity card number</label>
+                                <input type="text" class="form-control" id="Idnumber" placeholder="Enter employee's national ID card number" name="IdCardNumber" >
+                            </div>
+                        </div>
+                        <div class="row mt-2">
                             <div class="col-md-12"><label class="labels">Qualifications</label>
                                 <div class="form-floating">
                                     <textarea class="form-control"  id="floatingTextarea"></textarea>

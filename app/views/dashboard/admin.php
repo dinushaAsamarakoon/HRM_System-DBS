@@ -3,7 +3,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include('../header/headerFile.php') ?>
+    <?php
+    require_once(ROOT . DS . 'app' . DS . 'views' . DS . 'header' . DS . 'headerFile.php');
+    ?>
     <script src="../../script/Sidemenu.js"></script>
     <title>Dashboard</title>
 </head>
@@ -77,6 +79,18 @@
                         <h5 class="card-title">Add HR manager to the system</h5>
                         <p class="card-text">You can add the HR manger's details to the system</p>
                         <a href="../register/addEmployee.php" class="btn btn-primary justify-content-center"><i class="fa-solid fa-user-plus"></i> Add HR manager</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row pt-lg-5">
+            <div class="col-sm-12 ">
+                <div class="card">
+                    <div class="card-body shadow  px-lg-5">
+                        <h5 class="card-title">Create new table</h5>
+                        <p class="card-text">You can define the new database table</p>
+                        <a href="<?=SROOT ?>AdminFunctionHandler/addTable" class="btn btn-primary justify-content-center"><i class="fa-solid fa-user-plus"></i> Create table</a>
                     </div>
                 </div>
             </div>

@@ -45,9 +45,10 @@ class EmployeeRegister extends Controller
     public function logoutAction()
     {
         $user = Employee::currentLoggedInEmployee();
-        $this->UserModel->logout();
+        $user->logout();
         Router::redirect('home/index');
     }
+
 
     public function addEmployeeAction()
     {

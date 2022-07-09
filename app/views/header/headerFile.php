@@ -10,6 +10,7 @@
 
 <!--Javascript only-->
 <script src="<?=SROOT?>app/script/Sidemenu.js"></script>
+<script src="<?=SROOT?>app/script/addRow.js"></script>
 <!--<script src="../../script/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>-->
 <!-- Font Awesome JS -->
 <script src="https://kit.fontawesome.com/ec08fc2909.js" crossorigin="anonymous"></script>

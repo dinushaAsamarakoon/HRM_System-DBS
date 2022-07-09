@@ -96,7 +96,7 @@ class DB
         $fieldString = trim($fieldString);
         $fieldString = rtrim($fieldString, ',');
 
-        $sql = "UPDATE {$table} SET {$fieldString} WHERE id = {$id}";
+        $sql = "UPDATE {$table} SET {$fieldString} WHERE emp_id = {$id}";
         if (!$this->query($sql, $values)->error()) {
             return true;
         }
