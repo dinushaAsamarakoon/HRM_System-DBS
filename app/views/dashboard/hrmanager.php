@@ -67,13 +67,13 @@
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="../profile/employee.php"><i class="fa-solid fa-user"></i> Profile </a>
+                <a href="<?=SROOT?>Profile"><i class="fa-solid fa-user"></i> Profile </a>
             </li>
             <li>
                 <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-circle-question"></i> Help</a>
+                <a href="<?=SROOT?>app/"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
     </nav>

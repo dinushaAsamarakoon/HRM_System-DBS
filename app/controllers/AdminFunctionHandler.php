@@ -133,5 +133,9 @@ class AdminFunctionHandler extends Controller
             $admin->addEmployeeAttribute($_POST['tableName'], $_POST['fields']);
         }
     }
+    public function addTableAction()
+    {
+        $this->view->render('createTable/createTable');
+    }
 
 }
