@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2022 at 02:48 PM
+-- Generation Time: Jul 06, 2022 at 05:53 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `hrm_system`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getTables` ()  begin 
+	SELECT table_name 
+FROM information_schema.tables 
+WHERE table_schema = 'hrm_system' and 
+table_name != 'employee' and
+table_name != 'emp_record' AND
+table_name != 'leave_request' AND
+table_name != 'emp_leave';
+end$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -53,8 +69,8 @@ CREATE TABLE `employee` (
   `emp_status_id` int(10) DEFAULT NULL,
   `sup_id` int(10) DEFAULT NULL,
   `dept_name` varchar(20) DEFAULT NULL,
-  `username` varchar(20) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `username` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -127,16 +143,17 @@ CREATE TABLE `emp_record` (
   `duration` varchar(20) DEFAULT NULL,
   `qualification` varchar(100) DEFAULT NULL,
   `current_employee` tinyint(1) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL
+  `description` varchar(255) DEFAULT NULL,
+  `NIC` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `emp_record`
 --
 
-INSERT INTO `emp_record` (`emp_id`, `first_name`, `last_name`, `birth_date`, `marital_status`, `email`, `{phone_number}`, `address`, `emergency_contact`, `duration`, `qualification`, `current_employee`, `description`) VALUES
-(1, 'Kapila', 'Perera', '1990-12-20', 'single', 'kapila@gmail.com', '769409309', '65, Katubedda, Moratuwa', '332281106', '10', 'sample qualification ', 1, 'sample description'),
-(2, 'Indika ', 'Perera', '1989-12-25', 'married', 'indika@gmail.com', '789305682', '56, Gampaha, Colonbo', '334579323', '20', 'qualification ', 1, 'desc');
+INSERT INTO `emp_record` (`emp_id`, `first_name`, `last_name`, `birth_date`, `marital_status`, `email`, `{phone_number}`, `address`, `emergency_contact`, `duration`, `qualification`, `current_employee`, `description`, `NIC`) VALUES
+(1, 'Kapila', 'Perera', '1990-12-20', 'single', 'kapila@gmail.com', '769409309', '65, Katubedda, Moratuwa', '332281106', '10', 'sample qualification ', 1, 'sample description', NULL),
+(2, 'Indika ', 'Perera', '1989-12-25', 'married', 'indika@gmail.com', '789305682', '56, Gampaha, Colonbo', '334579323', '20', 'qualification ', 1, 'desc', NULL);
 
 -- --------------------------------------------------------
 
@@ -263,6 +280,7 @@ ALTER TABLE `department`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`emp_id`),
+  ADD UNIQUE KEY `username` (`username`),
   ADD KEY `sup_id` (`sup_id`),
   ADD KEY `emp_status_id` (`emp_status_id`),
   ADD KEY `job_title` (`job_title`),
