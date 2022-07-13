@@ -28,8 +28,10 @@ class HRManagerFunctionHandler extends Controller
 
     public function logoutAction()
     {
+
         $user = HRManager::currentLoggedInEmployee();
         $user->logout();
+
 //        $this->EmployeeModel->logout();
         Router::redirect('home/index');
     }
@@ -64,7 +66,7 @@ class HRManagerFunctionHandler extends Controller
             ]);
 
             if ($validation->passed()) {
-                if ($_POST['job_title'] === 'Supervisor') {
+                if ($_POST['job_class'] === 'Supervisor') {
                     $this->EmployeeModel = HRManager::currentLoggedInEmployee()->createNewSupervisor();
                     $this->EmployeeModel->registerNewEmployee($_POST);
                     Router::redirect('HRManagerDashboard');
@@ -79,6 +81,25 @@ class HRManagerFunctionHandler extends Controller
                 $this->view->render('register/addEmployee');
             }
         } else {
+//            dnd(HRManager::currentLoggedInEmployee()->getEmployeeAttributes());
+            $hRManager = HRManager::currentLoggedInEmployee();
+//            foreach($hRManager->getPrimaryValues('job_title') as $a){
+//                echo $a[0];
+//            }
+//            dnd();
+
+            $attributeNames = $hRManager->getEmployeeAttributes();
+//            dnd($attributeNames);
+            $attributes = [];
+            foreach ($attributeNames as $an){
+                $tempAttributes = [];
+                foreach ($hRManager->getPrimaryValues($an[0]) as $row){
+                     array_push($tempAttributes,$row);
+                }
+                    $attributes[$an[0]] = $tempAttributes;
+            }
+//            dnd($attributes);
+            $this->view->allAttributes = $attributes;
             $this->view->render('register/addEmployee');
         }
     }
@@ -118,10 +139,10 @@ class HRManagerFunctionHandler extends Controller
             if ($_POST['username']) {
                 $this->EmployeeModel->removeEmployee($_POST['tableName'], 'username', $_POST['username']);
                 $_SESSION['message'] = "Employee is removed";
-                Router::redirect('EmployeeDashboard');
+                Router::redirect('');
             }
             if ($_POST['cancel']) {
-                Router::redirect('EmployeeDashboard');
+                Router::redirect('');
             }
         }
     }

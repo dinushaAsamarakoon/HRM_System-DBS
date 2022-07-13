@@ -3,8 +3,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include('../header/headerFile.php') ?>
-    <script src="../../script/Sidemenu.js"></script>
+    <?php require_once(ROOT . DS . 'app' . DS . 'views' . DS . 'header' . DS . 'headerFile.php'); ?>
+
     <title>Dashboard</title>
 </head>
 <body>
@@ -46,13 +46,13 @@
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="../profile/employee.php"><i class="fa-solid fa-user" ></i> Profile </a>
+                <a href="<?=SROOT?>app/views/profile/employee.php"><i class="fa-solid fa-user" ></i> Profile </a>
             </li>
 <!--            <li>-->
 <!--                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>-->
 <!--            </li>-->
             <li>
-                <a href="../help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
+                <a href="<?=SROOT?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
     </nav>
@@ -67,23 +67,14 @@
                     <div class="card-body shadow  px-lg-5">
                         <h5 class="card-title">Add HR manager to the system</h5>
                         <p class="card-text">You can add the HR manger's details to the system</p>
-                        <a href="../register/addEmployee.php" class="btn btn-primary justify-content-center"><i class="fa-solid fa-user-plus"></i> Add HR manager</a>
+                        <a href="<?=SROOT?>AdminFunctionHandler/addEmployee.php" class="btn btn-primary justify-content-center"><i class="fa-solid fa-user-plus"></i> Add HR manager</a>
                     </div>
                 </div>
             </div>
 
         </div>
-
-
-
-
     </div>
-
 </div>
-
-
-
-
 </body>
 </html>
 

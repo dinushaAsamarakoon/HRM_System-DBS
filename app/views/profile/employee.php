@@ -1,7 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include('../header/headerFile.php') ?>
+    <?php
+
+    require_once(ROOT . DS . 'app' . DS . 'views' . DS . 'header' . DS . 'headerFile.php');
+    ?>
     <title>Profile</title>
 </head>
 <body>

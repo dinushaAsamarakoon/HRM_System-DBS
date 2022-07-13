@@ -3,8 +3,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include('../header/headerFile.php') ?>
-    <script src="../../script/Sidemenu.js"></script>
+    <?php
+    require_once(ROOT . DS . 'app' . DS . 'views' . DS . 'header' . DS . 'headerFile.php');
+    ?>
     <title>Dashboard</title>
 </head>
 <body>
@@ -57,7 +58,7 @@
                 <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>
             </li>
             <li>
-                <a href="../help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
+                <a href="<?=SROOT?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
     </nav>
@@ -73,7 +74,7 @@
                     <div class="card-body shadow px-lg-5">
                         <h5 class="card-title">View profile details</h5>
                         <p class="card-text">You can view your profile details </p>
-                        <a href="../profile/employee.php" class="btn btn-primary"><i class="fa-light fa-file-circle-info"></i> View profile</a>
+                        <a href="<?=SROOT?>app/views/profile/employee.php" class="btn btn-primary"><i class="fa-light fa-file-circle-info"></i> View profile</a>
                     </div>
                 </div>
             </div>
