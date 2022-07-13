@@ -17,7 +17,6 @@ class Employee extends Model
     {
         $this->findFirst(['conditions' => 'username=? ', 'bind' => [$username]]);
     }
-    
 
     public function login()
     {
@@ -37,36 +36,10 @@ class Employee extends Model
                 Session::set('job_class', 'nm_employee');
                 break;
         }
-
     }
 
-
-//    public function registerNewEmployee($params)
-//    {
-//        $params['is_closed'] = 0;
-//        $params['status'] = "available";
-//        $this->assign($params);
-//        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
-//        $this->save();
-//    }
-
-//    public function removeEmployee($params)
-//    {
-//        if ($params['username']) {
-//            $this->_db->query("UPDATE employee SET is_closed = ? WHERE username = ?", [1, $params['username']]);
-//        }
-//    }
-//
-//    public function showRemovingEmployee($params)
-//    {
-//        if ($params['username']) {
-//            return $this->_db->find('employee', [
-//                'conditions' => 'username=?',
-//                'bind' => [$params['username']]]);
-//        }
-//    }
-
-    public function logout()
+    public
+    function logout()
     {
         Session::delete();
         self::$currentLoggedInEmployee = null;
@@ -74,7 +47,8 @@ class Employee extends Model
 
     }
 
-    public function getWorkerEmployees()
+    public
+    function getWorkerEmployees()
     {
         return $this->_db->find('users', [
             'conditions' => 'role=? and is_closed=?',
@@ -82,8 +56,11 @@ class Employee extends Model
         ]);
     }
 
-    public function getPersonalInfo($id) {
-        return $this->_db->find('employee',[
+
+    public
+    function getPersonalInfo($id)
+    {
+        return $this->_db->find('employee', [
             'conditions' => 'id=?',
             'bind' => [$id]
         ]);

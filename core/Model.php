@@ -197,4 +197,14 @@ class Model
         }
         return $columns;
     }
+
+    public function getEmployeeAttributes(){
+        return $this->_db->getEmployeeAttributes();
+    }
+
+
+
+    public function getPrimaryValues($table){
+        return $this->_db->getPrimaryValues($table);
+    }
 }

@@ -122,7 +122,6 @@ class DB
     }
 
 
-
     public function results()
     {
         return (!empty($this->_result)) ? $this->_result : [];
@@ -229,6 +228,20 @@ class DB
         return false;
     }
 
+    public function getEmployeeAttributes()
+    {
+        return $this->_pdo->query("CALL getTables();")->fetchAll();
+    }
+
+    public function getPrimaryValues($table){
+        $key = $this->getPrimary($table);
+        return $this->_pdo->query("SELECT {$key} FROM {$table}")->fetchAll();
+    }
+
+    private function getPrimary($table)
+    {
+        return $this->_pdo->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'hrm_system' AND COLUMN_KEY = 'PRI' AND TABLE_NAME = '{$table}' ;")->fetchAll()[0]["COLUMN_NAME"];
+    }
 
     public function error()
     {

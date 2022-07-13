@@ -29,7 +29,8 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active " id="pills-logout-tab" data-toggle="pill" href="#pills-logout"
+                        <a class="nav-link active " id="pills-logout-tab" data-toggle=""
+                           href="<?= SROOT ?>HRManagerFunctionHandler/logout"
                            role="tab" aria-controls="pills-logout" aria-selected="true"
                            style="color: #0c63e4;font-size: 20px;">logout</a>
 
@@ -50,7 +51,7 @@
             <div class="container shadow d-flex justify-content-center">
                 <div class="row  ">
                     <div class="col-md-10">
-                       <h4> Dashboard</h4>
+                        <h4> Dashboard</h4>
                     </div>
                     <div class="col-md-1">
                         <button type="button" id="sidebarCollapse" class="btn " style="background-color: #7386D5;">
@@ -67,13 +68,13 @@
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="<?=SROOT?>Profile"><i class="fa-solid fa-user"></i> Profile </a>
+                <a href="<?= SROOT ?>Profile"><i class="fa-solid fa-user"></i> Profile </a>
             </li>
             <li>
                 <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
             </li>
             <li>
-                <a href="<?=SROOT?>app/"><i class="fa-solid fa-circle-question"></i> Help</a>
+                <a href="<?= SROOT ?>app/"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
     </nav>
@@ -88,8 +89,10 @@
                     <div class="card-body shadow  px-lg-5">
                         <h5 class="card-title">Add the employee to the system</h5>
                         <p class="card-text">You can add the employee details to from this</p>
-                        <a href="../register/addEmployee.php" class="btn btn-primary justify-content-center"><i
-                                    class="fa-solid fa-user-plus"></i> Add Employee</a>
+                        <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee"
+                           class="btn btn-primary justify-content-center"><i
+                                    class="fa-solid fa-user-plus"></i>Add Employee</a>
+
                     </div>
                 </div>
             </div>
@@ -101,7 +104,8 @@
                     <div class="card-body shadow px-lg-5">
                         <h5 class="card-title">View Employee details</h5>
                         <p class="card-text">You can view the all the employees details of the system </p>
-                        <a href="../employeeDetails/EmployeeDetails.php" class="btn btn-primary"><i class="fa-light fa-file-circle-info"></i> View
+                        <a href="../employeeDetails/EmployeeDetails.php" class="btn btn-primary"><i
+                                    class="fa-light fa-file-circle-info"></i> View
                             Details</a>
                     </div>
                 </div>
@@ -121,23 +125,35 @@
                             </button>
                             <div class="p-0">
 
-                            <div class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
-                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../employeeDept/EmployeeByDept.php">Employee by department report</a></button>
-                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../leavesDept/LeavesDept.php">Total leave report</a></button>
-                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../employeeReport/EmployeeReport.php">Employee report</a></button>
-                                <button class="dropdown-item" type="button"><i class="fa-solid fa-arrow-left-long"></i><a href="../customReport/CustomReport.php">Custom report</a></button>
-                            </div>
-                            </div>
+                                <div class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
+
+                                    <button class="dropdown-item" type="button"><i
+                                                class="fa-solid fa-arrow-left-long"></i><a
+                                                href="<?= SROOT ?>app/views/employeeDept/EmployeeByDept.php">Employee by
+                                            department report</a></button>
+                                    <button class="dropdown-item" type="button"><i
+                                                class="fa-solid fa-arrow-left-long"></i><a
+                                                href="<?= SROOT ?>app/views/leavesDept/LeavesDept.php">Total leave
+                                            report</a></button>
+                                    <button class="dropdown-item" type="button"><i
+                                                class="fa-solid fa-arrow-left-long"></i><a
+                                                href="<?= SROOT ?>app/views/employeeReport/EmployeeReport.php">Employee
+                                            report</a></button>
+                                    <button class="dropdown-item" type="button"><i
+                                                class="fa-solid fa-arrow-left-long"></i><a
+                                                href="<?= SROOT ?>app/views/customReport/CustomReport.php">Custom
+                                            report</a></button>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
-
     </div>
+
 
 </div>
 
