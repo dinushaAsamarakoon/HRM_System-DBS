@@ -33,4 +33,12 @@ class NMEmployeeFunctionHandler extends Controller
         Router::redirect('home/index');
     }
 
+    public function completeRequestAction()
+    {
+        $this->EmployeeLeaveModel->update($_POST['id'],[
+            'completed'=>'true'
+        ]);
+        Router::redirect('NMEmployeeDashboard');
+    }
+
 }

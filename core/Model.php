@@ -92,8 +92,8 @@ class Model
         }
 
         // determine whether to update or insert
-        if (property_exists($this, 'emp_id') && $this->emp_id != '') {
-            return $this->update($this->emp_id, $fields);
+        if (property_exists($this, 'id') && $this->id != '') {
+            return $this->update($this->id, $fields);
         } else {
             return $this->insert($fields);
         }

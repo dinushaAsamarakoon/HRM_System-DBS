@@ -35,6 +35,7 @@
                 <div class="d-flex justify-content-center align-items-center mb-3">
                     <h2 class="text-center">Profile Details</h2>
                 </div>
+                <?php $p = (array) $this->profile[0]; ?>
                 <div class="row mt-1" >
                     <div class="col-md-6"><label class="labels">First name</label><input type="text" class="form-control"  value="" disabled></div>
                     <div class="col-md-6"><label class="labels">Last name</label><input type="text" class="form-control" value="" disabled></div>
@@ -56,11 +57,11 @@
                 </div>
                 <div class="row mt-2 ">
                     <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control"  value="" disabled></div>
-                    <div class="col-md-6"><label class="labels">Job title</label><input type="text" class="form-control"  value="" disabled></div>
+                    <div class="col-md-6"><label class="labels">Job title</label><input type="text" class="form-control"  value="<?php echo $p['job_title'] ?>" disabled></div>
 
                 </div>
                 <div class="row mt-2 ">
-                    <div class="col-md-6"><label class="labels">Pay grade</label><input type="text" class="form-control"  value="" disabled></div>
+                    <div class="col-md-6"><label class="labels">Pay grade</label><input type="text" class="form-control"  value="<?php echo $p['pay_grade'] ?>" disabled></div>
                     <div class="col-md-6"><label class="labels">Employment status</label><input type="text" class="form-control"  value="" disabled></div>
                 </div>
             </div>

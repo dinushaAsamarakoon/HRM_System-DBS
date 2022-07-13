@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -54,7 +53,7 @@
                 <a href="<?=SROOT?>app/views/profile/employee.php"><i class="fa-solid fa-user" ></i> Profile </a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>
+                <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
             </li>
             <li>
                 <a href="<?=SROOT?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
@@ -84,9 +83,8 @@
 
 </div>
 
-
-
+<a href="<?=SROOT?>EmployeeLeave/approval">Leave Requests</a>
+    <?php if ($this->requests){ echo count($this->requests); } ?>
 
 </body>
 </html>
-

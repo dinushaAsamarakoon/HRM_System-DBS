@@ -18,7 +18,6 @@ class Employee extends Model
         $this->findFirst(['conditions' => 'username=? ', 'bind' => [$username]]);
     }
 
-
     public function login()
     {
         Session::set($this->_sessionName, $this->emp_id);
@@ -37,10 +36,10 @@ class Employee extends Model
                 Session::set('job_class', 'nm_employee');
                 break;
         }
-
     }
 
-    public function logout()
+    public
+    function logout()
     {
         Session::delete();
         self::$currentLoggedInEmployee = null;
@@ -48,11 +47,22 @@ class Employee extends Model
 
     }
 
-    public function getWorkerEmployees()
+    public
+    function getWorkerEmployees()
     {
         return $this->_db->find('users', [
             'conditions' => 'role=? and is_closed=?',
             'bind' => ['worker', 0]
+        ]);
+    }
+
+
+    public
+    function getPersonalInfo($id)
+    {
+        return $this->_db->find('employee', [
+            'conditions' => 'id=?',
+            'bind' => [$id]
         ]);
     }
 
