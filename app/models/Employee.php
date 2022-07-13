@@ -17,21 +17,27 @@ class Employee extends Model
     {
         $this->findFirst(['conditions' => 'username=? ', 'bind' => [$username]]);
     }
-
-
-//    public static function currentLoggedInEmployee()
-//    {
-//        $user = new Employee();
-//        $user->findByUserName(Session::get('username'));
-//        self::$currentLoggedInEmployee = $user;
-//        return self::$currentLoggedInEmployee;
-//    }
+    
 
     public function login()
     {
-        Session::set($this->_sessionName,$this->emp_id);
-        Session::set('username',$this->username);
-        Session::set('job_title',$this->job_title);
+        Session::set($this->_sessionName, $this->emp_id);
+        Session::set('username', $this->username);
+        switch ($this->job_title) {
+            case "hr_manager":
+                Session::set('job_class', $this->job_title);
+                break;
+            case "admin":
+                Session::set('job_class', $this->job_title);
+                break;
+            case "supervisor":
+                Session::set('job_class', $this->job_title);
+                break;
+            default:
+                Session::set('job_class', 'nm_employee');
+                break;
+        }
+
     }
 
 
