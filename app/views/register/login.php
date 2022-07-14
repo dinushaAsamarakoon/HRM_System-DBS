@@ -18,7 +18,7 @@
 
     <title>Login Page</title>
 </head>
-<body >
+<body  >
 <div class="shadow p-3 mb-5  rounded" >
     <nav class="navbar navbar-expand-lg bg-light ">
         <div class="container-fluid ">
@@ -51,14 +51,17 @@
             <!--This is the login page of the website        -->
             <div class="h-100 " id="pills-login" role="tabpanel" aria-labelledby="pills-profile-tab" >
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm">
-                            One of three columns
+                <div class="container ">
+                    <div class="row shadow-lg" style="border-radius: 50px;">
+
+                        <div class="col-md-6 d-flex justify-content-center" >
+                           <div class="d-flex justify-content-center  p-3 " >
+                               <img src="<?=SROOT?>app/views/image/sideimage.jpg" class="card-img-top">
+                           </div>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-md-6 " >
                             <div class="d-flex justify-content-center w-100 h-100  p-3"  >
-                                <div class=" w-75  p-3 shadow-lg p-5  mb-5   " style="background-color:  #ecf0f9; " >
+                                <div class=" w-75  p-3  p-5  mb-5 "  >
                                     <form action="<?=SROOT?>EmployeeRegister/login" method="POST" style="height: 450px;margin-top: 5px;">
                                         <div class="d-lg-flex justify-content-center m-1">
 

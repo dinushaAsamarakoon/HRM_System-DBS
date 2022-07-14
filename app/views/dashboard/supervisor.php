@@ -73,21 +73,18 @@
             <div class="col-sm-12">
                 <div class="card h-100">
                     <div class="card-body shadow px-lg-5">
-                        <h5 class="card-title">View leave applications</h5>
-                        <p class="card-text">You can view the all the employee leave applications from the system</p>
-                        <a href="#" class="btn btn-primary"><i class="fa-light fa-file-circle-info"></i> View leave application</a>
+                        <h5 class="card-title">Leave Requests</h5>
+                        <p class="card-text"><?php if ($this->requests){echo count($this->requests);} else {echo 0;}; echo " pending requests"; ?></p>
+                        <a href="<?=SROOT?>EmployeeLeave/approval" class="btn btn-primary"><i class="fa-light fa-file-circle-info"></i> View Leave Requests</a>
                     </div>
                 </div>
             </div>
         </div>
-
+    
 
     </div>
 
 </div>
-
-<a href="<?=SROOT?>EmployeeLeave/approval">Leave Requests</a>
-    <?php if ($this->requests){ echo count($this->requests); } ?>
 
 </body>
 </html>

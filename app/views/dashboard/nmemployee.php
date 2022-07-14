@@ -83,7 +83,30 @@
             <!--                <a href="../profile/employee.php"><i class="fa-solid fa-user" ></i> Profile </a>-->
             <!--            </li>-->
             <li>
-                <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
+                <a onclick="showNotifications()">
+                <i class="fa-solid fa-message"></i> Notifications 
+                <span class="border border-white rounded">
+                <?php if ($this->notifications) {
+                    echo count($this->notifications);
+                } else {
+                    echo 0;
+                } ?>
+                </span>
+                    
+            </a>
+            <div class="notifications text-center flex" id="n_list" style="visibility: hidden">
+                <?php $notifications = $this->notifications;
+                if ($notifications) {
+                    foreach ($notifications as $notification) { ?>
+                        <form action="<?= SROOT ?>NMEmployeeFunctionHandler/completeRequest" method="post">
+                            <?php $n = (array)$notification;
+                            echo 'Request ' . $n['status'] . ': ' . $n['reason']; ?>
+                            <input type="hidden" name="id" value="<?php echo $n['id'] ?>">
+                            <button class="btn btn-light p-1" type="submit">Mark as read</button>
+                        </form>
+                    <?php }
+                } ?>
+            </div>
             </li>
             <li>
                 <a href="<?= SROOT ?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
@@ -98,11 +121,29 @@
             <div class="col-sm-12">
                 <div class="card h-100">
                     <div class="card-body shadow px-lg-5">
-                        <h5 class="card-title">View profile details</h5>
-                        <p class="card-text">You can view your profile details </p>
+                        <h5 class="card-title">Profile Details</h5>
+                        <p class="card-text">Personal information, Employment details </p>
+
 
                         <a href="<?= SROOT ?>Profile/display/<?= $this->id;?>" class="btn btn-primary"><i
                                     class="fa-light fa-file-circle-info"></i> View profile</a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-lg-5">
+            <div class="col-sm-12">
+                <div class="card h-100">
+                    <div class="card-body shadow px-lg-5">
+                        <h5 class="card-title">Leave Record</h5>
+                        <p class="card-text">Remaining leaves (annual, casual, maternity, no pay), Leave requests </p>
+
+                        <a href="<?= SROOT ?>EmployeeLeave/record" class="btn btn-primary"><i
+                                    class="fa-light fa-file-circle-info"></i> View Leave Record</a>
+
 
                     </div>
                 </div>
@@ -110,30 +151,23 @@
         </div>
 
 
+        <div class="row pt-lg-5">
+            <div class="col-sm-12">
+                <div class="card h-100">
+                    <div class="card-body shadow px-lg-5">
+                        <h5 class="card-title">Leave Application</h5>
+                        <p class="card-text">Apply a leave application to get approval from supervisor </p>
+
+                        <a href="<?= SROOT ?>EmployeeLeave/application" class="btn btn-success"><i
+                                    class="fa-light fa-file-circle-info"></i> Apply For Leave</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-</div>
-<a href="<?= SROOT ?>EmployeeLeave/application">Leave Application</a>
-<a href="<?= SROOT ?>EmployeeLeave/details">Leave Details</a>
-<button onclick="showNotifications()"><?php if ($this->notifications) {
-        echo count($this->notifications);
-    } else {
-        echo 0;
-    } ?></button>
-<div class="notifications" id="n_list" style="visibility: hidden">
-    <?php $notifications = $this->notifications;
-    if ($notifications) {
-        foreach ($notifications as $notification) {
-            $n = (array)$notification;
-            ?>
-            <a href="<?= SROOT ?>EmployeeLeave/request/<?php echo $n['id'] ?>"><?php echo ucfirst($n['status']) . ': ' . $n['reason']; ?> </a>
-
-            <form action="<?= SROOT ?>NMEmployeeFunctionHandler/completeRequest" method="post">
-                <input type="hidden" name="id" value="<?php echo $n['id'] ?>">
-                <button type="submit">Mark as read</button>
-            </form>
-        <?php }
-    } ?>
 </div>
 
 </body>

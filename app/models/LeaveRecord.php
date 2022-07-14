@@ -1,6 +1,6 @@
 <?php
 
-class LeaveDetails extends Model {
+class LeaveRecord extends Model {
 
     public function __construct()
     {
@@ -8,7 +8,7 @@ class LeaveDetails extends Model {
         parent::__construct($table);
     }
 
-    public function getLeaveDetails($id){
+    public function getLeaveRecord($id){
         return $this->_db->find('emp_leave',[
             'conditions' => 'id=?',
             'bind' => [$id]
