@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--    CSS only-->
-<!--    <link href="../../content/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">-->
+    <!--    <link href="../../content/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">-->
     <link rel="stylesheet" href="../../content/custom.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
@@ -32,7 +32,7 @@
 
                 <ul class="nav nav-tabs   " id="pills-tab" role="tablist">
                     <li class="nav-item">
-                           <a class="nav-link active " id="pills-home-tab"  aria-current="page" href="<?=SROOT?>" style="color: #0c63e4;font-size: 20px;">Home</a>
+                        <a class="nav-link active " id="pills-home-tab"  aria-current="page" href="<?=SROOT?>" style="color: #0c63e4;font-size: 20px;">Home</a>
                     </li>
 
 
