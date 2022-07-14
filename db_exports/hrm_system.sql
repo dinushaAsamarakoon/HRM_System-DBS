@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2022 at 05:53 PM
+-- Generation Time: Jul 13, 2022 at 02:21 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -32,7 +32,10 @@ WHERE table_schema = 'hrm_system' and
 table_name != 'employee' and
 table_name != 'emp_record' AND
 table_name != 'leave_request' AND
-table_name != 'emp_leave';
+table_name != 'emp_leave' AND
+table_name != 'department' AND
+table_name != 'emp_info' AND
+table_name != 'supervisor';
 end$$
 
 DELIMITER ;
@@ -66,7 +69,7 @@ CREATE TABLE `employee` (
   `emp_id` int(10) NOT NULL,
   `job_title` varchar(50) DEFAULT NULL,
   `pay_grade` varchar(10) DEFAULT NULL,
-  `emp_status_id` int(10) DEFAULT NULL,
+  `emp_status` varchar(20) DEFAULT NULL,
   `sup_id` int(10) DEFAULT NULL,
   `dept_name` varchar(20) DEFAULT NULL,
   `username` varchar(20) NOT NULL,
@@ -77,8 +80,8 @@ CREATE TABLE `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`emp_id`, `job_title`, `pay_grade`, `emp_status_id`, `sup_id`, `dept_name`, `username`, `password`) VALUES
-(1, 'hr_manager', 'level-2', 1, 2, 'Mechanical', 'kapila', '$2y$10$9fAWJyStAEl2QJi58QO0kO7SnIdQWsK.APel6ruhg5blGQ.HtLWsC');
+INSERT INTO `employee` (`emp_id`, `job_title`, `pay_grade`, `emp_status`, `sup_id`, `dept_name`, `username`, `password`) VALUES
+(1, 'hr_manager', 'level-2', '1', 2, 'Mechanical', 'kapila', '$2y$10$9fAWJyStAEl2QJi58QO0kO7SnIdQWsK.APel6ruhg5blGQ.HtLWsC');
 
 -- --------------------------------------------------------
 
@@ -87,26 +90,6 @@ INSERT INTO `employee` (`emp_id`, `job_title`, `pay_grade`, `emp_status_id`, `su
 -- (See below for the actual view)
 --
 CREATE TABLE `emp_info` (
-`emp_id` int(10)
-,`job_title` varchar(50)
-,`pay_grade` varchar(10)
-,`emp_status_id` int(10)
-,`sup_id` int(10)
-,`dept_name` varchar(20)
-,`username` varchar(20)
-,`password` varchar(255)
-,`first_name` varchar(50)
-,`last_name` varchar(50)
-,`birth_date` date
-,`marital_status` varchar(20)
-,`email` varchar(50)
-,`{phone_number}` varchar(100)
-,`address` varchar(100)
-,`emergency_contact` varchar(100)
-,`duration` varchar(20)
-,`qualification` varchar(100)
-,`current_employee` tinyint(1)
-,`description` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -162,8 +145,7 @@ INSERT INTO `emp_record` (`emp_id`, `first_name`, `last_name`, `birth_date`, `ma
 --
 
 CREATE TABLE `emp_status` (
-  `emp_status_id` int(10) NOT NULL,
-  `emp_status` varchar(20) DEFAULT NULL,
+  `emp_status` varchar(20) NOT NULL,
   `full_time` tinyint(1) DEFAULT NULL,
   `part_time` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -172,8 +154,8 @@ CREATE TABLE `emp_status` (
 -- Dumping data for table `emp_status`
 --
 
-INSERT INTO `emp_status` (`emp_status_id`, `emp_status`, `full_time`, `part_time`) VALUES
-(1, 'permanant', 1, 0);
+INSERT INTO `emp_status` (`emp_status`, `full_time`, `part_time`) VALUES
+('permanant', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -282,7 +264,7 @@ ALTER TABLE `employee`
   ADD PRIMARY KEY (`emp_id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD KEY `sup_id` (`sup_id`),
-  ADD KEY `emp_status_id` (`emp_status_id`),
+  ADD KEY `emp_status_id` (`emp_status`),
   ADD KEY `job_title` (`job_title`),
   ADD KEY `dept_name` (`dept_name`),
   ADD KEY `paygrade_fk` (`pay_grade`);
@@ -304,7 +286,7 @@ ALTER TABLE `emp_record`
 -- Indexes for table `emp_status`
 --
 ALTER TABLE `emp_status`
-  ADD PRIMARY KEY (`emp_status_id`);
+  ADD PRIMARY KEY (`emp_status`);
 
 --
 -- Indexes for table `job_title`
@@ -342,7 +324,6 @@ ALTER TABLE `supervisor`
 --
 ALTER TABLE `employee`
   ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`sup_id`) REFERENCES `supervisor` (`emp_id`),
-  ADD CONSTRAINT `employee_ibfk_2` FOREIGN KEY (`emp_status_id`) REFERENCES `emp_status` (`emp_status_id`),
   ADD CONSTRAINT `employee_ibfk_3` FOREIGN KEY (`job_title`) REFERENCES `job_title` (`title_name`),
   ADD CONSTRAINT `employee_ibfk_4` FOREIGN KEY (`dept_name`) REFERENCES `department` (`dept_name`),
   ADD CONSTRAINT `employee_ibfk_5` FOREIGN KEY (`emp_id`) REFERENCES `emp_record` (`emp_id`),
