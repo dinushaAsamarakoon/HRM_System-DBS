@@ -248,5 +248,15 @@ class DB
         $this->_error;
     }
 
+    public function begin_transaction() {
+        $this->_pdo->beginTransaction();
+    }
 
+    public function commit() {
+        return $this->_pdo->commit();
+    }
+
+    public function rollback(){
+        $this->_pdo->rollBack();
+    }
 }
