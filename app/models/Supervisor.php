@@ -18,6 +18,11 @@ class Supervisor extends Employee
     {
         $this->assign($params);
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
-        $this->save();
+//        $this->save();
+        $this->_db->begin_transaction();
+        $this->save_model(1);
+        $this->save_model(0);
+        $this->save_model(2);
+        $this->_db->commit();
     }
 }

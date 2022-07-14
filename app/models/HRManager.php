@@ -26,8 +26,6 @@ class HRManager extends Employee
     }
     public function registerNewHRManager($params)
     {
-        $params['is_closed'] = 0;
-        $params['status'] = "available";
         $this->assign($params);
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         $this->save();

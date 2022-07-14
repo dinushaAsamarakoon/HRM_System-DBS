@@ -36,24 +36,22 @@ class HRManagerFunctionHandler extends Controller
 
     public function addEmployeeAction()
     {
-
         $validation = new Validate();
         if ($_POST) {
-
             $validation->check($_POST, [
-                'password' => [
-                    'display' => 'Password',
-                    'min' => 6
-                ],
+//                'password' => [
+//                    'display' => 'Password',
+//                    'min' => 6
+//                ],
                 'username' => [
                     'display' => 'Username',
                     'min' => 4
                 ],
-                'repassword' => [
-                    'display' => 'Confirm Password',
-                    'matches' => 'password'
-                ],
-                'contact_no' => [
+//                'repassword' => [
+//                    'display' => 'Confirm Password',
+//                    'matches' => 'password'
+//                ],
+                'phone_number' => [
                     'display' => 'Mobile Number',
                     'valid_contact' => true
                 ],
@@ -68,6 +66,7 @@ class HRManagerFunctionHandler extends Controller
                     $this->EmployeeModel->createNewSupervisor()->registerNewEmployee($_POST);
                 } else {
                     $this->EmployeeModel->createNewNMEmployee()->registerNewEmployee($_POST);
+
                 }
                 Router::redirect('HRManagerDashboard');
                 $_SESSION['message'] = "Employee added";
@@ -77,6 +76,7 @@ class HRManagerFunctionHandler extends Controller
             }
         } else {
             $hRManager = HRManager::currentLoggedInEmployee();
+
             $attributeNames = $hRManager->getEmployeeAttributes();
             $attributes = [];
             foreach ($attributeNames as $an) {
@@ -278,3 +278,4 @@ class HRManagerFunctionHandler extends Controller
     }
 
 }
+

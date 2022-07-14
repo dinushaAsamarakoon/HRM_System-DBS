@@ -132,6 +132,7 @@
                                                    id="inlineRadio4" value="Female">
                                             <label class="form-check-label" for="inlineRadio2">Unmarried</label>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -194,16 +195,18 @@
                         </div>
 
                     </div>
-                    <div class="col-md-3 border-right  text_area  ">
-                        <div class="p-1 py-4">
 
-                            <div class="row mt-4">
-                                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
-                                                                                                         name="phone_umber"
-                                                                                                         class="form-control"
-                                                                                                         value=""
-                                                                                                         placeholder="Enter employee's mobile number">
-                                </div>
+
+                </div>
+                <div class="col-md-3 border-right  text_area  " >
+                    <div class="p-1 py-4">
+
+                        <div class="row mt-4">
+                            <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
+                                                                                                    name="phone_number"
+                                                                                                    class="form-control"
+                                                                                                    value=""
+                                                                                                    placeholder="Enter employee's mobile number">
                             </div>
 
 
@@ -225,10 +228,10 @@
                                             <?php
                                             foreach ($val_array as $val) {
                                                 if (Session::get('job_class') == 'admin' and $attribute == 'job_title' and $val[0] == 'hr_manager') { ?>
-                                                    <option value=""><?php echo $val[0]; ?></option>
+                                                    <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
                                                     <?php
                                                 } else if (Session::get('job_class') == 'hr_manager' and $attribute == 'job_title' and $val[0] != 'hr_manager' and $val[0] != 'admin') { ?>
-                                                    <option value=""><?php echo $val[0]; ?></option>
+                                                    <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
                                                     <?php
                                                 }
                                             }
@@ -244,6 +247,7 @@
                                             style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); ">
                                         Submit
                                     </button>
+
                                 </div>
 
                             </div>
