@@ -48,21 +48,11 @@ class Employee extends Model
     }
 
     public
-    function getWorkerEmployees()
+    function getEmployeeInfo($emp_id)
     {
-        return $this->_db->find('users', [
-            'conditions' => 'role=? and is_closed=?',
-            'bind' => ['worker', 0]
-        ]);
-    }
-
-
-    public
-    function getPersonalInfo($id)
-    {
-        return $this->_db->find('employee', [
-            'conditions' => 'id=?',
-            'bind' => [$id]
+        return $this->_db->find('emp_info', [
+            'conditions' => 'emp_id=?',
+            'bind' => [$emp_id]
         ]);
     }
 

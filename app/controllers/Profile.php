@@ -9,7 +9,7 @@ class Profile extends Controller {
     }
 
     public function indexAction() {
-        $this->view->profile = $this->EmployeeModel->getPersonalInfo('1');
+        $this->view->profile = $this->EmployeeModel->getEmployeeInfo('1');
         $this->view->render('profile/index');
     }
 
