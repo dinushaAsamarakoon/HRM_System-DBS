@@ -36,6 +36,65 @@ class HRManagerFunctionHandler extends Controller
 
     public function addEmployeeAction()
     {
+        $validation = new Validate();
+        if ($_POST) {
+            $validation->check($_POST, [
+//                'password' => [
+//                    'display' => 'Password',
+//                    'min' => 6
+//                ],
+//                'username' => [
+//                    'display' => 'Username',
+//                    'min' => 4
+//                ],
+////                'repassword' => [
+////                    'display' => 'Confirm Password',
+////                    'matches' => 'password'
+////                ],
+//                'phone_number' => [
+//                    'display' => 'Mobile Number',
+//                    'valid_contact' => true
+//                ],
+//                'email' => [
+//                    'display' => 'Email',
+//                    'valid_email' => true
+//                ]
+            ]);
+
+            if ($validation->passed()) {
+                if ($_POST['job_title'] === 'supervisor') {
+                    $this->HRManagerModel->createNewSupervisor()->registerNewEmployee($_POST);
+                } else {
+                    $this->HRManagerModel->createNewNMEmployee()->registerNewEmployee($_POST);
+
+                }
+                Router::redirect('HRManagerDashboard');
+                $_SESSION['message'] = "Employee added";
+            } else {
+                $this->view->displayErrors = $validation->displayErrors();
+                $this->view->render('register/addEmployee');
+            }
+        } else {
+            $hRManager = HRManager::currentLoggedInEmployee();
+
+            $attributeNames = $hRManager->getEmployeeAttributes();
+            $attributes = [];
+            foreach ($attributeNames as $an) {
+                $tempAttributes = [];
+                foreach ($hRManager->getPrimaryValues($an[0]) as $row) {
+                    $tempAttributes[] = $row;
+                }
+                $attributes[$an[0]] = $tempAttributes;
+            }
+            $this->view->allAttributes = $attributes;
+            $this->view->depts = $hRManager->getDeptNames();
+//            dnd( $hRManager->getDeptNames());
+            $this->view->render('register/addEmployee');
+        }
+    }
+
+    public function editEmployeeAction()
+    {
 
         $validation = new Validate();
         if ($_POST) {
@@ -64,7 +123,7 @@ class HRManagerFunctionHandler extends Controller
             ]);
 
             if ($validation->passed()) {
-                if ($_POST['job_title'] === 'Supervisor') {
+                if ($_POST['job_title'] === 'supervisor') {
                     $this->EmployeeModel->createNewSupervisor()->registerNewEmployee($_POST);
                 } else {
                     $this->EmployeeModel->createNewNMEmployee()->registerNewEmployee($_POST);
@@ -73,7 +132,7 @@ class HRManagerFunctionHandler extends Controller
                 $_SESSION['message'] = "Employee added";
             } else {
                 $this->view->displayErrors = $validation->displayErrors();
-                $this->view->render('register/addEmployee');
+                $this->view->render('employeeDetails/employee');
             }
         } else {
             $hRManager = HRManager::currentLoggedInEmployee();
@@ -87,7 +146,7 @@ class HRManagerFunctionHandler extends Controller
                 $attributes[$an[0]] = $tempAttributes;
             }
             $this->view->allAttributes = $attributes;
-            $this->view->render('register/addEmployee');
+            $this->view->render('employeeDetails/employee');
         }
     }
 
@@ -214,10 +273,16 @@ class HRManagerFunctionHandler extends Controller
 
     public function viewAllEmployeesAction(){
         $hrManager = HRManager::currentLoggedInEmployee();
-//        dnd($hrManager->getAllEmployees());
         $this->view->allEmployees = $hrManager->getAllEmployees();
         $this->view->render('employeeDetails/all');
+    }
 
+    public function viewEmployeeAction($id){
+        $hrManager = HRManager::currentLoggedInEmployee();
+        $this->view->Employee = $hrManager->getEmployeeDetails($id);
+        dnd($this->view->Employee);
+        $this->view->render('employeeDetails/employee');
     }
 
 }
+
