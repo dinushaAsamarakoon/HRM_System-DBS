@@ -62,10 +62,13 @@ class HRManagerFunctionHandler extends Controller
             ]);
 
             if ($validation->passed()) {
-                if ($_POST['job_title'] === 'Supervisor') {
-                    $this->EmployeeModel->createNewSupervisor()->registerNewEmployee($_POST);
+                if ($_POST['job_title'] === 'supervisor') {
+                    $emp = $this->HRManagerModel->createNewSupervisor();
+                    $emp->setCustomTableColomns('supervisor');
+                    $emp->registerNewEmployee($_POST);
                 } else {
-                    $this->EmployeeModel->createNewNMEmployee()->registerNewEmployee($_POST);
+                    $this->HRManagerModel->createNewNMEmployee()->registerNewEmployee($_POST);
+//                    $this->EmployeeModel->createNewNMEmployee()->registerNewEmployee($_POST);
 
                 }
                 Router::redirect('HRManagerDashboard');
@@ -212,7 +215,8 @@ class HRManagerFunctionHandler extends Controller
         }
     }
 
-    public function viewAllEmployeesAction(){
+    public function viewAllEmployeesAction()
+    {
         $hrManager = HRManager::currentLoggedInEmployee();
 //        dnd($hrManager->getAllEmployees());
         $this->view->allEmployees = $hrManager->getAllEmployees();

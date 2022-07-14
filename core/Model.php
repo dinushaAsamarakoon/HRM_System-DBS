@@ -150,11 +150,12 @@ class Model
                 $fields[$column] = $this->$column;
             }
         }
+        if ($table_id===2)
+            dnd([$columnNames,$fields,$this]);
         // determine whether to update or insert
         if (property_exists($this, 'id') && $this->id != '') {
             return $this->update_table($tbl, $this->id, $fields);
         } else {
-
             return $this->insert_into_table($tbl, $fields);
         }
     }
