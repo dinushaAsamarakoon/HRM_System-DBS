@@ -91,9 +91,29 @@
                     <div class="card-body shadow  px-lg-5">
                         <h5 class="card-title">Add the employee to the system</h5>
                         <p class="card-text">You can add the employee details to from this</p>
-                        <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee"
-                           class="btn btn-primary justify-content-center"><i
-                                    class="fa-solid fa-user-plus"></i>Add Employee</a>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-user-plus"></i>Add Employee
+                            </button>
+                            <div class="p-0">
+
+                                <div class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button">
+                                        <a  class="dropdown-item" id="NmEmployee" href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee" >
+                                            Non managerial employee
+                                        </a>
+                                    </button>
+
+                                    <button class="dropdown-item" type="button">
+                                        <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee" class="dropdown-item" id="Supervisor" onclick="addAttribute()">
+                                            Supervisor
+                                        </a>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
