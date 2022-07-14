@@ -91,12 +91,14 @@ class HRManagerFunctionHandler extends Controller
             $attributeNames = $hRManager->getEmployeeAttributes();
 //            dnd($attributeNames);
             $attributes = [];
-            foreach ($attributeNames as $an){
+            foreach ($attributeNames as $an) {
                 $tempAttributes = [];
-                foreach ($hRManager->getPrimaryValues($an[0]) as $row){
-                     $tempAttributes[] = $row;
+
+                foreach ($hRManager->getPrimaryValues($an[0]) as $row) {
+                    $tempAttributes[] = $row;
+
                 }
-                    $attributes[$an[0]] = $tempAttributes;
+                $attributes[$an[0]] = $tempAttributes;
             }
 //            dnd($attributes);
             $this->view->allAttributes = $attributes;
@@ -171,7 +173,7 @@ class HRManagerFunctionHandler extends Controller
 
         if ($_POST) {
             $this->EmployeeModel = HRManager::currentLoggedInEmployee();
-            $removingAttributeType = $this->EmployeeModel->showRemovingAttributeType($_POST['tableName'],$_POST);
+            $removingAttributeType = $this->EmployeeModel->showRemovingAttributeType($_POST['tableName'], $_POST);
             $this->view->removingAttributeType = $removingAttributeType;
             $this->view->render('attribute/addAttribute');
 
@@ -202,10 +204,11 @@ class HRManagerFunctionHandler extends Controller
         $this->view->render('attribute/addAttribute');
     }
 
-    public function reportGenerationAction(){
-        if($_POST){
+    public function reportGenerationAction()
+    {
+        if ($_POST) {
             $this->EmployeeModel = HRManager::currentLoggedInEmployee();
-            switch ($_POST['report']){
+            switch ($_POST['report']) {
                 case 'empByDepartment':
                     $this->view->report = $this->EmployeeModel->reportGeneration('emp_info');
                     $this->view->render('');
