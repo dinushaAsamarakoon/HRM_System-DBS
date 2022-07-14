@@ -62,23 +62,23 @@
 
 </div>
 
-<div class="container ">
+<div class="container " style="display: block;" id="create_account">
     <?php
     if (Session::get('job_class') == 'admin') { ?>
     <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee" method="Post">
         <?php }else if (Session::get('job_class') == 'hr_manager') { ?>
         <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee" method="Post">
             <?php } ?>
-            <div class="container rounded bg-white mt-5 mb-5 ">
+            <div class="rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
-                    <div class="col-md-8 border-right  text_area  ">
+                    <div class="col-md-8 border-right    ">
                         <div class="pt-5 ">
                             <div class="d-flex justify-content-center align-items-center mb-3">
                                 <h2 class="text-right">Create Account</h2>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8 border-right  text_area  ">
+                    <div class="col-md-8 border-right    ">
                         <div class="p-3 py-5">
                             <div class="row mt-2">
                                 <div class="col-md-6"><label class="labels">First Name</label><input type="text"
@@ -208,7 +208,7 @@
                     </div>
 
                      </div>
-                    <div class="col-md-3 border-right  text_area  ">
+                    <div class="col-md-3 border-right    ">
                         <div class="p-1 py-3">
 
                             <div class="row mt-5">
@@ -220,45 +220,34 @@
                                 </div>
 
 
-                                <!--                        //dynamic forum elements-->
-                                <?php
-                                $attributes = $this->allAttributes;
-                                foreach ($attributes as $attribute => $val_array) {
-//                                    dnd($val_array);
 
-                                    ?>
-                                    <div class="row mt-2">
-                                        <div class="col-md-12" style="">
-                                            <label class="labels">Select <?php echo $attribute; ?></label><br>
-                                            <select class="form-select form-select-lg" name="<?php echo $attribute; ?>"
-                                                    aria-label=".form-select-lg example"
-                                                    style="height: 38px;font-size: 15px; color: dimgrey">
-<!--                                                <option value="" selected>select from --><?php //echo $attribute; ?><!-- menu-->
-                                                </option>
-                                                <?php
-                                                foreach ($val_array as $val) {
-                                                    if (Session::get('job_class') == 'admin') {
-                                                        if ($attribute == 'job_title') {
-                                                            if ($val[0] == 'hr_manager') { ?>
-                                                                <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
-                                                            <?php }
+                            <!--                        //dynamic forum elements-->
+                            <?php
+                            $attributes = $this->allAttributes;
+                            foreach ($attributes as $attribute => $val_array) {
+                                //dnd($val_array);
 
-                                                        } else { ?>
-                                                            <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
-                                                        <?php }
+                                ?>
+                                <div class="row mt-2">
+                                    <div class="col-md-12" style="">
+                                        <label class="labels">Select <?php echo $attribute; ?><?php if ($attribute == "emp_status"){?>
+                                                <i class="fa-solid fa-circle-info" id="info"></i>
+                                            <?php }?></label><br>
+                                        <select class="form-select form-select-lg" name="<?php echo $attribute; ?>"
+                                                aria-label=".form-select-lg example"
+                                                style="height: 38px;font-size: 15px; color: dimgrey">
+                                            <option value="" selected>select from <?php echo $attribute; ?> menu
+                                            </option>
+                                            <?php
+                                            foreach ($val_array as $val) {
+                                                if (Session::get('job_class') == 'admin' and $attribute == 'job_title' and $val[0] == 'hr_manager') { ?>
+                                                    <option value=""><?php echo $val[0]; ?></option>
+                                                    <?php
+                                                } else if (Session::get('job_class') == 'hr_manager' and $attribute == 'job_title' and $val[0] != 'hr_manager' and $val[0] != 'admin') { ?>
+                                                    <option value=""><?php echo $val[0]; ?></option>
+                                                    <?php
 
-                                                        ?>
-                                                        <?php
-                                                    } else if (Session::get('job_class') == 'hr_manager') {
-                                                        if ($attribute == 'job_title') {
-                                                            if ($val[0] != 'hr_manager' and $val[0] != 'admin') { ?>
-                                                                <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
-                                                            <?php }
-                                                        } else { ?>
-                                                            <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
-                                                            <?php
-                                                        }
-                                                    }
+                
                                                 }
                                                 ?>
                                             </select>
@@ -293,10 +282,63 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-        </form>
+
+
+</form>
+
+</div></div></div>
+<div class="container " id="table_data" style="display: none;">
+
+
+    <div class="rounded bg-white mt-5 mb-5 ">
+
+                <div class="row justify-content-center shadow-lg" >
+                    <div class="d-flex justify-content-end mt-2"><i class="fa-solid fa-circle-xmark" id="close"></i></div>
+                   <div class="p-3"><table class="table shadow-lg">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                   </div>
+
+
+
+
+
+                </div></div>
+
 </div>
+<script>
+    var create_account = document.getElementById("create_account");
+    var table_data = document.getElementById("table_data");
+    var btn = document.getElementById("close");
+    var info= document.getElementById('info');
+    btn.addEventListener("click",()=>{
+        table_data.style.display='none';
+        create_account.style.display='block';
+    } );
+    info.addEventListener("click",()=>{
+        table_data.style.display='block';
+        create_account.style.display='none';
+    } );
+
+
+</script>
 </body>
 </html>
