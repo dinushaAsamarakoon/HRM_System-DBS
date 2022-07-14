@@ -23,5 +23,6 @@ class NMEmployee extends Employee
         $this->save_model(1);
         $this->save_model(0);
         $this->_db->commit();
+
     }
 }

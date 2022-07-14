@@ -119,12 +119,12 @@
                                     <label class="form-label"> Marital status </label><br>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="marital_status"
-                                               id="inlineRadio3" value="Male">
+                                               id="inlineRadio3" value="married">
                                         <label class="form-check-label" for="inlineRadio1">Married</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="marital_status"
-                                               id="inlineRadio4" value="Female">
+                                               id="inlineRadio4" value="unmarried">
                                         <label class="form-check-label" for="inlineRadio2">Unmarried</label>
                                     </div>
                                 </div>
@@ -193,7 +193,7 @@
 
                         <div class="row mt-4">
                             <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
-                                                                                                    name="phone_umber"
+                                                                                                    name="phone_number"
                                                                                                     class="form-control"
                                                                                                     value=""
                                                                                                     placeholder="Enter employee's mobile number">
@@ -204,7 +204,7 @@
                         <?php
                         $attributes = $this->allAttributes;
                         foreach ($attributes as $attribute => $val_array) {
-//                            dnd($val_array);
+//                            dnd($attributes);
 
                             ?>
                             <div class="row mt-2">
@@ -216,10 +216,8 @@
                                         <?php
                                         foreach ($val_array as $val) {
                                             ?>
-                                            <option value=""><?php echo $val[0]; ?></option>
+                                            <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
                                             <?php
-
-
                                         }
                                         ?>
                                     </select>

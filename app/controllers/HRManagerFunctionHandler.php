@@ -67,7 +67,7 @@ class HRManagerFunctionHandler extends Controller
                 if ($_POST['job_title'] === 'supervisor') {
                     $emp = HRManager::currentLoggedInEmployee()->createNewSupervisor();
                     $emp->setCustomTableColomns('supervisor');
-                    $emp->registerNewEmployee($_POST);
+//                    $emp->registerNewEmployee($_POST);
 //                    $this->EmployeeModel = HRManager::currentLoggedInEmployee()->createNewSupervisor();
 //                    $this->EmployeeModel->registerNewEmployee($_POST);
                     Router::redirect('HRManagerDashboard');

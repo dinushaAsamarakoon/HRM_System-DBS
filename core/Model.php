@@ -24,7 +24,8 @@ class Model
         }
     }
 
-    public function setCustomTableColomns($tbl) {
+    public function setCustomTableColomns($tbl)
+    {
         if (!isset($this->_table1)) {
             $this->_table1 = $tbl;
             $columns1 = $this->get_columns_table($tbl);
@@ -33,7 +34,7 @@ class Model
                 $this->_columnNames1[] = $column->Field;
                 $this->{$columnName} = null;
             }
-        }else{
+        } else {
             $this->_table2 = $tbl;
             $columns2 = $this->get_columns_table($tbl);
             foreach ($columns2 as $column) {
@@ -150,9 +151,10 @@ class Model
             }
         }
         // determine whether to update or insert
-        if (property_exists($this, 'emp_id') && $this->emp_id != '') {
-            return $this->update_table($tbl, $this->emp_id, $fields);
+        if (property_exists($this, 'id') && $this->id != '') {
+            return $this->update_table($tbl, $this->id, $fields);
         } else {
+
             return $this->insert_into_table($tbl, $fields);
         }
     }
@@ -177,7 +179,7 @@ class Model
         if (empty($fields)) {
             return false;
         } else {
-            return $this->_db->insert($tbl, $fields);
+            $this->_db->insert($tbl, $fields);
         }
     }
 

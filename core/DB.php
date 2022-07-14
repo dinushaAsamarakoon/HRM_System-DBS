@@ -253,6 +253,10 @@ class DB
     }
 
     public function commit() {
-        $this->_pdo->commit();
+        return $this->_pdo->commit();
+    }
+
+    public function rollback(){
+        $this->_pdo->rollBack();
     }
 }
