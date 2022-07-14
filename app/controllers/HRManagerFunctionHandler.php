@@ -94,7 +94,7 @@ class HRManagerFunctionHandler extends Controller
             foreach ($attributeNames as $an){
                 $tempAttributes = [];
                 foreach ($hRManager->getPrimaryValues($an[0]) as $row){
-                     array_push($tempAttributes,$row);
+                     $tempAttributes[] = $row;
                 }
                     $attributes[$an[0]] = $tempAttributes;
             }
