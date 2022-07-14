@@ -149,6 +149,24 @@
 <!--                        //dynamic forum elements-->
 
 
+
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">Emergency contract Number</label><input type="text"
+                                                                                                     name="emergency_contract"
+                                                                                                     class="form-control"
+                                                                                                     value=""
+                                                                                                     placeholder="Enter emergency contract number">
+                            </div>
+                            <div class="col-md-6">
+                                    <label class="labels">Department name </label><br>
+                                    <select class="form-select form-select-lg" name="dept_name"
+                                            aria-label=".form-select-lg example" style="height: 38px;font-size: 15px; color: dimgrey">
+                                        <option value="" >Select department</option>
+                                        <option value=""></option>
+
+                                    </select>
+                            </div>
+                        </div>
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <label for=" Idnumber" class="form-label">National Identity card number</label>
@@ -194,7 +212,7 @@
                                     <label class="labels">Select <?php echo $attribute; ?></label><br>
                                     <select class="form-select form-select-lg" name="<?php echo $attribute; ?>"
                                             aria-label=".form-select-lg example" style="height: 38px;font-size: 15px; color: dimgrey">
-                                        <option value="" selected>select from <?php echo $attribute; ?> menu</option>
+                                        <option value="" selected>Select from <?php echo $attribute; ?> menu</option>
                                         <?php
                                         foreach ($val_array as $val) {
                                             ?>
@@ -208,7 +226,7 @@
                                 </div>
                             </div>
                         <?php } ?>
-                        <br> <br> <br> <br> <br> <br> <br> <br> <br>
+                        <br> <br> <br> <br> <br> <br>
                         <div class="row mt-5 ">
                             <div class="col-md-12 d-flex justify-content-center" >
                                 <button type="submit" class="btn btn-primary w-75" name="submit" style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); ">Submit</button>
