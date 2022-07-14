@@ -13,7 +13,7 @@
     require_once(ROOT . DS . 'app' . DS . 'views' . DS . 'header' . DS . 'headerFile.php'); ?>
 
 
-    <title>Add Employee</title>
+    <title>Employee Details</title>
 </head>
 <style>
     h1 {

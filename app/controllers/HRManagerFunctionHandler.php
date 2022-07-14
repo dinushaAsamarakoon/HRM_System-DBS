@@ -91,6 +91,63 @@ class HRManagerFunctionHandler extends Controller
         }
     }
 
+    public function editEmployeeAction()
+    {
+
+        $validation = new Validate();
+        if ($_POST) {
+
+            $validation->check($_POST, [
+                'password' => [
+                    'display' => 'Password',
+                    'min' => 6
+                ],
+                'username' => [
+                    'display' => 'Username',
+                    'min' => 4
+                ],
+                'repassword' => [
+                    'display' => 'Confirm Password',
+                    'matches' => 'password'
+                ],
+                'contact_no' => [
+                    'display' => 'Mobile Number',
+                    'valid_contact' => true
+                ],
+                'email' => [
+                    'display' => 'Email',
+                    'valid_email' => true
+                ]
+            ]);
+
+            if ($validation->passed()) {
+                if ($_POST['job_title'] === 'Supervisor') {
+                    $this->EmployeeModel->createNewSupervisor()->registerNewEmployee($_POST);
+                } else {
+                    $this->EmployeeModel->createNewNMEmployee()->registerNewEmployee($_POST);
+                }
+                Router::redirect('HRManagerDashboard');
+                $_SESSION['message'] = "Employee added";
+            } else {
+                $this->view->displayErrors = $validation->displayErrors();
+                $this->view->render('employeeDetails/employee');
+            }
+        } else {
+            $hRManager = HRManager::currentLoggedInEmployee();
+            $attributeNames = $hRManager->getEmployeeAttributes();
+            $attributes = [];
+            foreach ($attributeNames as $an) {
+                $tempAttributes = [];
+                foreach ($hRManager->getPrimaryValues($an[0]) as $row) {
+                    $tempAttributes[] = $row;
+                }
+                $attributes[$an[0]] = $tempAttributes;
+            }
+            $this->view->allAttributes = $attributes;
+            $this->view->render('register/addEmployee');
+        }
+    }
+
     public function removeEmployeeAction()
     {
         $validation = new Validate();
