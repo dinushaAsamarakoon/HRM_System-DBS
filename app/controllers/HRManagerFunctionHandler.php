@@ -38,24 +38,22 @@ class HRManagerFunctionHandler extends Controller
 
     public function addEmployeeAction()
     {
-
         $validation = new Validate();
         if ($_POST) {
-
             $validation->check($_POST, [
-                'password' => [
-                    'display' => 'Password',
-                    'min' => 6
-                ],
+//                'password' => [
+//                    'display' => 'Password',
+//                    'min' => 6
+//                ],
                 'username' => [
                     'display' => 'Username',
                     'min' => 4
                 ],
-                'repassword' => [
-                    'display' => 'Confirm Password',
-                    'matches' => 'password'
-                ],
-                'contact_no' => [
+//                'repassword' => [
+//                    'display' => 'Confirm Password',
+//                    'matches' => 'password'
+//                ],
+                'phone_number' => [
                     'display' => 'Mobile Number',
                     'valid_contact' => true
                 ],
@@ -66,13 +64,18 @@ class HRManagerFunctionHandler extends Controller
             ]);
 
             if ($validation->passed()) {
-                if ($_POST['job_class'] === 'Supervisor') {
-                    $this->EmployeeModel = HRManager::currentLoggedInEmployee()->createNewSupervisor();
-                    $this->EmployeeModel->registerNewEmployee($_POST);
+                if ($_POST['job_title'] === 'supervisor') {
+                    $emp = HRManager::currentLoggedInEmployee()->createNewSupervisor();
+                    $emp->setCustomTableColomns('supervisor');
+                    $emp->registerNewEmployee($_POST);
+//                    $this->EmployeeModel = HRManager::currentLoggedInEmployee()->createNewSupervisor();
+//                    $this->EmployeeModel->registerNewEmployee($_POST);
                     Router::redirect('HRManagerDashboard');
                 } else {
-                    $this->EmployeeModel = HRManager::currentLoggedInEmployee()->createNewNMEmployee();
-                    $this->EmployeeModel->registerNewEmployee($_POST);
+                    $emp = HRManager::currentLoggedInEmployee()->createNewNMEmployee();
+                    $emp->registerNewEmployee($_POST);
+//                    $this->EmployeeModel = HRManager::currentLoggedInEmployee()->createNewNMEmployee();
+//                    $this->EmployeeModel->registerNewEmployee($_POST);
                     Router::redirect('HRManagerDashboard');
                 }
                 $_SESSION['message'] = "Employee added";
@@ -86,7 +89,6 @@ class HRManagerFunctionHandler extends Controller
 //            foreach($hRManager->getPrimaryValues('job_title') as $a){
 //                echo $a[0];
 //            }
-//            dnd();
 
             $attributeNames = $hRManager->getEmployeeAttributes();
 //            dnd($attributeNames);
@@ -228,3 +230,4 @@ class HRManagerFunctionHandler extends Controller
     }
 
 }
+

@@ -38,6 +38,7 @@ class EmployeeRegister extends Controller
                 $this->view->render('register/login');
             }
         } else {
+
             $this->view->render('register/login');
         }
     }

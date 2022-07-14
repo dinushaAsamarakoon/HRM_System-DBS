@@ -9,7 +9,9 @@ class Employee extends Model
     public function __construct()
     {
         $table = 'employee';
+        $table1 = 'emp_record';
         parent::__construct($table);
+        parent::setCustomTableColomns($table1);
 
     }
 
