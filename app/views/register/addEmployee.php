@@ -16,7 +16,6 @@
     <title>Add Employee</title>
 </head>
 <style>
-
     h1 {
 
         text-align: center;
@@ -61,13 +60,16 @@
 <div class="container ">
     <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee" method="Post">
         <div class="container rounded bg-white mt-5 mb-5 ">
-            <div class="row justify-content-center">
-
-                <div class="col-md-11 border-right shadow text_area shadow " style="background-color:  #ecf0f9; ">
+            <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
+                <div class="col-md-8 border-right  text_area  " >
+                    <div class="pt-5 ">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <h2 class="text-right">Create Account</h2>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-8 border-right  text_area  " >
                     <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h2 class="text-right">Create Account</h2>
-                        </div>
                         <div class="row mt-2">
                             <div class="col-md-6"><label class="labels">First Name</label><input type="text"
                                                                                                  name="first_name"
@@ -143,38 +145,9 @@
                             </div>
 
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text"
-                                                                                                    name="phone_umber"
-                                                                                                    class="form-control"
-                                                                                                    value=""
-                                                                                                    placeholder="Enter employee's mobile number">
-                            </div>
-                        </div>
+
 <!--                        //dynamic forum elements-->
-                        <?php
-                        $attributes = $this->allAttributes;
-                        foreach ($attributes as $attribute => $val_array) {
-//                            dnd($val_array);
 
-                            ?>
-                            <div class="col-md-6">
-                                <label class="labels">Select <?php echo $attribute; ?></label><br>
-                                <select class="form-select form-select-sm mb-3" name="<?php echo $attribute; ?>"
-                                        aria-label=".form-select-lg example">
-                                    <option value="" selected>select from <?php echo $attribute; ?> menu</option>
-                                    <?php
-                                    foreach ($val_array as $val) {
-                                        ?>
-                                        <option value=""><?php echo $val[0]; ?></option>
-                                        <?php
-
-
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        <?php } ?>
 
                         <div class="row mt-2">
                             <div class="col-md-12">
@@ -193,26 +166,52 @@
 
                         </div>
 
-                        <div class="row mt-2">
-                            <div class="col-md-6">
-                                <label for=" Password1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="Password1" placeholder="Enter  password"
-                                       name="password1" onkeyup="valid()">
-                                <!--            <meter min="1" max="100" value="0" low="0" high="0" id="grade"></meter>-->
-                                <span id="msg"></span>
 
-                            </div>
-                            <div class="col-md-6">
-                                <label for="Password2" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="Password2"
-                                       placeholder="Enter  password again" name="password2" onkeyup="ConfirmPassword()">
-                                <span id="msg2"></span>
-                            </div>
+                    </div>
 
+                </div>
+                <div class="col-md-3 border-right  text_area  " >
+                    <div class="p-1 py-4">
+
+                        <div class="row mt-4">
+                            <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
+                                                                                                    name="phone_umber"
+                                                                                                    class="form-control"
+                                                                                                    value=""
+                                                                                                    placeholder="Enter employee's mobile number">
+                            </div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+
+                        <!--                        //dynamic forum elements-->
+                        <?php
+                        $attributes = $this->allAttributes;
+                        foreach ($attributes as $attribute => $val_array) {
+//                            dnd($val_array);
+
+                            ?>
+                            <div class="row mt-2">
+                                <div class="col-md-12" style="">
+                                    <label class="labels">Select <?php echo $attribute; ?></label><br>
+                                    <select class="form-select form-select-lg" name="<?php echo $attribute; ?>"
+                                            aria-label=".form-select-lg example" style="height: 38px;font-size: 15px; color: dimgrey">
+                                        <option value="" selected>select from <?php echo $attribute; ?> menu</option>
+                                        <?php
+                                        foreach ($val_array as $val) {
+                                            ?>
+                                            <option value=""><?php echo $val[0]; ?></option>
+                                            <?php
+
+
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <br> <br> <br> <br> <br> <br> <br> <br> <br>
+                        <div class="row mt-5 ">
+                            <div class="col-md-12 d-flex justify-content-center" >
+                                <button type="submit" class="btn btn-primary w-75" name="submit" style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); ">Submit</button>
                             </div>
                         </div>
                     </div>

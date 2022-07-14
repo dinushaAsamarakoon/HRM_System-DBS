@@ -93,8 +93,10 @@ class HRManagerFunctionHandler extends Controller
             $attributes = [];
             foreach ($attributeNames as $an) {
                 $tempAttributes = [];
+
                 foreach ($hRManager->getPrimaryValues($an[0]) as $row) {
                     $tempAttributes[] = $row;
+
                 }
                 $attributes[$an[0]] = $tempAttributes;
             }
