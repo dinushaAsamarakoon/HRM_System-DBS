@@ -179,6 +179,7 @@
                                 <input type="text" class="form-control" id="Idnumber" placeholder="Enter employee's national ID card number" name="IdCardNumber" >
 
                             </div>
+                        </div>
                             <div class="row mt-2">
                                 <div class="col-md-12"><label class="labels">Qualifications</label>
                                     <div class="form-floating">
@@ -190,14 +191,13 @@
 
                             </div>
 
-
-                        </div>
-
                     </div>
-                    <div class="col-md-3 border-right  text_area  ">
-                        <div class="p-1 py-4">
 
-                            <div class="row mt-4">
+                     </div>
+                    <div class="col-md-3 border-right  text_area  ">
+                        <div class="p-1 py-3">
+
+                            <div class="row mt-5">
                                 <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
                                                                                                          name="phone_umber"
                                                                                                          class="form-control"
@@ -237,7 +237,21 @@
                                     </div>
                                 </div>
                             <?php } ?>
-                            <br> <br> <br> <br> <br> <br> <br> <br> <br>
+                            <div class="row mt-2">
+                                <div class="col-md-12" >
+                                    <label class="labels">Supervisor level </label><br>
+                                    <select class="form-select form-select-lg" name="sup_level"
+                                            aria-label=".form-select-lg example"
+                                            style="height: 38px;font-size: 15px; color: dimgrey">
+                                        <option value="" selected>select Level</option>
+                                        <option value="">Level 1</option>
+                                        <option value="">Level 2</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <br> <br> <br>
                             <div class="row mt-5 ">
                                 <div class="col-md-12 d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary w-75" name="submit"
@@ -247,19 +261,11 @@
                                 </div>
 
                             </div>
-                        <?php } ?>
-                        <br> <br> <br> <br> <br> <br>
-                        <div class="row mt-5 ">
-                            <div class="col-md-12 d-flex justify-content-center" >
-                                <button type="submit" class="btn btn-primary w-75" name="submit" style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); ">Submit</button>
 
-                            </div>
+
                         </div>
-
                     </div>
                 </div>
-            </div>
-</div>
 
 
 </form>
