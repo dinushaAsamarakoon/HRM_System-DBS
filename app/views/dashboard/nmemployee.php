@@ -93,16 +93,15 @@
                 </span>
                     
             </a>
-            <div class="notifications" id="n_list" style="visibility: hidden">
+            <div class="notifications text-center flex" id="n_list" style="visibility: hidden">
                 <?php $notifications = $this->notifications;
                 if ($notifications) {
-                    foreach ($notifications as $notification) {
-                        $n = (array)$notification;
-                        echo ucfirst($n['status']) . ': ' . $n['reason']; ?>
-
+                    foreach ($notifications as $notification) { ?>
                         <form action="<?= SROOT ?>NMEmployeeFunctionHandler/completeRequest" method="post">
+                            <?php $n = (array)$notification;
+                            echo 'Request ' . $n['status'] . ': ' . $n['reason']; ?>
                             <input type="hidden" name="id" value="<?php echo $n['id'] ?>">
-                            <button type="submit">Mark as read</button>
+                            <button class="btn btn-light p-1" type="submit">Mark as read</button>
                         </form>
                     <?php }
                 } ?>
@@ -121,11 +120,11 @@
             <div class="col-sm-12">
                 <div class="card h-100">
                     <div class="card-body shadow px-lg-5">
-                        <h5 class="card-title">View profile details</h5>
-                        <p class="card-text">You can view your profile details </p>
+                        <h5 class="card-title">Profile Details</h5>
+                        <p class="card-text">Personal information, Employment details </p>
 
                         <a href="<?= SROOT ?>Profile" class="btn btn-primary"><i
-                                    class="fa-light fa-file-circle-info"></i> View profile</a>
+                                    class="fa-light fa-file-circle-info"></i> View Profile</a>
 
                     </div>
                 </div>
@@ -136,26 +135,27 @@
             <div class="col-sm-12">
                 <div class="card h-100">
                     <div class="card-body shadow px-lg-5">
-                        <h5 class="card-title">Apply for leave</h5>
-                        <p class="card-text">You can apply for a leave </p>
-
-                        <a href="<?= SROOT ?>EmployeeLeave/application" class="btn btn-primary"><i
-                                    class="fa-light fa-file-circle-info"></i> Apply for leave</a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row pt-lg-5">
-            <div class="col-sm-12">
-                <div class="card h-100">
-                    <div class="card-body shadow px-lg-5">
-                        <h5 class="card-title">View leave record</h5>
-                        <p class="card-text">You can view your leave details </p>
+                        <h5 class="card-title">Leave Record</h5>
+                        <p class="card-text">Remaining leaves (annual, casual, maternity, no pay), Leave requests </p>
 
                         <a href="<?= SROOT ?>EmployeeLeave/record" class="btn btn-primary"><i
-                                    class="fa-light fa-file-circle-info"></i> View leave record</a>
+                                    class="fa-light fa-file-circle-info"></i> View Leave Record</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row pt-lg-5">
+            <div class="col-sm-12">
+                <div class="card h-100">
+                    <div class="card-body shadow px-lg-5">
+                        <h5 class="card-title">Leave Application</h5>
+                        <p class="card-text">Apply a leave application to get approval from supervisor </p>
+
+                        <a href="<?= SROOT ?>EmployeeLeave/application" class="btn btn-success"><i
+                                    class="fa-light fa-file-circle-info"></i> Apply For Leave</a>
 
                     </div>
                 </div>
