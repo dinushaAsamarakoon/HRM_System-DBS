@@ -84,5 +84,14 @@ class HRManager extends Employee
         ]);
     }
 
+    public function getEmployeeDetails($id){
+        return $this->_db->find('emp_info', [
+            'conditions' => 'id=?',
+            'bind' => [$id]
+        ]);
+    }
 
+    public function getDeptNames(){
+        return $this->_db->query("SELECT dept_name FROM department")->results();
+    }
 }
