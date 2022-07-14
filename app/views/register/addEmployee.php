@@ -3,7 +3,12 @@
 //    Router::redirect('EmployeeDashboard');
 //}
 //?>
-
+<?php //dnd($this->depts);?>
+                                        <?php foreach ($this->depts as $dept) {
+//                                                dnd($dept->dept_name);
+//                                            echo $dept;?>
+<!--                                            <option value="--><?php //echo $dept;?><!--">--><?php //echo $dept;?><!--</option>-->
+                                        <?php } ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -132,6 +137,7 @@
                                                    id="inlineRadio4" value="Female">
                                             <label class="form-check-label" for="inlineRadio2">Unmarried</label>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -154,43 +160,51 @@
                             <!--                        //dynamic forum elements-->
 
 
-
-
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Emergency contract Number</label><input type="text"
-                                                                                                     name="emergency_contract"
-                                                                                                     class="form-control"
-                                                                                                     value=""
-                                                                                                     placeholder="Enter emergency contract number">
-                            </div>
-                            <div class="col-md-6">
+                            <div class="row mt-2">
+                                <div class="col-md-6"><label class="labels">Emergency contract Number</label><input
+                                            type="text"
+                                            name="emergency_contract"
+                                            class="form-control"
+                                            value=""
+                                            placeholder="Enter emergency contract number">
+                                </div>
+                                <div class="col-md-6">
                                     <label class="labels">Department name </label><br>
                                     <select class="form-select form-select-lg" name="dept_name"
-                                            aria-label=".form-select-lg example" style="height: 38px;font-size: 15px; color: dimgrey">
-                                        <option value="" >Select department</option>
-                                        <option value=""></option>
+                                            aria-label=".form-select-lg example"
+                                            style="height: 38px;font-size: 15px; color: dimgrey">
+<!--                                        --><?php //dnd($this->depts);?>
+                                        <?php foreach ($this->depts as $dept) {
+//                                                dnd($dept);?>
+                                            <option value="<?php echo $dept->dept_name;?>"><?php echo $dept->dept_name;?></option>
+                                        <?php } ?>
 
                                     </select>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <label for=" Idnumber" class="form-label">National Identity card number</label>
-                                <input type="text" class="form-control" id="Idnumber" placeholder="Enter employee's national ID card number" name="IdCardNumber" >
-
+                                </div>
                             </div>
                         </div>
                             <div class="row mt-2">
-                                <div class="col-md-12"><label class="labels">Qualifications</label>
-                                    <div class="form-floating">
+                                <div class="col-md-12">
+                                    <label for=" Idnumber" class="form-label">National Identity card number</label>
+                                    <input type="text" class="form-control" id="Idnumber"
+                                           placeholder="Enter employee's national ID card number" name="IdCardNumber">
+
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-12"><label class="labels">Qualifications</label>
+                                        <div class="form-floating">
                                     <textarea name="qualification" class="form-control"
                                               id="floatingTextarea"></textarea>
 
+                                        </div>
                                     </div>
+
                                 </div>
+
 
                             </div>
 
+                        </div>
                     </div>
 
                      </div>
@@ -199,42 +213,58 @@
 
                             <div class="row mt-5">
                                 <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
-                                                                                                         name="phone_umber"
+                                                                                                         name="phone_number"
                                                                                                          class="form-control"
                                                                                                          value=""
                                                                                                          placeholder="Enter employee's mobile number">
                                 </div>
-                            </div>
 
 
-                            <!--                        //dynamic forum elements-->
-                            <?php
-                            $attributes = $this->allAttributes;
-                            foreach ($attributes as $attribute => $val_array) {
-                                //dnd($val_array);
+                                <!--                        //dynamic forum elements-->
+                                <?php
+                                $attributes = $this->allAttributes;
+                                foreach ($attributes as $attribute => $val_array) {
+//                                    dnd($val_array);
 
-                                ?>
-                                <div class="row mt-2">
-                                    <div class="col-md-12" style="">
-                                        <label class="labels">Select <?php echo $attribute; ?></label><br>
-                                        <select class="form-select form-select-lg" name="<?php echo $attribute; ?>"
-                                                aria-label=".form-select-lg example"
-                                                style="height: 38px;font-size: 15px; color: dimgrey">
-                                            <option value="" selected>select from <?php echo $attribute; ?> menu
-                                            </option>
-                                            <?php
-                                            foreach ($val_array as $val) {
-                                                if (Session::get('job_class') == 'admin' and $attribute == 'job_title' and $val[0] == 'hr_manager') { ?>
-                                                    <option value=""><?php echo $val[0]; ?></option>
-                                                    <?php
-                                                } else if (Session::get('job_class') == 'hr_manager' and $attribute == 'job_title' and $val[0] != 'hr_manager' and $val[0] != 'admin') { ?>
-                                                    <option value=""><?php echo $val[0]; ?></option>
-                                                    <?php
+                                    ?>
+                                    <div class="row mt-2">
+                                        <div class="col-md-12" style="">
+                                            <label class="labels">Select <?php echo $attribute; ?></label><br>
+                                            <select class="form-select form-select-lg" name="<?php echo $attribute; ?>"
+                                                    aria-label=".form-select-lg example"
+                                                    style="height: 38px;font-size: 15px; color: dimgrey">
+<!--                                                <option value="" selected>select from --><?php //echo $attribute; ?><!-- menu-->
+                                                </option>
+                                                <?php
+                                                foreach ($val_array as $val) {
+                                                    if (Session::get('job_class') == 'admin') {
+                                                        if ($attribute == 'job_title') {
+                                                            if ($val[0] == 'hr_manager') { ?>
+                                                                <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
+                                                            <?php }
+
+                                                        } else { ?>
+                                                            <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
+                                                        <?php }
+
+                                                        ?>
+                                                        <?php
+                                                    } else if (Session::get('job_class') == 'hr_manager') {
+                                                        if ($attribute == 'job_title') {
+                                                            if ($val[0] != 'hr_manager' and $val[0] != 'admin') { ?>
+                                                                <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
+                                                            <?php }
+                                                        } else { ?>
+                                                            <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
+                                                            <?php
+                                                        }
+                                                    }
                                                 }
-                                            }
-                                            ?>
-                                        </select>
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
+
                                 </div>
                             <?php } ?>
                             <div class="row mt-2">
@@ -261,14 +291,12 @@
                                 </div>
 
                             </div>
-
-
                         </div>
                     </div>
                 </div>
 
 
-</form>
+        </form>
 </div>
 </body>
 </html>

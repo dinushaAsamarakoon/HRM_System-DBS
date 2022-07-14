@@ -13,7 +13,7 @@
     require_once(ROOT . DS . 'app' . DS . 'views' . DS . 'header' . DS . 'headerFile.php'); ?>
 
 
-    <title>Add Employee</title>
+    <title>Employee Details</title>
 </head>
 <style>
     h1 {
@@ -69,7 +69,7 @@
                     <div class="col-md-8 border-right  text_area  ">
                         <div class="pt-5 ">
                             <div class="d-flex justify-content-center align-items-center mb-3">
-                                <h2 class="text-right">Create Account</h2>
+                                <h2 class="text-right">Employee Account</h2>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                                 <div class="col-md-6"><label class="labels">First Name</label><input type="text"
                                                                                                      name="first_name"
                                                                                                      class="form-control"
-                                                                                                     value="<?php ?>"
+                                                                                                     value="<?php  ?>"
                                                                                                      disabled>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
@@ -192,7 +192,7 @@
                             <?php
                             $attributes = $this->allAttributes;
                             foreach ($attributes as $attribute => $val_array) {
-                                //dnd($val_array);
+//                                    dnd($val_array);
 
                                 ?>
                                 <div class="row mt-2">
@@ -205,12 +205,27 @@
                                             </option>
                                             <?php
                                             foreach ($val_array as $val) {
-                                                if (Session::get('job_class') == 'admin' and $attribute == 'job_title' and $val[0] == 'hr_manager') { ?>
-                                                    <option value=""><?php echo $val[0]; ?></option>
+                                                if (Session::get('job_class') == 'admin') {
+                                                    if ($attribute == 'job_title') {
+                                                        if ($val[0] == 'hr_manager') { ?>
+                                                            <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
+                                                        <?php }
+
+                                                    } else { ?>
+                                                        <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
+                                                    <?php }
+
+                                                    ?>
                                                     <?php
-                                                } else if (Session::get('job_class') == 'hr_manager' and $attribute == 'job_title' and $val[0] != 'hr_manager' and $val[0] != 'admin') { ?>
-                                                    <option value=""><?php echo $val[0]; ?></option>
-                                                    <?php
+                                                } else if (Session::get('job_class') == 'hr_manager') {
+                                                    if ($attribute == 'job_title') {
+                                                        if ($val[0] != 'hr_manager' and $val[0] != 'admin') { ?>
+                                                            <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
+                                                        <?php }
+                                                    }else{ ?>
+                                                        <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
+                                                        <?php
+                                                    }
                                                 }
                                             }
                                             ?>

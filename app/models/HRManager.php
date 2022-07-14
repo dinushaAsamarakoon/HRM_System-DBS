@@ -26,8 +26,6 @@ class HRManager extends Employee
     }
     public function registerNewHRManager($params)
     {
-        $params['is_closed'] = 0;
-        $params['status'] = "available";
         $this->assign($params);
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         $this->save();
@@ -86,5 +84,14 @@ class HRManager extends Employee
         ]);
     }
 
+    public function getEmployeeDetails($id){
+        return $this->_db->find('emp_info', [
+            'conditions' => 'id=?',
+            'bind' => [$id]
+        ]);
+    }
 
+    public function getDeptNames(){
+        return $this->_db->query("SELECT dept_name FROM department")->results();
+    }
 }

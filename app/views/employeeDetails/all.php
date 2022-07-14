@@ -80,7 +80,7 @@
                                     <td><?php echo $employee->last_name; ?></td>
                                     <td><?php echo $employee->dept_name; ?></td>
                                     <td><?php echo $employee->job_title; ?></td>
-                                    <td><?= SROOT ?><?php $employee->id; ?></td>
+                                    <td><a href="<?= SROOT ?>HRManagerFunctionHandler/editEmployee/<?= $employee->id; ?>" target="">>>></a></td>
                                 </tr>
                                 <?php
                             }
