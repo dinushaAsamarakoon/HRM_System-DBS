@@ -8,8 +8,8 @@ class Profile extends Controller {
         $this->load_model('Employee');
     }
 
-    public function indexAction() {
-        $this->view->profile = $this->EmployeeModel->getPersonalInfo('1');
+    public function displayAction($id) {
+        $this->view->profile = $this->EmployeeModel->getPersonalInfo($id);
         $this->view->render('profile/index');
     }
 

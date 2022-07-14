@@ -64,11 +64,13 @@
         </div>
         <br> <br> <br>
 
-
+        <?php
+//        dnd($this->id);
+        ?>
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="<?=SROOT?>Profile"><i class="fa-solid fa-user"></i>Profile</a>
+                <a href="<?= SROOT ?>Profile/display/<?= $this->id; ?>"><i class="fa-solid fa-user"></i>Profile</a>
             </li>
             <li>
                 <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
@@ -104,7 +106,7 @@
                     <div class="card-body shadow px-lg-5">
                         <h5 class="card-title">View Employee details</h5>
                         <p class="card-text">You can view the all the employees details of the system </p>
-                        <a href="../employeeDetails/EmployeeDetails.php" class="btn btn-primary"><i
+                        <a href="<?= SROOT ?>HRManagerFunctionHandler/viewAllEmployees" class="btn btn-primary"><i
                                     class="fa-light fa-file-circle-info"></i> View
                             Details</a>
                     </div>

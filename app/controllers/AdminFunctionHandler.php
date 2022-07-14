@@ -28,7 +28,8 @@ class AdminFunctionHandler extends Controller
 
     public function logoutAction()
     {
-        $this->EmployeeModel->logout();
+        $user = Admin::currentLoggedInEmployee();
+        $user->logout();
         Router::redirect('home/index');
     }
 
@@ -69,6 +70,17 @@ class AdminFunctionHandler extends Controller
                 $this->view->render('register/addEmployee');
             }
         } else {
+            $admin = Admin::currentLoggedInEmployee();
+            $attributeNames = $admin->getEmployeeAttributes();
+            $attributes = [];
+            foreach ($attributeNames as $an) {
+                $tempAttributes = [];
+                foreach ($admin->getPrimaryValues($an[0]) as $row) {
+                    $tempAttributes[] = $row;
+                }
+                $attributes[$an[0]] = $tempAttributes;
+            }
+            $this->view->allAttributes = $attributes;
             $this->view->render('register/addEmployee');
         }
     }

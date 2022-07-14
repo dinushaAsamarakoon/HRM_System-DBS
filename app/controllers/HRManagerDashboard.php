@@ -8,6 +8,7 @@ class HRManagerDashboard extends Controller{
     }
 
     public function indexAction() {
+        $this->view->id = HRManager::currentLoggedInEmployee()->id;
         $this->view->render('dashboard/hrmanager');
     }
 

@@ -24,7 +24,10 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active " id="pills-logout-tab" data-toggle="pill" href="#pills-logout" role="tab" aria-controls="pills-logout" aria-selected="true" style="color: #0c63e4;font-size: 20px;">logout</a>
+                        <a class="nav-link active " id="pills-logout-tab" data-toggle=""
+                           href="<?= SROOT ?>SupervisorFunctionHandler/logout"
+                           role="tab" aria-controls="pills-logout" aria-selected="true"
+                           style="color: #0c63e4;font-size: 20px;">logout</a>
 
                     </li>
 
@@ -50,7 +53,7 @@
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="<?=SROOT?>app/views/profile/employee.php"><i class="fa-solid fa-user" ></i> Profile </a>
+                <a href="<?=SROOT?>Profile/display/<?= $this->id;?>"><i class="fa-solid fa-user" ></i> Profile </a>
             </li>
             <li>
                 <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>

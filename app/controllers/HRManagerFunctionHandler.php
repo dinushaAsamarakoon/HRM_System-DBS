@@ -64,7 +64,7 @@ class HRManagerFunctionHandler extends Controller
             ]);
 
             if ($validation->passed()) {
-                if ($_POST['job_class'] === 'Supervisor') {
+                if ($_POST['job_title'] === 'Supervisor') {
                     $this->EmployeeModel->createNewSupervisor()->registerNewEmployee($_POST);
                 } else {
                     $this->EmployeeModel->createNewNMEmployee()->registerNewEmployee($_POST);
@@ -210,6 +210,14 @@ class HRManagerFunctionHandler extends Controller
                     break;
             }
         }
+    }
+
+    public function viewAllEmployeesAction(){
+        $hrManager = HRManager::currentLoggedInEmployee();
+//        dnd($hrManager->getAllEmployees());
+        $this->view->allEmployees = $hrManager->getAllEmployees();
+        $this->view->render('employeeDetails/all');
+
     }
 
 }

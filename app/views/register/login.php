@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -51,33 +50,44 @@
         <div class="tab-content" id="pills-tabContent2">
             <!--This is the login page of the website        -->
             <div class="h-100 " id="pills-login" role="tabpanel" aria-labelledby="pills-profile-tab" >
-                <div class="d-flex justify-content-center w-100 h-100  p-3"  >
-                    <div class=" w-50  p-3 shadow-lg p-5  mb-5   " style="background-color:  #ecf0f9; " >
-                        <form action="<?=SROOT?>EmployeeRegister/login" method="POST" style="height: 450px;margin-top: 5px;">
-                            <div class="d-lg-flex justify-content-center m-1">
 
-                                <h3  >Login</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            One of three columns
+                        </div>
+                        <div class="col-sm">
+                            <div class="d-flex justify-content-center w-100 h-100  p-3"  >
+                                <div class=" w-75  p-3 shadow-lg p-5  mb-5   " style="background-color:  #ecf0f9; " >
+                                    <form action="<?=SROOT?>EmployeeRegister/login" method="POST" style="height: 450px;margin-top: 5px;">
+                                        <div class="d-lg-flex justify-content-center m-1">
+
+                                            <h2  >Login</h2>
+
+                                        </div>
+                                        <div class="mb-3 ">
+                                            <label for="exampleInputEmail1" class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="InputEmail1OrUser" placeholder="Enter your username" name="username">
+
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password" name="password">
+                                        </div>
+                                        <div class="mb-3 ">
+
+                                            <a href="" ><label class="form-label"  > <u>Forget password</u> </label></a>
+                                        </div>
+                                        <div class="col text-center"><button type="submit" name="submit" class="btn btn-primary w-100"  style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); ">Submit</button></div>
+                                    </form>
+                                </div>
 
                             </div>
-                            <div class="mb-3 ">
-                                <label for="exampleInputEmail1" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="InputEmail1OrUser" placeholder="Enter your username" name="username">
+                        </div>
 
-                            </div>
-
-
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password" name="password">
-                            </div>
-                            <div class="mb-3 ">
-
-                                <a href="" ><label class="form-label"  > <u>Forget password</u> </label></a>
-                            </div>
-                            <div class="col text-center"><button type="submit" name="submit" class="btn btn-primary" >Submit</button></div>
-                        </form>
                     </div>
-
                 </div>
 
             </div>
