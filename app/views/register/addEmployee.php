@@ -151,7 +151,7 @@
                                                                                                     placeholder="Enter employee's mobile number">
                             </div>
                         </div>
-<!--                        //dynamic forum elements-->
+<!--                        //dynamic forum elements start-->
                         <?php
                         $attributes = $this->allAttributes;
                         foreach ($attributes as $attribute => $val_array) {
@@ -175,7 +175,7 @@
                                 </select>
                             </div>
                         <?php } ?>
-
+<!--                        end-->
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <label for=" Idnumber" class="form-label">National Identity card number</label>

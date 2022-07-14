@@ -31,8 +31,6 @@ class HRManagerFunctionHandler extends Controller
 
         $user = HRManager::currentLoggedInEmployee();
         $user->logout();
-
-//        $this->EmployeeModel->logout();
         Router::redirect('home/index');
     }
 
@@ -67,29 +65,19 @@ class HRManagerFunctionHandler extends Controller
 
             if ($validation->passed()) {
                 if ($_POST['job_class'] === 'Supervisor') {
-                    $this->EmployeeModel = HRManager::currentLoggedInEmployee()->createNewSupervisor();
-                    $this->EmployeeModel->registerNewEmployee($_POST);
-                    Router::redirect('HRManagerDashboard');
+                    $this->EmployeeModel->createNewSupervisor()->registerNewEmployee($_POST);
                 } else {
-                    $this->EmployeeModel = HRManager::currentLoggedInEmployee()->createNewNMEmployee();
-                    $this->EmployeeModel->registerNewEmployee($_POST);
-                    Router::redirect('HRManagerDashboard');
+                    $this->EmployeeModel->createNewNMEmployee()->registerNewEmployee($_POST);
                 }
+                Router::redirect('HRManagerDashboard');
                 $_SESSION['message'] = "Employee added";
             } else {
                 $this->view->displayErrors = $validation->displayErrors();
                 $this->view->render('register/addEmployee');
             }
         } else {
-//            dnd(HRManager::currentLoggedInEmployee()->getEmployeeAttributes());
             $hRManager = HRManager::currentLoggedInEmployee();
-//            foreach($hRManager->getPrimaryValues('job_title') as $a){
-//                echo $a[0];
-//            }
-//            dnd();
-
             $attributeNames = $hRManager->getEmployeeAttributes();
-//            dnd($attributeNames);
             $attributes = [];
             foreach ($attributeNames as $an) {
                 $tempAttributes = [];
@@ -98,7 +86,6 @@ class HRManagerFunctionHandler extends Controller
                 }
                 $attributes[$an[0]] = $tempAttributes;
             }
-//            dnd($attributes);
             $this->view->allAttributes = $attributes;
             $this->view->render('register/addEmployee');
         }

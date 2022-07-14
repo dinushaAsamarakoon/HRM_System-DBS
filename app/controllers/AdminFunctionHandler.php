@@ -28,15 +28,12 @@ class AdminFunctionHandler extends Controller
 
     public function logoutAction()
     {
-        $user = Admin::currentLoggedInEmployee();
-        $user->logout();
-//        $this->EmployeeModel->logout();
+        $this->EmployeeModel->logout();
         Router::redirect('home/index');
     }
 
     public function addHRManagerAction()
     {
-
         $validation = new Validate();
         if ($_POST) {
 
@@ -64,8 +61,7 @@ class AdminFunctionHandler extends Controller
             ]);
 
             if ($validation->passed()) {
-                $this->EmployeeModel = Admin::currentLoggedInEmployee()->createNewHRManager();
-                $this->EmployeeModel->registerNewHRManager($_POST);
+                $this->EmployeeModel->createNewHRManager()->registerNewHRManager($_POST);
                 Router::redirect('AdminDashboard');
                 $_SESSION['message'] = "HR Manager added";
             } else {

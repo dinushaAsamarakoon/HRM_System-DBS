@@ -68,7 +68,7 @@
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="<?= SROOT ?>Profile"><i class="fa-solid fa-user"></i> Profile </a>
+                <a href="<?=SROOT?>Profile"><i class="fa-solid fa-user"></i>Profile</a>
             </li>
             <li>
                 <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
