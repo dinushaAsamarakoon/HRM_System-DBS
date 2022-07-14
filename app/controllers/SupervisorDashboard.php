@@ -9,6 +9,7 @@ class SupervisorDashboard extends Controller{
     }
 
     public function indexAction() {
+        $this->view->id = Supervisor::currentLoggedInEmployee()->id;
         $this->view->requests = $this->LeaveRequestModel->getPendingRequests(Supervisor::currentLoggedInEmployee()->id);
         $this->view->render('dashboard/supervisor');
     }

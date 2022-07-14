@@ -79,28 +79,28 @@
                                 <div class="col-md-6"><label class="labels">First Name</label><input type="text"
                                                                                                      name="first_name"
                                                                                                      class="form-control"
-                                                                                                     value=""
-                                                                                                     placeholder="Enter employee's first name">
+                                                                                                     value="<?php ?>"
+                                                                                                     disabled>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
                                                                                                     name="last_name"
                                                                                                     class="form-control"
-                                                                                                    value=""
-                                                                                                    placeholder="Enter employee's last name">
+                                                                                                    value="<?php ?>"
+                                                                                                    disabled>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-6"><label class="labels">Username</label><input type="text"
                                                                                                    name="username"
                                                                                                    class="form-control"
-                                                                                                   value=""
-                                                                                                   placeholder="Enter employee's last name">
+                                                                                                   value="<?php ?>"
+                                                                                                   disabled>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Date of Birth</label><input type="date"
                                                                                                         name="birth_date"
                                                                                                         class="form-control"
-                                                                                                        value=""
-                                                                                                        placeholder="Enter employee's birthday">
+                                                                                                        value="<?php ?>"
+                                                                                                        disabled>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -139,14 +139,14 @@
                                 <div class="col-md-6"><label class="labels">Email Address</label><input type="text"
                                                                                                         name="email"
                                                                                                         class="form-control"
-                                                                                                        value=""
-                                                                                                        placeholder="Enter mployee's email address">
+                                                                                                        value="<?php ?>"
+                                                                                                        disabled>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Home address</label><input type="text"
                                                                                                        name="address"
                                                                                                        class="form-control"
-                                                                                                       value=""
-                                                                                                       placeholder="Enter employee's resident address">
+                                                                                                       value="<?php ?>"
+                                                                                                       disabled>
                                 </div>
 
                             </div>
@@ -154,30 +154,12 @@
                             <!--                        //dynamic forum elements-->
 
 
-
-
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Emergency contract Number</label><input type="text"
-                                                                                                     name="emergency_contract"
-                                                                                                     class="form-control"
-                                                                                                     value=""
-                                                                                                     placeholder="Enter emergency contract number">
-                            </div>
-                            <div class="col-md-6">
-                                    <label class="labels">Department name </label><br>
-                                    <select class="form-select form-select-lg" name="dept_name"
-                                            aria-label=".form-select-lg example" style="height: 38px;font-size: 15px; color: dimgrey">
-                                        <option value="" >Select department</option>
-                                        <option value=""></option>
-
-                                    </select>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <label for=" Idnumber" class="form-label">National Identity card number</label>
-                                <input type="text" class="form-control" id="Idnumber" placeholder="Enter employee's national ID card number" name="IdCardNumber" >
-
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <label for=" Idnumber" class="form-label">National Identity card number</label>
+                                    <input type="text" class="form-control" id="Idnumber"
+                                           value="<?php ?>" name="IdCardNumber" disabled>
+                                </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-12"><label class="labels">Qualifications</label>
@@ -201,11 +183,10 @@
                                 <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
                                                                                                          name="phone_umber"
                                                                                                          class="form-control"
-                                                                                                         value=""
-                                                                                                         placeholder="Enter employee's mobile number">
+                                                                                                         value="<?php ?>"
+                                                                                                         disabled>
                                 </div>
                             </div>
-
 
                             <!--                        //dynamic forum elements-->
                             <?php
@@ -245,14 +226,6 @@
                                         Submit
                                     </button>
                                 </div>
-
-                            </div>
-                        <?php } ?>
-                        <br> <br> <br> <br> <br> <br>
-                        <div class="row mt-5 ">
-                            <div class="col-md-12 d-flex justify-content-center" >
-                                <button type="submit" class="btn btn-primary w-75" name="submit" style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); ">Submit</button>
-
                             </div>
                         </div>
 

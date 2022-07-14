@@ -42,7 +42,8 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active " id="pills-logout-tab" data-toggle="pill" href="#pills-logout"
+                        <a class="nav-link active " id="pills-logout-tab" data-toggle=""
+                           href="<?= SROOT ?>NMEmployeeFunctionHandler/logout"
                            role="tab" aria-controls="pills-logout" aria-selected="true"
                            style="color: #0c63e4;font-size: 20px;">logout</a>
 
@@ -123,8 +124,10 @@
                         <h5 class="card-title">Profile Details</h5>
                         <p class="card-text">Personal information, Employment details </p>
 
-                        <a href="<?= SROOT ?>Profile" class="btn btn-primary"><i
-                                    class="fa-light fa-file-circle-info"></i> View Profile</a>
+
+                        <a href="<?= SROOT ?>Profile/display/<?= $this->id;?>" class="btn btn-primary"><i
+                                    class="fa-light fa-file-circle-info"></i> View profile</a>
+
 
                     </div>
                 </div>
@@ -140,6 +143,7 @@
 
                         <a href="<?= SROOT ?>EmployeeLeave/record" class="btn btn-primary"><i
                                     class="fa-light fa-file-circle-info"></i> View Leave Record</a>
+
 
                     </div>
                 </div>

@@ -30,13 +30,11 @@ class AdminFunctionHandler extends Controller
     {
         $user = Admin::currentLoggedInEmployee();
         $user->logout();
-//        $this->EmployeeModel->logout();
         Router::redirect('home/index');
     }
 
     public function addHRManagerAction()
     {
-
         $validation = new Validate();
         if ($_POST) {
 
@@ -64,8 +62,7 @@ class AdminFunctionHandler extends Controller
             ]);
 
             if ($validation->passed()) {
-                $this->EmployeeModel = Admin::currentLoggedInEmployee()->createNewHRManager();
-                $this->EmployeeModel->registerNewHRManager($_POST);
+                $this->EmployeeModel->createNewHRManager()->registerNewHRManager($_POST);
                 Router::redirect('AdminDashboard');
                 $_SESSION['message'] = "HR Manager added";
             } else {
@@ -73,6 +70,17 @@ class AdminFunctionHandler extends Controller
                 $this->view->render('register/addEmployee');
             }
         } else {
+            $admin = Admin::currentLoggedInEmployee();
+            $attributeNames = $admin->getEmployeeAttributes();
+            $attributes = [];
+            foreach ($attributeNames as $an) {
+                $tempAttributes = [];
+                foreach ($admin->getPrimaryValues($an[0]) as $row) {
+                    $tempAttributes[] = $row;
+                }
+                $attributes[$an[0]] = $tempAttributes;
+            }
+            $this->view->allAttributes = $attributes;
             $this->view->render('register/addEmployee');
         }
     }

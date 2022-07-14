@@ -76,4 +76,15 @@ class HRManager extends Employee
     public function reportGeneration($table, $params=[]){
         return $this->findWithTable($table,$params);
     }
+
+    public
+    function getAllEmployees()
+    {
+        return $this->_db->find('emp_info', [
+            'conditions' => 'job_title!=?',
+            'bind' => ['admin']
+        ]);
+    }
+
+
 }

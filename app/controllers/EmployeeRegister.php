@@ -42,10 +42,4 @@ class EmployeeRegister extends Controller
         }
     }
 
-    public function logoutAction()
-    {
-        $user = Employee::currentLoggedInEmployee();
-        $user->logout();
-        Router::redirect('home/index');
-    }
 }

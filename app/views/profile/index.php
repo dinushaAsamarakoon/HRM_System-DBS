@@ -35,34 +35,36 @@
                 <div class="d-flex justify-content-center align-items-center mb-3">
                     <h2 class="text-center">Profile Details</h2>
                 </div>
-                <?php $p = (array) $this->profile[0]; ?>
+                <?php $p = (array) $this->profile[0];
+//                dnd($p);?>
+
                 <div class="row mt-1" >
-                    <div class="col-md-6"><label class="labels">First name</label><input type="text" class="form-control"  value="" disabled></div>
-                    <div class="col-md-6"><label class="labels">Last name</label><input type="text" class="form-control" value="" disabled></div>
+                    <div class="col-md-6"><label class="labels">First name</label><input type="text" class="form-control"  value="<?php echo $p["first_name"];?>" disabled></div>
+                    <div class="col-md-6"><label class="labels">Last name</label><input type="text" class="form-control" value="<?php echo $p["last_name"];?>" disabled></div>
                 </div>
                     <div class="row mt-2" >
-                    <div class="col-md-6"><label class="labels">Username</label><input type="text" class="form-control"  value="" disabled></div>
-                    <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control"  value="" disabled></div>
+                    <div class="col-md-6"><label class="labels">Username</label><input type="text" class="form-control"  value="<?php echo $p["username"];?>" disabled></div>
+                    <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control"  value="<?php echo $p["gender"];?>" disabled></div>
                 </div>
                 <div class="row mt-2" >
-                    <div class="col-md-6"><label class="labels">Date of Birth</label><input type="text" class="form-control"  value="" disabled></div>
-                    <div class="col-md-6"><label class="labels">Marital status</label><input type="text" class="form-control"  value="" disabled></div>
+                    <div class="col-md-6"><label class="labels">Date of Birth</label><input type="text" class="form-control"  value="<?php echo $p["birth_date"];?>" disabled></div>
+                    <div class="col-md-6"><label class="labels">Marital status</label><input type="text" class="form-control"  value="<?php echo $p["marital_status"];?>" disabled></div>
                 </div>
 
                 <div class="row mt-2" >
-                    <div class="col-md-12"><label class="labels">Home address</label><input type="text" class="form-control"  value="" disabled></div>
-                     <div class="col-md-12"><label class="labels">Email Address</label><input type="text" class="form-control"  value="" disabled></div>
-                     <div class="col-md-12"><label class="labels">Qualification</label><textarea type="text" class="form-control"  value="" disabled></textarea></div>
+                    <div class="col-md-12"><label class="labels">Home address</label><input type="text" class="form-control"  value="<?php echo $p["address"];?>" disabled></div>
+                     <div class="col-md-12"><label class="labels">Email Address</label><input type="text" class="form-control"  value="<?php echo $p["email"];?>" disabled></div>
+                     <div class="col-md-12"><label class="labels">Qualification</label><textarea type="text" class="form-control" placeholder="" disabled style="place"><?php echo $p["qualification"];?></textarea></div>
 
                 </div>
                 <div class="row mt-2 ">
-                    <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control"  value="" disabled></div>
+                    <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control"  value="<?php echo $p["phone_number"];?>" disabled></div>
                     <div class="col-md-6"><label class="labels">Job title</label><input type="text" class="form-control"  value="<?php echo $p['job_title'] ?>" disabled></div>
 
                 </div>
                 <div class="row mt-2 ">
                     <div class="col-md-6"><label class="labels">Pay grade</label><input type="text" class="form-control"  value="<?php echo $p['pay_grade'] ?>" disabled></div>
-                    <div class="col-md-6"><label class="labels">Employment status</label><input type="text" class="form-control"  value="" disabled></div>
+                    <div class="col-md-6"><label class="labels">Employment status</label><input type="text" class="form-control"  value="<?php echo $p["emp_status"];?>" disabled></div>
                 </div>
             </div>
 

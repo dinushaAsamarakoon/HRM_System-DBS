@@ -21,7 +21,8 @@
 
                 <ul class="nav  " id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active " id="pills-logout-tab" data-toggle="pill" href="#pills-logout"
+                        <a class="nav-link active " id="pills-logout-tab" data-toggle=""
+                           href="<?= SROOT ?>AdminFunctionHandler/logout"
                            role="tab" aria-controls="pills-logout" aria-selected="true"
                            style="color: #0c63e4;font-size: 20px;">logout</a>
 
@@ -58,7 +59,7 @@
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="<?= SROOT ?>app/views/profile/employee.php"><i class="fa-solid fa-user"></i> Profile </a>
+                <a href="<?= SROOT ?>Profile/display/<?= $this->id;?>"><i class="fa-solid fa-user"></i> Profile </a>
             </li>
             <!--            <li>-->
             <!--                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>-->
@@ -79,7 +80,7 @@
                     <div class="card-body shadow  px-lg-5">
                         <h5 class="card-title">Add HR manager to the system</h5>
                         <p class="card-text">You can add the HR manger's details to the system</p>
-                        <a href="<?= SROOT ?>AdminFunctionHandler/addEmployee.php"
+                        <a href="<?= SROOT ?>AdminFunctionHandler/addHRManager"
                            class="btn btn-primary justify-content-center"><i class="fa-solid fa-user-plus"></i> Add HR
                             manager</a>
                     </div>
@@ -102,7 +103,6 @@
             </div>
 
         </div>
-
 
 
     </div>

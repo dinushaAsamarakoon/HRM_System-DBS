@@ -8,6 +8,7 @@ class AdminDashboard extends Controller{
     }
 
     public function indexAction() {
+        $this->view->id = Admin::currentLoggedInEmployee()->id;
         $this->view->render('dashboard/admin');
     }
 
