@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave Details</title>
+    <title>Leave Record</title>
 </head>
 <body>
     
-    <h3>Leave Details</h3>
+    <h3>Leave Record</h3>
 
-    <?php if ($this->details) { ?>
-    <?php $d = (array) $this->details[0]; ?>
-    <?php echo 'pay grade: ' . $d['pay_grade']; ?>
+    <?php if ($this->record) { ?>
+    <?php $r = (array) $this->record[0]; ?>
+    <?php echo 'pay grade: ' . $r['pay_grade']; ?>
     <p>Remaining Leaves</p>
-    <?php echo 'Annual: ' . $d['rem_annual']; ?> <br>
-    <?php echo 'Casual: ' . $d['rem_casual']; ?> <br>
-    <?php echo 'Maternity: ' . $d['rem_maternity']; ?> <br>
-    <?php echo 'No Pay: ' . $d['rem_no_pay']; ?> <br>
+    <?php echo 'Annual: ' . $r['rem_annual']; ?> <br>
+    <?php echo 'Casual: ' . $r['rem_casual']; ?> <br>
+    <?php echo 'Maternity: ' . $r['rem_maternity']; ?> <br>
+    <?php echo 'No Pay: ' . $r['rem_no_pay']; ?> <br>
     <?php } ?>
 
     <?php if ($this->requests && count($this->requests)) { ?>

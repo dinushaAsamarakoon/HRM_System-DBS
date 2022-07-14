@@ -6,7 +6,7 @@ class EmployeeLeave extends Controller {
     {
         parent::__construct($controller,$action);
         $this->load_model('LeaveRequest');
-        $this->load_model('LeaveDetails');
+        $this->load_model('LeaveRecord');
     }
 
     public function indexAction() {
@@ -36,17 +36,10 @@ class EmployeeLeave extends Controller {
         }
     }
 
-    public function requestAction() {
-        $this->view->request = $this->LeaveRequestModel->getLeaveRequest('3');
-        $this->view->render('leave/request');
-    }
-
-    public function detailsAction() {
-        $this->view->details = $this->LeaveDetailsModel->getLeaveDetails('3');
+    public function recordAction() {
+        $this->view->record = $this->LeaveRecordModel->getLeaveRecord('3');
         $this->view->requests = $this->LeaveRequestModel->getRequestsByEmployee('3');
         $this->view->render('leave/index');
     }
-
-   
 
 }
