@@ -28,7 +28,31 @@ class EmployeeLeave extends Controller {
             $this->LeaveRequestModel->update($_POST['id'],[
                 'status'=>$_POST['status']
             ]);
-            $message = 'Leave ' . $_POST['status'] . ': ' . $_POST['reason'];
+            if ($_POST['status'] == 'approved') {
+                switch($_POST['type']) {
+                    case "annual":
+                        $this->LeaveRecordModel->update($_POST['emp_id'],[
+                            'rem_annual'=>$_POST['rem_annual'] - $_POST['duration']
+                        ]); 
+                        break;
+                    case "casual":
+                        $this->LeaveRecordModel->update($_POST['emp_id'],[
+                            'rem_casual'=>$_POST['rem_casual'] - $_POST['duration']
+                        ]);
+                        break;
+                    case "maternity":
+                        $this->LeaveRecordModel->update($_POST['emp_id'],[
+                            'rem_maternity'=>$_POST['rem_maternity'] - $_POST['duration']
+                        ]);
+                        break;
+                    case "nopay":
+                        $this->LeaveRecordModel->update($_POST['emp_id'],[
+                            'rem_no_pay'=>$_POST['rem_no_pay'] - $_POST['duration']
+                        ]);
+                        break;
+                    default:
+                }
+            }
             Router::redirect('EmployeeLeave/approval');
         } else {
             $this->view->requests = $this->LeaveRequestModel->getPendingRequests(Supervisor::currentLoggedInEmployee()->id);
