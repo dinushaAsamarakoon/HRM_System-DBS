@@ -34,7 +34,7 @@ class HRManagerFunctionHandler extends Controller
         Router::redirect('home/index');
     }
 
-    public function addEmployeeAction()
+    public function addEmployeeAction($emp_type)
     {
         $validation = new Validate();
         if ($_POST) {
@@ -87,7 +87,15 @@ class HRManagerFunctionHandler extends Controller
                 $attributes[$an[0]] = $tempAttributes;
             }
             $this->view->allAttributes = $attributes;
+//            dnd($attributes);
             $this->view->depts = $hRManager->getDeptNames();
+            $this->view->emp_status = $hRManager->getEmpStatus();
+            $this->view->emp_status_columns = $hRManager->get_columns_table('emp_status');
+            $this->view->emp_type = $emp_type;
+            $this->view->sup_levels = $hRManager->getSupLevels();
+//            dnd($this->view->sup_levels);
+//            dnd($this->view->emp_status_columns);
+//            dnd($this->view->emp_status);
 //            dnd( $hRManager->getDeptNames());
             $this->view->render('register/addEmployee');
         }
