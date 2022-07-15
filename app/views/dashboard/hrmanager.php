@@ -107,7 +107,7 @@
 
                                     <button class="dropdown-item" type="button">
 
-                                        <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/supervisor" class="dropdown-item" id="Supervisor" onclick="addAttribute()">
+                                        <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/supervisor" class="dropdown-item" id="Supervisor" >
 
                                             Supervisor
                                         </a>
