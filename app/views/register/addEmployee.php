@@ -215,9 +215,7 @@
                             <!--                        //dynamic forum elements-->
                             <?php
                             $attributes = $this->allAttributes;
-                            foreach ($attributes
-
-                                     as $attribute => $val_array) {
+                            foreach ($attributes as $attribute => $val_array) {
                                 //dnd($val_array);
 
                                 ?>
