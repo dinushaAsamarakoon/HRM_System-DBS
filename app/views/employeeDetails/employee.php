@@ -66,13 +66,12 @@
             <?php } ?>
             <div class="container rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
-                    <div class="col-md-8 border-right  text_area  ">
-                        <div class="pt-5 ">
-                            <div class="d-flex justify-content-center align-items-center mb-3">
-                                <h2 class="text-right">Employee Account</h2>
-                            </div>
+                    <div class="col-md-8 border-right  text_area pt-3 ">
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                        <h2 class="text-right">Employee Account</h2>
                         </div>
                     </div>
+
                     <div class="col-md-8 border-right  text_area  ">
                         <div class="p-3 py-5">
                             <div class="row mt-2">
@@ -177,30 +176,41 @@
 
                     </div>
                     <div class="col-md-3 border-right  text_area  ">
+
                         <div class="p-1 py-4">
 
-                            <div class="row mt-4">
+                            <div class="row mt-4" >
                                 <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
                                                                                                          name="phone_umber"
                                                                                                          class="form-control"
+                                                                                                         id="mbnumber"
                                                                                                          value="<?php ?>"
-                                                                                                         disabled>
+                                                                                                         disabled >
                                 </div>
                             </div>
 
                             <!--                        //dynamic forum elements-->
                             <?php
                             $attributes = $this->allAttributes;
+                            $i=0;
+
                             foreach ($attributes as $attribute => $val_array) {
 //                                    dnd($val_array);
+                                    $i+=1;
+
 
                                 ?>
+                                    <script>
+                                        const Idname =[];
+                                        Idname.push(<?php $attribute.$i?>);
+                                        console.log(Idname);
+                                    </script>
                                 <div class="row mt-2">
                                     <div class="col-md-12" style="">
                                         <label class="labels">Select <?php echo $attribute; ?></label><br>
                                         <select class="form-select form-select-lg" name="<?php echo $attribute; ?>"
                                                 aria-label=".form-select-lg example"
-                                                style="height: 38px;font-size: 15px; color: dimgrey">
+                                                style="height: 38px;font-size: 15px; color: dimgrey" disabled id="<?php echo $attribute.$i; ?>">
                                             <option value="" selected>select from <?php echo $attribute; ?> menu
                                             </option>
                                             <?php
@@ -233,8 +243,21 @@
                                     </div>
                                 </div>
                             <?php } ?>
-                            <br> <br> <br> <br> <br> <br> <br> <br> <br>
-                            <div class="row mt-5 ">
+                            <div class="row mt-5 " style="display: block" >
+                                <div class="col-md-12 d-flex justify-content-center">
+                                    <button type="button" class="btn btn-success w-75"id="btnedit">
+                                        Edit
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row mt-3 " id="remove" style="display: block">
+                                <div class="col-md-12 d-flex justify-content-center">
+                                    <button  class="btn btn-danger w-75">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row mt-3 " id="btnsub" style="display: none">
                                 <div class="col-md-12 d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary w-75" name="submit"
                                             style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); ">
@@ -252,5 +275,18 @@
 
 </form>
 </div>
+<script>
+
+    document.getElementById('btnedit').addEventListener("click", ()=>{
+        document.getElementById('btnsub').style.display='block';
+        document.getElementById('mbnumber').disabled=false;
+        // console.log(Idname);
+        // for (let i = 0; i < Idname.length; i++) {
+        //     document.getElementById(Idname[i]).style.disabled= false;
+        // }
+
+
+    });
+</script>
 </body>
 </html>
