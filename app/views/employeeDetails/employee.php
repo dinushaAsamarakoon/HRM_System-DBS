@@ -1,8 +1,4 @@
-<?php
-//if (isset($_SESSION['username'])){
-//    Router::redirect('EmployeeDashboard');
-//}
-//?>
+
 
 
 <!DOCTYPE html>
@@ -79,12 +75,14 @@
                                                                                                      name="first_name"
                                                                                                      class="form-control"
                                                                                                      value="<?php  ?>"
+                                                                                                     id="fname"
                                                                                                      disabled>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
                                                                                                     name="last_name"
                                                                                                     class="form-control"
                                                                                                     value="<?php ?>"
+                                                                                                    id="lname"
                                                                                                     disabled>
                                 </div>
                             </div>
@@ -92,6 +90,7 @@
                                 <div class="col-md-6"><label class="labels">Username</label><input type="text"
                                                                                                    name="username"
                                                                                                    class="form-control"
+                                                                                                   id="uname"
                                                                                                    value="<?php ?>"
                                                                                                    disabled>
                                 </div>
@@ -99,6 +98,7 @@
                                                                                                         name="birth_date"
                                                                                                         class="form-control"
                                                                                                         value="<?php ?>"
+                                                                                                        id="birth"
                                                                                                         disabled>
                                 </div>
                             </div>
@@ -124,12 +124,12 @@
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
                                                    id="inlineRadio3" value="Male">
-                                            <label class="form-check-label" for="inlineRadio1">Married</label>
+                                            <label class="form-check-label" for="inlineRadio3">Married</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
                                                    id="inlineRadio4" value="Female">
-                                            <label class="form-check-label" for="inlineRadio2">Unmarried</label>
+                                            <label class="form-check-label" for="inlineRadio4">Unmarried</label>
                                         </div>
                                     </div>
                                 </div>
@@ -137,12 +137,14 @@
                             <div class="row mt-2">
                                 <div class="col-md-6"><label class="labels">Email Address</label><input type="text"
                                                                                                         name="email"
+                                                                                                        id="iemail"
                                                                                                         class="form-control"
                                                                                                         value="<?php ?>"
                                                                                                         disabled>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Home address</label><input type="text"
                                                                                                        name="address"
+                                                                                                       id="iaddress"
                                                                                                        class="form-control"
                                                                                                        value="<?php ?>"
                                                                                                        disabled>
@@ -164,7 +166,7 @@
                                 <div class="col-md-12"><label class="labels">Qualifications</label>
                                     <div class="form-floating">
                                     <textarea name="qualification" class="form-control"
-                                              id="floatingTextarea"></textarea>
+                                              id="Textarea" disabled></textarea>
 
                                     </div>
                                 </div>
@@ -183,34 +185,33 @@
                                 <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
                                                                                                          name="phone_umber"
                                                                                                          class="form-control"
-                                                                                                         id="mbnumber"
+                                                                                                         id="mbnum"
                                                                                                          value="<?php ?>"
-                                                                                                         disabled >
+                                                                                                         disabled>
                                 </div>
                             </div>
 
                             <!--                        //dynamic forum elements-->
+                            <script>
+                                var Idname1=[];
+                            </script>
                             <?php
-                            $attributes = $this->allAttributes;
-                            $i=0;
 
-                            foreach ($attributes as $attribute => $val_array) {
+                            foreach ($this->allAttributes as $attribute => $val_array) {
 //                                    dnd($val_array);
-                                    $i+=1;
+
 
 
                                 ?>
                                     <script>
-                                        const Idname =[];
-                                        Idname.push(<?php $attribute.$i?>);
-                                        console.log(Idname);
+                                        Idname1.push('<?= $attribute; ?>') ;
                                     </script>
                                 <div class="row mt-2">
                                     <div class="col-md-12" style="">
                                         <label class="labels">Select <?php echo $attribute; ?></label><br>
                                         <select class="form-select form-select-lg" name="<?php echo $attribute; ?>"
                                                 aria-label=".form-select-lg example"
-                                                style="height: 38px;font-size: 15px; color: dimgrey" disabled id="<?php echo $attribute.$i; ?>">
+                                                style="height: 38px;font-size: 15px; color: dimgrey"  id="<?php echo $attribute; ?>" disabled>
                                             <option value="" selected>select from <?php echo $attribute; ?> menu
                                             </option>
                                             <?php
@@ -250,7 +251,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="row mt-3 " id="remove" style="display: block">
+                            <div class="row mt-3 " id="remove" style="display: block" >
                                 <div class="col-md-12 d-flex justify-content-center">
                                     <button  class="btn btn-danger w-75">
                                         Remove
@@ -277,13 +278,30 @@
 </div>
 <script>
 
-    document.getElementById('btnedit').addEventListener("click", ()=>{
+        document.getElementById('btnedit').addEventListener("click", ()=>{
         document.getElementById('btnsub').style.display='block';
-        document.getElementById('mbnumber').disabled=false;
-        // console.log(Idname);
-        // for (let i = 0; i < Idname.length; i++) {
-        //     document.getElementById(Idname[i]).style.disabled= false;
-        // }
+        document.getElementById('remove').style.display='none';
+        document.getElementById('mbnum').disabled=false;
+        for (let i=0;i<Idname1.length;i++){
+            document.getElementById(Idname1[i]).disabled=false;
+        }
+            document.getElementById('Textarea').disabled=false;
+            document.getElementById('Idnumber').disabled=false;
+            document.getElementById('iaddress').disabled=false;
+            document.getElementById('iemail').disabled=false;
+            document.getElementById('inlineRadio1').disabled=false;
+            document.getElementById('inlineRadio2').disabled=false;
+            document.getElementById('inlineRadio3').disabled=false;
+            document.getElementById('inlineRadio4').disabled=false;
+            document.getElementById('birth').disabled=false;
+            document.getElementById('fname').disabled=false;
+            document.getElementById('lname').disabled=false;
+            document.getElementById('uname').disabled=false;
+
+
+
+
+
 
 
     });
