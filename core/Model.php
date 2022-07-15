@@ -154,7 +154,6 @@ class Model
         if (property_exists($this, 'id') && $this->id != '') {
             return $this->update_table($tbl, $this->id, $fields);
         } else {
-
             return $this->insert_into_table($tbl, $fields);
         }
     }
@@ -189,6 +188,7 @@ class Model
         if (empty($fields)) {
             return false;
         } else {
+
             return $this->_db->create($tableName, $fields);
         }
     }
@@ -279,6 +279,14 @@ class Model
         return $this->_db->getPrimaryValues($table);
     }
 
+    public function update_table($tableName, $col_definition)
+    {
+        if (empty($col_definition)) {
+            return false;
+        } else {
+            return $this->_db->update_table($tableName, $col_definition);
+        }
+    }
 
 }
 

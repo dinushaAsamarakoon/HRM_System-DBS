@@ -95,7 +95,7 @@
                     <div class="card-body shadow  px-lg-5">
                         <h5 class="card-title">Create new table</h5>
                         <p class="card-text">You can define the new database table</p>
-                        <a href="<?= SROOT ?>AdminFunctionHandler/addTable"
+                        <a href="<?= SROOT ?>AdminFunctionHandler/addEmployeeAttribute"
                            class="btn btn-primary justify-content-center"><i class="fa-solid fa-user-plus"></i> Create
                             table</a>
                     </div>

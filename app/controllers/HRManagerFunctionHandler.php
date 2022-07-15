@@ -120,14 +120,14 @@ class HRManagerFunctionHandler extends Controller
 //                    'display' => 'Confirm Password',
 //                    'matches' => 'password'
 //                ],
-//                'contact_no' => [
-//                    'display' => 'Mobile Number',
-//                    'valid_contact' => true
-//                ],
-//                'email' => [
-//                    'display' => 'Email',
-//                    'valid_email' => true
-//                ]
+                'phone_number' => [
+                    'display' => 'Mobile Number',
+                    'valid_contact' => true
+                ],
+                'email' => [
+                    'display' => 'Email',
+                    'valid_email' => true
+                ]
             ]);
 
             if ($validation->passed()) {
@@ -162,13 +162,6 @@ class HRManagerFunctionHandler extends Controller
             $this->view->Employee = $hRManager->getEmployeeDetails($id);
             $this->view->render('employeeDetails/employee');
         }
-    }
-
-    public function viewEmployeeAction($id){
-        $hrManager = HRManager::currentLoggedInEmployee();
-        $this->view->Employee = $hrManager->getEmployeeDetails($id);
-//        dnd($this->view->Employee);
-        $this->view->render('employeeDetails/employee');
     }
 
     public function removeEmployeeAction()
