@@ -109,6 +109,12 @@
                                         <input type="hidden" name="id" value="<?php echo $r['req_id']?>">
                                         <input type="hidden" name="emp_id" value="<?php echo $r['emp_id']?>">
                                         <input type="hidden" name="sup_id" value="<?php echo $r['sup_id']?>">
+                                        <input type="hidden" name="type" value="<?php echo $r['type']?>">
+                                        <input type="hidden" name="duration" value="<?php echo $r['duration']?>">
+                                        <input type="hidden" name="rem_annual" value="<?php echo $r['rem_annual']?>">
+                                        <input type="hidden" name="rem_casual" value="<?php echo $r['rem_casual']?>">
+                                        <input type="hidden" name="rem_maternity" value="<?php echo $r['rem_maternity']?>">
+                                        <input type="hidden" name="rem_no_pay" value="<?php echo $r['rem_no_pay']?>">
                                         <button class="btn btn-success" type="submit" name="status" value="approved">Approve</button>
                                         <button class="btn btn-danger" type="submit" name="status" value="rejected">Reject</button>
                                     </form>
