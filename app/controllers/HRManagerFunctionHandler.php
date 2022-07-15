@@ -270,7 +270,6 @@ class HRManagerFunctionHandler extends Controller
     public function viewAllEmployeesAction(){
         $hrManager = HRManager::currentLoggedInEmployee();
         $this->view->allEmployees = $hrManager->getAllEmployees();
-//        dnd($this->view->allEmployees);
         $this->view->render('employeeDetails/all');
     }
 
