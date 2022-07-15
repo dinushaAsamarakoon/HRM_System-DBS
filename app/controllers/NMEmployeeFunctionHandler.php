@@ -13,9 +13,9 @@ class NMEmployeeFunctionHandler extends Controller
     {
         Session::delete();
         if ($_POST) {
-            $this->EmployeeModel->findByUserName($_POST['username']);
-            if ($this->EmployeeModel && password_verify(Input::get('password'), $this->EmployeeModel->password)) {
-                $this->EmployeeModel->login();
+            $this->NMEmployeeModel->findByUserName($_POST['username']);
+            if ($this->NMEmployeeModel && password_verify(Input::get('password'), $this->NMEmployeeModel->password)) {
+                $this->NMEmployeeModel->login();
                 Router::redirect('NMEmployeeDashboard');
             } else {
                 $this->view->message = "Check Your Username and Password";

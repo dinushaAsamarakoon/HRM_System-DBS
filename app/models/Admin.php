@@ -52,10 +52,14 @@ class Admin extends Employee
         }
     }
 
-    public function addEmployeeAttribute($attributeName, $fields)
+    public function addEmployeeAttribute($attributeName, $fields, $primarykey, $fk_definition)
     {
         if ($attributeName) {
+            $this->_db->begin_transaction();
             $this->create($attributeName, $fields);
+            $this->update_table($this->_table, $primarykey);
+            $this->update_table($this->_table, $fk_definition);
+            $this->_db->commit();
         }
     }
 

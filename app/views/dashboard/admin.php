@@ -59,11 +59,11 @@
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="<?= SROOT ?>Profile/display/<?= $this->id;?>"><i class="fa-solid fa-user"></i> Profile </a>
+                <a href="<?= SROOT ?>Profile/display/<?= $this->id; ?>"><i class="fa-solid fa-user"></i> Profile </a>
             </li>
-            <!--            <li>-->
-            <!--                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>-->
-            <!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>-->
+<!--            </li>-->
             <li>
                 <a href="<?= SROOT ?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
@@ -95,7 +95,7 @@
                     <div class="card-body shadow  px-lg-5">
                         <h5 class="card-title">Create new table</h5>
                         <p class="card-text">You can define the new database table</p>
-                        <a href="<?= SROOT ?>AdminFunctionHandler/addTable"
+                        <a href="<?= SROOT ?>AdminFunctionHandler/addEmployeeAttribute"
                            class="btn btn-primary justify-content-center"><i class="fa-solid fa-user-plus"></i> Create
                             table</a>
                     </div>

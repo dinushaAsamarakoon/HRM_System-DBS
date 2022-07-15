@@ -36,7 +36,7 @@
                     <h2 class="text-center">Profile Details</h2>
                 </div>
                 <?php $p = (array) $this->profile[0];
-//                dnd($p);?>
+                dnd($p);?>
 
                 <div class="row mt-1" >
                     <div class="col-md-6"><label class="labels">First name</label><input type="text" class="form-control"  value="<?php echo $p["first_name"];?>" disabled></div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="row mt-2 ">
                     <div class="col-md-6"><label class="labels">Pay grade</label><input type="text" class="form-control"  value="<?php echo $p['pay_grade'] ?>" disabled></div>
-                    <div class="col-md-6"><label class="labels">Employment status</label><input type="text" class="form-control"  value="<?php echo $p["emp_status"];?>" disabled></div>
+                    <div class="col-md-6"><label class="labels">Employment status id</label><input type="text" class="form-control"  value="<?php echo $p["emp_status_id"];?>" disabled></div>
                 </div>
                 <div class="row mt-2" >
                     <div class="col-md-12"><label class="labels">National identity card number</label><input type="text" class="form-control"  value="" disabled></div>
