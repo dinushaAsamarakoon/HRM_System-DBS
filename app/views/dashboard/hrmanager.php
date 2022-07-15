@@ -100,13 +100,13 @@
 
                                 <div class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
                                     <button class="dropdown-item" type="button">
-                                        <a  class="dropdown-item" id="NmEmployee" href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee" >
+                                        <a  class="dropdown-item" id="NmEmployee" href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/nm_employee" >
                                             Non managerial employee
                                         </a>
                                     </button>
 
                                     <button class="dropdown-item" type="button">
-                                        <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee" class="dropdown-item" id="Supervisor" onclick="addAttribute()">
+                                        <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/supervisor" class="dropdown-item" id="Supervisor" onclick="addAttribute()">
                                             Supervisor
                                         </a>
                                     </button>
