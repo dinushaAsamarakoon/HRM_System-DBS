@@ -48,12 +48,12 @@
                                 <div class="col-2">
                                     Request ID:
                                     <?php
-                                    echo $r["id"] ?>
+                                    echo $r["req_id"] ?>
                                 </div>
                                 <div class="col-2">
-                                    Employee ID:
+                                    Employee:
                                     <?php
-                                    echo $r["emp_id"] ?>
+                                    echo $r["first_name"] . " " . $r["last_name"] ?>
                                 </div>
                                 <div class="col-2">
                                     Type:
@@ -79,29 +79,34 @@
                             <div class="accordion-body">
                                 <div class="container-xl row justify-content-center bg-light">
                                     <div class="row justify-content-left p-2 m-2">
-                                        <h6>Reason: <span>
+                                        <p><strong>Reason: </strong>
                                         <?php echo $r["reason"]; ?>
-                                        </span>
-                                        </h6>
-                                        <h6>From: <span>
+                                        </p>
+                                        <p><strong>From: </strong>
                                         <?php echo $r["start_date"]; ?>
-                                        </span>
-                                        <h6>To: <span>
+                                        </p>
+                                        <p><strong>To: </strong>
                                         <?php echo $r["end_date"]; ?>
-                                        </span>
-                                        </h6><h6>Duration: <span>
+                                        </p>
+                                        <p><strong>Duration: </strong>
                                         <?php if ($r["duration"] == 1) {
                                             echo $r["duration"] . " day";
                                             } else {
                                             echo $r["duration"] . " days";
                                             }
                                             ?>
-                                        </span>
+                                        </p>
+                                        <p><strong>Remaining leaves: </strong>
+                                        <?php echo $r["rem_annual"] . "(annual),"; ?>
+                                        <?php echo $r["rem_casual"] . "(casual),"; ?>
+                                        <?php echo $r["rem_maternity"] . "(maternity),"; ?>
+                                        <?php echo $r["rem_no_pay"] . "(no pay)";?>
+                                        </p>
                                     </div>
                                     <div class="row justify-content-center mb-1">
                                     <div class="col col-xl-2 text-center mb-1">
                                     <form action="<?=SROOT?>EmployeeLeave/approval" method="post">
-                                        <input type="hidden" name="id" value="<?php echo $r['id']?>">
+                                        <input type="hidden" name="id" value="<?php echo $r['req_id']?>">
                                         <input type="hidden" name="emp_id" value="<?php echo $r['emp_id']?>">
                                         <input type="hidden" name="sup_id" value="<?php echo $r['sup_id']?>">
                                         <button class="btn btn-success" type="submit" name="status" value="approved">Approve</button>
