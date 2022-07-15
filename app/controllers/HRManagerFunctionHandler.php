@@ -105,7 +105,6 @@ class HRManagerFunctionHandler extends Controller
 
     public function editEmployeeAction($id)
     {
-        $this->view->selected_emp_id = $id;
         $validation = new Validate();
         if ($_POST) {
 
@@ -271,7 +270,6 @@ class HRManagerFunctionHandler extends Controller
     public function viewAllEmployeesAction(){
         $hrManager = HRManager::currentLoggedInEmployee();
         $this->view->allEmployees = $hrManager->getAllEmployees();
-//        dnd($this->view->allEmployees);
         $this->view->render('employeeDetails/all');
     }
 
