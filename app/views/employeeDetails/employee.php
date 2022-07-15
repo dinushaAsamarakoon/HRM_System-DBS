@@ -1,5 +1,10 @@
 <?php
-//dnd($this->Employee);
+if (isset($this->Employee)) {
+    Router::redirect('HRManagerDashboard');
+} else {
+    Router::redirect('');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +67,7 @@
             <?php
             }
             $p = (array)$this->Employee[0];
-//            dnd($p); ?>
+            //            dnd($p); ?>
             <div class="container rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
                     <div class="col-md-8 border-right  text_area pt-3 ">
@@ -206,7 +211,7 @@
                                 var Idname1 = [];
                             </script>
                             <?php
-//                            dnd($this->allAttributes);
+                            //                            dnd($this->allAttributes);
                             foreach ($this->allAttributes as $attribute => $val_array) {
 //                                    dnd($val_array);
 
@@ -266,13 +271,8 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="row mt-3 " id="remove" style="display: block">
-                                <div class="col-md-12 d-flex justify-content-center">
-                                    <button class="btn btn-danger w-75">
-                                        Remove
-                                    </button>
-                                </div>
-                            </div>
+
+
                             <div class="row mt-3 " id="btnsub" style="display: none">
                                 <div class="col-md-12 d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary w-75" name="submit"
@@ -290,6 +290,19 @@
 
 
 </form>
+
+<form action="<?= SROOT ?>HRManagerFunctionHandler/removeEmployee/<?= $p['id'] ?>">
+    <div class="row mt-3 " id="remove" style="display: block">
+        <div class="col-md-12 d-flex justify-content-center">
+            <button class="btn btn-danger w-75">
+                Remove
+            </button>
+        </div>
+    </div>
+</form>
+>
+
+
 </div>
 <script>
 

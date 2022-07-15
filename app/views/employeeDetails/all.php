@@ -85,7 +85,7 @@
                                     <td><?php echo $employee->last_name; ?></td>
                                     <td><?php echo $employee->dept_name; ?></td>
                                     <td><?php echo $employee->job_title; ?></td>
-                                    <td><a class="btn btn-outline-success" href="<?= SROOT ?>HRManagerFunctionHandler/editEmployee/<?= $employee->id; ?>" target=""><i class="fa-solid fa-circle-info"></i> view</a></td>
+                                    <td><a class="btn btn-outline-success" href="<?= SROOT ?>HRManagerFunctionHandler/editEmployee/<?= $employee->id ?>" target=""><i class="fa-solid fa-circle-info"></i> view</a></td>
                                 </tr>
                                 <?php
                             }
