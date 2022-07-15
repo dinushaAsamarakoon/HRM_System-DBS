@@ -59,9 +59,9 @@
 <div class="container " style="display: block;" id="create_account">
     <?php
     if (Session::get('job_class') == 'admin') { ?>
-    <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee" method="Post">
+    <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post">
         <?php }else if (Session::get('job_class') == 'hr_manager') { ?>
-        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee" method="Post">
+        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post">
             <?php } ?>
             <div class="rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
@@ -230,7 +230,7 @@
                                                 aria-label=".form-select-lg example"
                                                 style="height: 38px;font-size: 15px; color: dimgrey">
 <!--                                            <option value="" selected>select from --><?php //echo $attribute; ?><!-- menu-->
-                                            </option>
+<!--                                            </option>-->
                                             <?php
                                             foreach ($val_array as $val) {
                                                 if (Session::get('job_class') == 'admin') {

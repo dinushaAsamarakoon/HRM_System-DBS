@@ -72,9 +72,9 @@
             <li>
                 <a href="<?= SROOT ?>Profile/display/<?= $this->id; ?>"><i class="fa-solid fa-user"></i>Profile</a>
             </li>
-            <li>
-                <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
-            </li>
+<!--            <li>-->
+<!--                <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>-->
+<!--            </li>-->
             <li>
                 <a href="<?= SROOT ?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
