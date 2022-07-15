@@ -268,6 +268,19 @@ class Model
         return $columns;
     }
 
+    public function assignVal($params)
+    {
+        if (!empty($params)) {
+            foreach ($params as $key => $val) {
+                if (in_array($key, $this->_columnNames)) {
+                    $this->$key = sanitize($val);
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     public function getEmployeeAttributes()
     {
         return $this->_db->getEmployeeAttributes();
