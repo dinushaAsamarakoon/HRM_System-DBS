@@ -55,14 +55,15 @@
 
 <div class="container ">
     <?php
+    $p = (array)$this->Employee[0];
     if (Session::get('job_class') == 'admin') { ?>
-    <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee" method="Post">
+    <form action="<?= SROOT ?>AdminFunctionHandler/editEmployee/<?= $p['id'] ?>" method="Post">
         <?php }else if (Session::get('job_class') == 'hr_manager') { ?>
-        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee" method="Post">
+        <form action="<?= SROOT ?>HRManagerFunctionHandler/editEmployee/<?= $p['id'] ?>" method="Post">
             <?php
             }
-            $p = (array)$this->Employee[0];
-//            dnd($p); ?>
+
+                        dnd($p); ?>
             <div class="container rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
                     <div class="col-md-8 border-right  text_area pt-3 ">
@@ -90,14 +91,6 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <!--                                <div class="col-md-6"><label class="labels">Username</label><input type="text"-->
-                                <!--                                                                                                   name="username"-->
-                                <!--                                                                                                   class="form-control"-->
-                                <!--                                                                                                   id="uname"-->
-                                <!--                                                                                                   value="-->
-                                <!--"-->
-                                <!--                                                                                                   disabled>-->
-                                <!--                                </div>-->
                                 <div class="col-md-6"><label class="labels">Date of Birth</label><input type="date"
                                                                                                         name="birth_date"
                                                                                                         class="form-control"
@@ -163,7 +156,28 @@
                             </div>
 
                             <!--                        //dynamic forum elements-->
+                            <div class="row mt-2">
+                                <div class="col-md-6"><label class="labels">Emergency contract Number</label><input
+                                            type="text"
+                                            name="emergency_contract"
+                                            class="form-control"
+                                            value="<?php echo $p["emergency_contact"];?>"
+                                            placeholder="Enter emergency contract number">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="labels">Department name </label><br>
+                                    <select class="form-select form-select-lg" name="dept_name"
+                                            aria-label=".form-select-lg example"
+                                            style="height: 38px;font-size: 15px; color: dimgrey">
 
+                                        <?php foreach ($this->depts as $dept) {
+//                                                dnd($dept);?>
+                                            <option value="<?php echo $dept->dept_name; ?>" <?php if ($dept->dept_name == $p["dept_name"]){ ?>selected<?php } ?>><?php echo $dept->dept_name; ?></option>
+                                        <?php } ?>
+
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="row mt-2">
                                 <div class="col-md-12">
@@ -206,11 +220,7 @@
                                 var Idname1 = [];
                             </script>
                             <?php
-//                            dnd($this->allAttributes);
                             foreach ($this->allAttributes as $attribute => $val_array) {
-//                                    dnd($val_array);
-
-
                                 ?>
                                 <script>
                                     Idname1.push('<?= $attribute; ?>');
@@ -222,9 +232,6 @@
                                                 aria-label=".form-select-lg example"
                                                 style="height: 38px;font-size: 15px; color: dimgrey"
                                                 id="<?php echo $attribute; ?>" disabled>
-                                            <!--                                            <option value="" selected>select from -->
-                                            <?php //echo $attribute; ?><!-- menu-->
-                                            <!--                                            </option>-->
                                             <?php
                                             foreach ($val_array as $val) {
                                                 if (Session::get('job_class') == 'admin') {
@@ -258,7 +265,28 @@
                                         </select>
                                     </div>
                                 </div>
+                            <?php }
+                            if ($p["job_title"] == 'supervisor') { ?>
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <label class="labels">Supervisor level </label><br>
+                                        <select class="form-select form-select-lg" name="sup_level"
+                                                aria-label=".form-select-lg example"
+                                                style="height: 38px;font-size: 15px; color: dimgrey">
+
+                                            <?php foreach ($this->sup_levels as $level) {
+                                                ?>
+                                                <option value="<?= $level->sup_level ?>"
+                                                        <?php if ($level->sup_level == $p[$attribute]){ ?>selected<?php } ?>><?= $level->sup_level ?></option>
+
+                                            <?php } ?>
+
+
+                                        </select>
+                                    </div>
+                                </div>
                             <?php } ?>
+                            <br> <br> <br>
                             <div class="row mt-5 " style="display: block">
                                 <div class="col-md-12 d-flex justify-content-center">
                                     <button type="button" class="btn btn-success w-75" id="btnedit">

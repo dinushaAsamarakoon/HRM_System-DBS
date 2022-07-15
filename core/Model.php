@@ -137,6 +137,7 @@ class Model
                 $tbl = $this->_table1;
                 $columnNames = $this->_columnNames1;
                 $fields['current_employee'] = 1;
+//                dnd($fields);
                 break;
             case 2:
                 $tbl = $this->_table2;
@@ -148,30 +149,19 @@ class Model
                 $fields[$column] = $this->_db->lastId();
             } else {
                 $fields[$column] = $this->$column;
+//                dnd($fields);
+
             }
         }
+        dnd($fields);
         // determine whether to update or insert
         if (property_exists($this, 'id') && $this->id != '') {
             return $this->update_table($tbl, $this->id, $fields);
         } else {
+
             return $this->insert_into_table($tbl, $fields);
         }
     }
-
-//    public function saveWithoutId($table, $columns)
-//    {
-//        $fields = [];
-//        foreach ($columns as $column) {
-//            $fields[$column] = $this->$column;
-//        }
-//
-//        // determine whether to update or insert
-////        if (property_exists($this, 'id') && $this->id != '') {
-////            return $this->update($this->id, $fields);
-////        } else {
-//        return $this->insertAttributeType($table, $fields);
-////        }
-//    }
 
     public function insert_into_table($tbl, $fields)
     {

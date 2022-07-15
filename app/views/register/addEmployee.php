@@ -59,9 +59,9 @@
 <div class="container " style="display: block;" id="create_account">
     <?php
     if (Session::get('job_class') == 'admin') { ?>
-    <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post">
+    <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee/<?= $this->emp_type ?>" method="Post">
         <?php }else if (Session::get('job_class') == 'hr_manager') { ?>
-        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post">
+        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/<?= $this->emp_type ?>" method="Post">
             <?php } ?>
             <div class="rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
@@ -123,12 +123,12 @@
                                         <label class="form-label"> Marital status </label><br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
-                                                   id="inlineRadio3" value="Male">
+                                                   id="inlineRadio3" value="Married">
                                             <label class="form-check-label" for="inlineRadio3">Married</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
-                                                   id="inlineRadio4" value="Female">
+                                                   id="inlineRadio4" value="Single">
                                             <label class="form-check-label" for="inlineRadio4">Unmarried</label>
                                         </div>
 
@@ -155,9 +155,9 @@
 
 
                             <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels">Emergency contract Number</label><input
+                                <div class="col-md-6"><label class="labels">Emergency contact Number</label><input
                                             type="text"
-                                            name="emergency_contract"
+                                            name="emergency_contact"
                                             class="form-control"
                                             value=""
                                             placeholder="Enter emergency contract number">
@@ -181,7 +181,7 @@
                             <div class="col-md-12">
                                 <label for=" Idnumber" class="form-label">National Identity card number</label>
                                 <input type="text" class="form-control" id="Idnumber"
-                                       placeholder="Enter employee's national ID card number" name="IdCardNumber">
+                                       placeholder="Enter employee's national ID card number" name="NIC">
 
                             </div>
                             <div class="row mt-2">
@@ -214,12 +214,7 @@
 
                             <!--                        //dynamic forum elements-->
                             <?php
-                            $attributes = $this->allAttributes;
-                            foreach ($attributes
-
-                                     as $attribute => $val_array) {
-                                //dnd($val_array);
-
+                            foreach ($this->allAttributes as $attribute => $val_array) {
                                 ?>
                                 <div class="row mt-2">
                                     <div class="col-md-12" style="">
@@ -229,8 +224,6 @@
                                         <select class="form-select form-select-lg" name="<?php echo $attribute; ?>"
                                                 aria-label=".form-select-lg example"
                                                 style="height: 38px;font-size: 15px; color: dimgrey">
-<!--                                            <option value="" selected>select from --><?php //echo $attribute; ?><!-- menu-->
-<!--                                            </option>-->
                                             <?php
                                             foreach ($val_array as $val) {
                                                 if (Session::get('job_class') == 'admin') {
@@ -262,8 +255,28 @@
                                 </div>
 
 
-                            <?php }
-                            if ($this->emp_type == 'supervisor') { ?>
+                            <?php } ?>
+
+
+                            <div class="row mt-2">
+                                <div class="col-md-12" style="">
+                                    <label class="labels">Select Supervisor's ID</label><br>
+                                    <select class="form-select form-select-lg" name="sup_id"
+                                            aria-label=".form-select-lg example"
+                                            style="height: 38px;font-size: 15px; color: dimgrey">
+                                        <?php
+                                        foreach ($this->sup_ids as $sup) { ?>
+
+                                            <option value="<?php echo $sup->id; ?>"><?php echo $sup->id; ?></option>
+                                            <?php
+
+
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <?php if ($this->emp_type == 'supervisor') { ?>
                                 <div class="row mt-2">
                                     <div class="col-md-12">
                                         <label class="labels">Supervisor level </label><br>

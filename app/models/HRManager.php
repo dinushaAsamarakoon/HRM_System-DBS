@@ -102,4 +102,15 @@ class HRManager extends Employee
     public function getSupLevels(){
         return $this->_db->query("SELECT sup_level FROM supervisor")->results();
     }
+
+    public function getSupervisorLevel($sup_id){
+        return $this->_db->find('supervisor', [
+            'conditions' => 'id=?',
+            'bind' => [$sup_id]
+        ]);
+    }
+
+    public function getSupIds(){
+        return $this->_db->query("SELECT id FROM supervisor")->results();
+    }
 }

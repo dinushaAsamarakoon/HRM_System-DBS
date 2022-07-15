@@ -95,6 +95,8 @@ class HRManagerFunctionHandler extends Controller
             $this->view->emp_status_columns = $hRManager->get_columns_table('emp_status');
             $this->view->emp_type = $emp_type;
             $this->view->sup_levels = $hRManager->getSupLevels();
+            $this->view->sup_ids = $hRManager->getSupIds();
+//            dnd($this->view->sup_ids);
 //            dnd($this->view->sup_levels);
 //            dnd($this->view->emp_status_columns);
 //            dnd($this->view->emp_status);
@@ -160,8 +162,12 @@ class HRManagerFunctionHandler extends Controller
             $this->view->emp_status = $hRManager->getEmpStatus();
             $this->view->emp_status_columns = $hRManager->get_columns_table('emp_status');
             $this->view->sup_levels = $hRManager->getSupLevels();
-
-            $this->view->Employee = $hRManager->getEmployeeDetails($id);
+            $emp_details = $hRManager->getEmployeeDetails($id);
+            $this->view->Employee = $emp_details;
+//            dnd($emp_details[0]->job_title);
+            if($emp_details[0]->job_title=='supervisor'){
+                dnd($hRManager->getSupervisorLevel($id));
+            }
             $this->view->render('employeeDetails/employee');
         }
     }
@@ -290,7 +296,6 @@ class HRManagerFunctionHandler extends Controller
     public function viewAllEmployeesAction(){
         $hrManager = HRManager::currentLoggedInEmployee();
         $this->view->allEmployees = $hrManager->getAllEmployees();
-//        dnd($this->view->allEmployees);
         $this->view->render('employeeDetails/all');
     }
 
