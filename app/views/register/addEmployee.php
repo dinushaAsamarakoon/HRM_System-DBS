@@ -79,13 +79,13 @@
                                                                                                      name="first_name"
                                                                                                      class="form-control"
                                                                                                      value=""
-                                                                                                     placeholder="Enter employee's first name">
+                                                                                                     placeholder="Enter employee's first name" required>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
                                                                                                     name="last_name"
                                                                                                     class="form-control"
                                                                                                     value=""
-                                                                                                    placeholder="Enter employee's last name">
+                                                                                                    placeholder="Enter employee's last name" required>
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -93,13 +93,13 @@
                                                                                                    name="username"
                                                                                                    class="form-control"
                                                                                                    value=""
-                                                                                                   placeholder="Enter employee's last name">
+                                                                                                   placeholder="Enter employee's last name" required>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Date of Birth</label><input type="date"
                                                                                                         name="birth_date"
                                                                                                         class="form-control"
                                                                                                         value=""
-                                                                                                        placeholder="Enter employee's birthday">
+                                                                                                        placeholder="Enter employee's birthday" required>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -108,12 +108,12 @@
                                         <label class="form-label"> Gender </label><br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
-                                                   value="Male">
+                                                   value="Male" required>
                                             <label class="form-check-label" for="inlineRadio1">Male</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
-                                                   value="Female">
+                                                   value="Female" required>
                                             <label class="form-check-label" for="inlineRadio2">Female</label>
                                         </div>
                                     </div>
@@ -123,12 +123,12 @@
                                         <label class="form-label"> Marital status </label><br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
-                                                   id="inlineRadio3" value="Male">
+                                                   id="inlineRadio3" value="Male" required>
                                             <label class="form-check-label" for="inlineRadio3">Married</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
-                                                   id="inlineRadio4" value="Female">
+                                                   id="inlineRadio4" value="Female" required>
                                             <label class="form-check-label" for="inlineRadio4">Unmarried</label>
                                         </div>
 
@@ -140,13 +140,13 @@
                                                                                                         name="email"
                                                                                                         class="form-control"
                                                                                                         value=""
-                                                                                                        placeholder="Enter mployee's email address">
+                                                                                                        placeholder="Enter mployee's email address" required>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Home address</label><input type="text"
                                                                                                        name="address"
                                                                                                        class="form-control"
                                                                                                        value=""
-                                                                                                       placeholder="Enter employee's resident address">
+                                                                                                       placeholder="Enter employee's resident address" required>
                                 </div>
 
                             </div>
@@ -160,13 +160,13 @@
                                             name="emergency_contract"
                                             class="form-control"
                                             value=""
-                                            placeholder="Enter emergency contract number">
+                                            placeholder="Enter emergency contract number" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="labels">Department name </label><br>
                                     <select class="form-select form-select-lg" name="dept_name"
                                             aria-label=".form-select-lg example"
-                                            style="height: 38px;font-size: 15px; color: dimgrey">
+                                            style="height: 38px;font-size: 15px; color: dimgrey" required>
                                         <!--                                        --><?php //dnd($this->depts);?>
                                         <?php foreach ($this->depts as $dept) {
 //                                                dnd($dept);?>
@@ -181,28 +181,20 @@
                             <div class="col-md-12">
                                 <label for=" Idnumber" class="form-label">National Identity card number</label>
                                 <input type="text" class="form-control" id="Idnumber"
-                                       placeholder="Enter employee's national ID card number" name="IdCardNumber">
+                                       placeholder="Enter employee's national ID card number" name="IdCardNumber" required>
 
                             </div>
-                            <div class="row mt-2">
+                            <div class="row mt-2 mb-3">
                                 <div class="col-md-12"><label class="labels">Qualifications</label>
                                     <div class="form-floating">
                                     <textarea name="qualification" class="form-control"
-                                              id="floatingTextarea"></textarea>
+                                              id="floatingTextarea"></textarea required>
 
                                     </div>
                                 </div>
 
                             </div>
 
-                        </div>
-                        <div class="row mt-2 mb-3">
-                        <div class="col-md-12">
-                            <label for=" reg_date" class="form-label">Registration date</label>
-                            <input type="date" class="form-control" id="reg_date"
-                                   placeholder="Enter employee's registration date" name="reg_date">
-
-                        </div>
                         </div>
 
                     </div>
@@ -214,7 +206,7 @@
                                                                                                          name="phone_number"
                                                                                                          class="form-control"
                                                                                                          value=""
-                                                                                                         placeholder="Enter employee's mobile number">
+                                                                                                         placeholder="Enter employee's mobile number" required>
                                 </div>
                             </div>
 
