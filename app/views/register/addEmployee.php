@@ -130,12 +130,12 @@
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
                                                    id="inlineRadio3" value="Male">
-                                            <label class="form-check-label" for="inlineRadio1">Married</label>
+                                            <label class="form-check-label" for="inlineRadio3">Married</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
                                                    id="inlineRadio4" value="Female">
-                                            <label class="form-check-label" for="inlineRadio2">Unmarried</label>
+                                            <label class="form-check-label" for="inlineRadio4">Unmarried</label>
                                         </div>
 
                                     </div>
