@@ -19,10 +19,10 @@
 
                 <ul class="nav  " id="pills-tab" role="tablist">
 
-                    <li class="nav-item ">
+                    <!-- <li class="nav-item ">
                         <a class="nav-link" id="pills-notification-tab" data-toggle="pill" href="#pills-notifications" role="tab" aria-controls="pills-notifications" aria-selected="false"><i class="fa-regular fa-bell"></i></a>
 
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link active " id="pills-logout-tab" data-toggle=""
                            href="<?= SROOT ?>SupervisorFunctionHandler/logout"
@@ -56,6 +56,7 @@
                 <a href="<?=SROOT?>Profile/display/<?= $this->id;?>"><i class="fa-solid fa-user" ></i> Profile </a>
             </li>
             <li>
+
                 <a onclick="showNotifications()">
                     <i class="fa-solid fa-message"></i> Notifications
                     <span class="border border-white rounded">
@@ -82,6 +83,7 @@
                 </div>
             </li>
             <li>
+
                 <a href="<?=SROOT?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
