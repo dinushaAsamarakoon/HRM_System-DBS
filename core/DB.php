@@ -54,7 +54,7 @@ class DB
     {
         $fieldString = '';
         foreach ($fields as $field => $value) {
-            $fieldString .= '`' . $field . ' ' . $value . '`,';
+            $fieldString .= '`' . $field . '` ' . $value . ',';
         }
         $fieldString = rtrim($fieldString, ',');
         $sql = "CREATE TABLE {$table} ({$fieldString} );";
@@ -258,5 +258,13 @@ class DB
 
     public function rollback(){
         $this->_pdo->rollBack();
+    }
+
+    public function update_table($tableName, $definition)
+    {
+
+            $sql = "ALTER TABLE {$tableName} ADD {$definition}";
+
+
     }
 }

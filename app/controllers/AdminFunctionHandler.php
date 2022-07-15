@@ -138,12 +138,26 @@ class AdminFunctionHandler extends Controller
     {
         if ($_POST) {
             $admin = Admin::currentLoggedInEmployee();
-            $admin->addEmployeeAttribute($_POST['tableName'], $_POST['fields']);
+            $fields = [];
+            $col_definition = '';
+            for ($i=1; $i<=$_POST['columns'];$i++){
+                $temp=isset($_POST['primary'.$i]) ? ' PRIMARY KEY':'';
+                $fields[$_POST['column'.$i]] = $_POST['type'.$i].'('.$_POST['length'.$i].')'.$temp;
+                if ($temp!='') {
+                    $col_definition = $_POST['column' . $i] . ' ' . $_POST['type' . $i] . '(' . $_POST['length' . $i] . ')';
+                    $fk_definition = 'FOREIGN KEY ('. $_POST['column'.$i]. ') REFERENCES '.$_POST['table'].'('.$_POST['column'.$i].');';
+                }
+            }
+            $admin->addEmployeeAttribute($_POST['table'], $fields, $col_definition, $fk_definition);
+            $this->view->render('createTable/createTable');
+        } else {
+            $this->view->render('createTable/createTable');
         }
     }
-    public function addTableAction()
-    {
-        $this->view->render('createTable/createTable');
-    }
+
+//    public function addTableAction()
+//    {
+//        $this->view->render('createTable/createTable');
+//    }
 
 }

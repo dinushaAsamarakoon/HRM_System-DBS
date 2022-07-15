@@ -60,9 +60,9 @@
 <div class="container ">
     <?php
     if (Session::get('job_class') == 'admin') { ?>
-    <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee" method="Post">
+    <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee/<?=$this->emp_type?>" method="Post">
         <?php }else if (Session::get('job_class') == 'hr_manager') { ?>
-        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee" method="Post">
+        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/<?=$this->emp_type?>" method="Post">
             <?php } ?>
             <div class="container rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
