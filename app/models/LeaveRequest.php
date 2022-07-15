@@ -23,7 +23,7 @@ class LeaveRequest extends Model {
     }
     
     public function getPendingRequests($sup_id){
-        return $this->_db->find('leave_request',[
+        return $this->_db->find('req_info',[
             'conditions' => 'sup_id=? and status=?',
             'bind' => [$sup_id, 'pending']
         ]);
