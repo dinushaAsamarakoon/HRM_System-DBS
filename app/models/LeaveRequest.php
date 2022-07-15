@@ -18,7 +18,7 @@ class LeaveRequest extends Model {
         $params['apply_date'] = date('Y-m-d');
         $params['duration'] = 1 + (strtotime($params['end_date']) - strtotime($params['start_date'])) / (60*60*24);
         $params['status'] = 'pending';
-        $params['dept_name'] = 'NMI';
+        $params['dept_name'] = $emp->dept_name;
         $params['completed'] = '0';
         $this->assign($params);
         $this->save();
@@ -47,8 +47,8 @@ class LeaveRequest extends Model {
     
     public function getIncompleteRequests($id){
         return $this->_db->find('leave_request',[
-            'conditions' => 'id=? and completed=?',
-            'bind' => [$id, false]
+            'conditions' => 'emp_id=? and completed=? and status!=?',
+            'bind' => [$id, false, 'pending']
         ]);
     }
 
