@@ -35,8 +35,8 @@
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h2 class="text-right"><b>Leave Record</b></h2>
                     </div>
-                        <?php if ($this->record) {
-                            $r = (array) $this->record[0]; ?>
+                    <?php if ($this->record) {
+                        $r = (array) $this->record[0]; ?>
                         <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
                             <h5 class="text-right"><b>Remaining Leaves</b></h5>
                         </div>
@@ -60,72 +60,72 @@
                                 <label class="form-control text-center" id="noPayCount" name="noPayCount"><?php echo $r['rem_no_pay'];?></label>
                             </div>
                         </div>
-                        <?php } ?>
-                        <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
-                            <h5 class="text-right"><b>Leave Requests</b></h5>
-                        </div>
-                        
-                        <div class="row justify-content-center">
+                    <?php } ?>
+                    <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+                        <h5 class="text-right"><b>Leave Requests</b></h5>
+                    </div>
+
+                    <div class="row justify-content-center">
                         <div class="table-responsive no-wrap">
                             <table class="table table-hover table-borderless align-middle no-wrap">
                                 <thead class="thead table-primary">
-                                    <tr class="text-center">
-                                        <th>ID</th>
-                                        <th>Type</th>
-                                        <th>Requested Date</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Duration</th>
-                                        <th>Reason</th>
-                                        <th>Status</th>
-                                    </tr>
+                                <tr class="text-center">
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Requested Date</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Duration</th>
+                                    <th>Reason</th>
+                                    <th>Status</th>
+                                </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                <?php $requests = $this->requests; 
-                                    if($requests) {
+                                <?php $requests = $this->requests;
+                                if($requests) {
                                     foreach ($requests as $request) {
                                         $r = (array) $request;?>
                                         <tr class="border-top">
                                             <th>
-                                            <?php echo $r['id'];?>
+                                                <?php echo $r['id'];?>
                                             </th>
                                             <td>
-                                            <?php echo ucwords($r['type']); ?>
+                                                <?php echo ucwords($r['type']); ?>
                                             </td>
                                             <td>
-                                            <?php echo $r['apply_date'];?>
+                                                <?php echo $r['apply_date'];?>
                                             </td>
                                             <td>
-                                            <?php echo $r['start_date'];?>
+                                                <?php echo $r['start_date'];?>
                                             </td>
                                             <td>
-                                            <?php echo $r['end_date'];?>
+                                                <?php echo $r['end_date'];?>
                                             </td>
                                             <td>
-                                            <?php if ($r["duration"] == 1) {
-                                                echo $r["duration"] . " day";
-                                            } else {
-                                                echo $r["duration"] . " days";
-                                            }
-                                            ?>
+                                                <?php if ($r["duration"] == 1) {
+                                                    echo $r["duration"] . " day";
+                                                } else {
+                                                    echo $r["duration"] . " days";
+                                                }
+                                                ?>
                                             </td>
                                             <td>
-                                            <?php echo $r['reason'];?>
+                                                <?php echo $r['reason'];?>
                                             </td>
                                             <td>
-                                            <?php echo ucwords($r['status']);?>
+                                                <?php echo ucwords($r['status']);?>
                                             </td>
                                         </tr>
-                                <?php } } ?>
+                                    <?php } } ?>
                                 </tbody>
                             </table>
-                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>

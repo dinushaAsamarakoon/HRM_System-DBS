@@ -195,7 +195,14 @@
 
                             </div>
 
+                        </div>
+                        <div class="row mt-2 mb-3">
+                        <div class="col-md-12">
+                            <label for=" reg_date" class="form-label">Registration date</label>
+                            <input type="date" class="form-control" id="reg_date"
+                                   placeholder="Enter employee's registration date" name="reg_date">
 
+                        </div>
                         </div>
 
                     </div>
@@ -215,9 +222,7 @@
                             <!--                        //dynamic forum elements-->
                             <?php
                             $attributes = $this->allAttributes;
-                            foreach ($attributes
-
-                                     as $attribute => $val_array) {
+                            foreach ($attributes as $attribute => $val_array) {
                                 //dnd($val_array);
 
                                 ?>

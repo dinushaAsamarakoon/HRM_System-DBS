@@ -105,7 +105,7 @@ class HRManagerFunctionHandler extends Controller
 
     public function editEmployeeAction($id)
     {
-
+        $this->view->selected_emp_id = $id;
         $validation = new Validate();
         if ($_POST) {
 
@@ -166,31 +166,12 @@ class HRManagerFunctionHandler extends Controller
         }
     }
 
-    public function removeEmployeeAction()
+    public function removeEmployeeAction($id)
     {
-        $validation = new Validate();
-        if ($_POST) {
-
-            $validation->check($_POST, [
-                'username' => [
-                    'display' => 'Username',
-                    'valid_username' => 'user'
-                ]
-            ]);
-//                dnd($validation->passed());
-            if ($validation->passed()) {
-                $this->EmployeeModel = HRManager::currentLoggedInEmployee();
-                $removingEmployee = $this->EmployeeModel->showRemovingEmployee($_POST);
-                $this->view->removingEmployee = $removingEmployee;
-                $this->view->render('register/addEmployee');
-            } else {
-                $this->view->displayErrors = $validation->displayErrors();
-                $this->view->render('register/addEmployee');
-            }
-        } else {
-            $this->view->render('register/addEmployee');
-        }
-
+        $this->HRManagerModel->removeEmployee('employee', 'id', $id);
+        $hrManager = HRManager::currentLoggedInEmployee();
+        $this->view->allEmployees = $hrManager->getAllEmployees();
+        $this->view->render('employeeDetails/all');
 
     }
 
