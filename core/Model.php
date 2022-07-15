@@ -137,7 +137,6 @@ class Model
                 $tbl = $this->_table1;
                 $columnNames = $this->_columnNames1;
                 $fields['current_employee'] = 1;
-//                dnd($fields);
                 break;
             case 2:
                 $tbl = $this->_table2;
@@ -148,17 +147,18 @@ class Model
             if ($column === 'id' && $table_id != 1) {
                 $fields[$column] = $this->_db->lastId();
             } else {
-                $fields[$column] = $this->$column;
-//                dnd($fields);
-
+                if ($column != 'current_employee')
+                    $fields[$column] = $this->$column;
+                if ($column === 'registration_date') {
+                    date_default_timezone_set('Asia/Colombo');
+                    $fields[$column] = date('Y-m-d');
+                }
             }
         }
-        dnd($fields);
         // determine whether to update or insert
         if (property_exists($this, 'id') && $this->id != '') {
             return $this->update_table($tbl, $this->id, $fields);
         } else {
-
             return $this->insert_into_table($tbl, $fields);
         }
     }
@@ -256,6 +256,19 @@ class Model
             }
         }
         return $columns;
+    }
+
+    public function assignVal($params)
+    {
+        if (!empty($params)) {
+            foreach ($params as $key => $val) {
+                if (in_array($key, $this->_columnNames)) {
+                    $this->$key = sanitize($val);
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     public function getEmployeeAttributes()

@@ -10,7 +10,7 @@ class NMEmployeeDashboard extends Controller{
 
     public function indexAction() {
         $this->view->id = NMEmployee::currentLoggedInEmployee()->id;
-        $this->view->notifications = $this->LeaveRequestModel->getIncompleteRequests('3');
+        $this->view->notifications = $this->LeaveRequestModel->getIncompleteRequests(NMEmployee::currentLoggedInEmployee()->id);
         $this->view->render('dashboard/nmemployee');
     }
     

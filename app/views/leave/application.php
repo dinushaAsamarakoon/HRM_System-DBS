@@ -74,7 +74,7 @@
                             </div>
                             
                             <div  class="row mt-3">
-                                <div class="col-md-6"><label class="labels" >Reason</label><input type="text" name="reason" class="form-control"  value="" placeholder="Reason..." required></div>
+                                <div class="col-md-6"><label class="labels" >Reason</label><textarea name="reason" cols="50" rows="3" class="form-control" required></textarea></div>
                             </div>
                             <div  class="row mt-3">
                                 <div class="col-md-6">

@@ -1,5 +1,8 @@
 <?php
-//dnd($this->Employee);
+if (!isset($this->allAttributes)) {
+    Router::redirect('HRManagerDashboard');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +66,7 @@
             <?php
             }
 
-                        dnd($p); ?>
+//                        dnd($p); ?>
             <div class="container rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
                     <div class="col-md-8 border-right  text_area pt-3 ">
@@ -157,9 +160,9 @@
 
                             <!--                        //dynamic forum elements-->
                             <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels">Emergency contract Number</label><input
+                                <div class="col-md-6"><label class="labels">Emergency contact Number</label><input
                                             type="text"
-                                            name="emergency_contract"
+                                            name="emergency_contact"
                                             class="form-control"
                                             value="<?php echo $p["emergency_contact"];?>"
                                             placeholder="Enter emergency contract number">
@@ -183,7 +186,7 @@
                                 <div class="col-md-12">
                                     <label for=" Idnumber" class="form-label">National Identity card number</label>
                                     <input type="text" class="form-control" id="Idnumber"
-                                           value="<?php echo $p["NIC"]; ?>" name="IdCardNumber" disabled>
+                                           value="<?php echo $p["NIC"]; ?>" name="NIC" disabled>
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -294,13 +297,8 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="row mt-3 " id="remove" style="display: block">
-                                <div class="col-md-12 d-flex justify-content-center">
-                                    <button class="btn btn-danger w-75">
-                                        Remove
-                                    </button>
-                                </div>
-                            </div>
+
+
                             <div class="row mt-3 " id="btnsub" style="display: none">
                                 <div class="col-md-12 d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary w-75" name="submit"
@@ -318,6 +316,19 @@
 
 
 </form>
+
+<form action="<?= SROOT ?>HRManagerFunctionHandler/removeEmployee/<?= $p['id'] ?>">
+    <div class="row mt-3 " id="remove" style="display: block">
+        <div class="col-md-12 d-flex justify-content-center">
+            <button class="btn btn-danger w-75">
+                Remove
+            </button>
+        </div>
+    </div>
+</form>
+>
+
+
 </div>
 <script>
 
