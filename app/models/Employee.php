@@ -45,7 +45,6 @@ class Employee extends Model
 
     }
 
-
     public
     function getPersonalInfo($id)
     {

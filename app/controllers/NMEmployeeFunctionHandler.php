@@ -7,6 +7,7 @@ class NMEmployeeFunctionHandler extends Controller
     {
         parent::__construct($controller, $action);
         $this->load_model('NMEmployee');
+        $this->load_model('LeaveRequest');
     }
 
     public function loginAction()
@@ -35,8 +36,8 @@ class NMEmployeeFunctionHandler extends Controller
 
     public function completeRequestAction()
     {
-        $this->EmployeeLeaveModel->update($_POST['id'],[
-            'completed'=>'true'
+        $this->LeaveRequestModel->update($_POST['id'],[
+            'completed'=>true
         ]);
         Router::redirect('NMEmployeeDashboard');
     }
