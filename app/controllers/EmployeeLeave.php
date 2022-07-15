@@ -37,8 +37,8 @@ class EmployeeLeave extends Controller {
     }
 
     public function recordAction() {
-        $this->view->record = $this->LeaveRecordModel->getLeaveRecord('3');
-        $this->view->requests = $this->LeaveRequestModel->getRequestsByEmployee('3');
+        $this->view->record = $this->LeaveRecordModel->getLeaveRecord(NMEmployee::currentLoggedInEmployee()->id);
+        $this->view->requests = $this->LeaveRequestModel->getRequestsByEmployee(NMEmployee::currentLoggedInEmployee()->id);
         $this->view->render('leave/index');
     }
 
