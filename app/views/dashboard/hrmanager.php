@@ -76,7 +76,7 @@
                 <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
             </li>
             <li>
-                <a href="<?= SROOT ?>app/"><i class="fa-solid fa-circle-question"></i> Help</a>
+                <a href="<?= SROOT ?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
     </nav>
@@ -106,7 +106,9 @@
                                     </button>
 
                                     <button class="dropdown-item" type="button">
+
                                         <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/supervisor" class="dropdown-item" id="Supervisor" onclick="addAttribute()">
+
                                             Supervisor
                                         </a>
                                     </button>
