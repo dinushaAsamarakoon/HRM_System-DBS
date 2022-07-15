@@ -84,29 +84,27 @@
             </li>
             <li>
                 <a onclick="showNotifications()">
-                    <i class="fa-solid fa-message"></i> Notifications
-                    <span class="border border-white rounded">
+                <i class="fa-solid fa-message"></i> Notifications
                 <?php if ($this->notifications) {
                     echo count($this->notifications);
                 } else {
                     echo 0;
                 } ?>
-                </span>
 
-                </a>
-                <div class="notifications text-center flex" id="n_list" style="visibility: hidden">
-                    <?php $notifications = $this->notifications;
-                    if ($notifications) {
-                        foreach ($notifications as $notification) { ?>
-                            <form action="<?= SROOT ?>NMEmployeeFunctionHandler/completeRequest" method="post">
-                                <?php $n = (array)$notification;
-                                echo 'Request ' . $n['status'] . ': ' . $n['reason']; ?>
-                                <input type="hidden" name="id" value="<?php echo $n['id'] ?>">
-                                <button class="btn btn-light p-1" type="submit">Mark as read</button>
-                            </form>
-                        <?php }
-                    } ?>
-                </div>
+            </a>
+            <div class="notifications text-center flex" id="n_list" style="visibility: hidden">
+                <?php $notifications = $this->notifications;
+                if ($notifications) {
+                    foreach ($notifications as $notification) { ?>
+                        <form action="<?= SROOT ?>NMEmployeeFunctionHandler/completeRequest" method="post">
+                            <?php $n = (array)$notification;
+                            echo 'Request ' . $n['status'] . ': ' . $n['reason']; ?>
+                            <input type="hidden" name="id" value="<?php echo $n['id'] ?>">
+                            <button class="btn btn-light p-1" type="submit">Mark as read</button>
+                        </form>
+                    <?php }
+                } ?>
+            </div>
             </li>
             <li>
                 <a href="<?= SROOT ?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
