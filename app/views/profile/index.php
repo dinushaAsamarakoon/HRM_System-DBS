@@ -59,7 +59,7 @@
                 </div>
                 <div class="row mt-2 ">
                     <div class="col-md-6"><label class="labels">Pay grade</label><input type="text" class="form-control"  value="<?php echo $p['pay_grade'] ?>" disabled></div>
-                    <div class="col-md-6"><label class="labels">Employment status</label><input type="text" class="form-control"  value="<?php echo $p["emp_status"];?>" disabled></div>
+                    <div class="col-md-6"><label class="labels">Employment status id</label><input type="text" class="form-control"  value="<?php echo $p["emp_status_id"];?>" disabled></div>
                 </div>
                 <div class="row mt-2" >
                     <div class="col-md-12"><label class="labels">National identity card number</label><input type="text" class="form-control"  value="" disabled></div>
