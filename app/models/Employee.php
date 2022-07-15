@@ -20,6 +20,7 @@ class Employee extends Model
         $this->findFirst(['conditions' => 'username=? ', 'bind' => [$username]]);
     }
 
+
     public function login()
     {
         Session::set($this->_sessionName, $this->id);

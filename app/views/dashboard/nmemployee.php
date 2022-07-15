@@ -66,20 +66,26 @@
         <br> <br> <br>
 
         <ul class="list-unstyled components " id="list1">
+
+
             <li>
-                <a href="<?=SROOT?>Profile/display/<?= $this->id;?>"><i class="fa-solid fa-user" ></i> Profile </a>
+                <a href="<?= SROOT ?>Profile/display/<?= $this->id; ?>"><i class="fa-solid fa-user"></i> Profile </a>
             </li>
             <li>
-                <a>
-                <i class="fa-solid fa-message"></i> Notifications 
+                <a onclick="showNotifications()">
+                <i class="fa-solid fa-message"></i> Notifications
+
                 <?php if ($this->notifications) {
                     echo count($this->notifications);
                 } else {
                     echo 0;
-                } ?>    
-                </a>
-            <div class="notifications text-center flex" id="n_list">
-            <?php $notifications = $this->notifications;
+
+                } ?>
+
+            </a>
+            <div class="notifications text-center flex" id="n_list" style="visibility: hidden">
+                <?php $notifications = $this->notifications;
+
                 if ($notifications) {
                     foreach ($notifications as $notification) { ?>
                     <form action="<?= SROOT ?>NMEmployeeFunctionHandler/completeRequest" method="post">
@@ -109,24 +115,6 @@
 
     <!-- Page Content -->
     <div class="container">
-
-        <!-- <div class="row pt-lg-5">
-            <div class="col-sm-12">
-                <div class="card h-100">
-                    <div class="card-body shadow px-lg-5">
-                        <h5 class="card-title">Profile Details</h5>
-                        <p class="card-text">Personal information, Employment details </p>
-
-
-                        <a href="<?= SROOT ?>Profile/display/<?= $this->id;?>" class="btn btn-primary"><i
-                                    class="fa-light fa-file-circle-info"></i> View profile</a>
-
-
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
         <div class="row pt-lg-5">
             <div class="col-sm-12">
                 <div class="card h-100">

@@ -54,7 +54,7 @@ class DB
     {
         $fieldString = '';
         foreach ($fields as $field => $value) {
-            $fieldString .= '`' . $field . ' ' . $value . '`,';
+            $fieldString .= '`' . $field . '` ' . $value . ',';
         }
         $fieldString = rtrim($fieldString, ',');
         $sql = "CREATE TABLE {$table} ({$fieldString} );";
@@ -233,7 +233,8 @@ class DB
         return $this->_pdo->query("CALL getTables();")->fetchAll();
     }
 
-    public function getPrimaryValues($table){
+    public function getPrimaryValues($table)
+    {
         $key = $this->getPrimary($table);
         return $this->_pdo->query("SELECT {$key} FROM {$table}")->fetchAll();
     }
@@ -248,15 +249,30 @@ class DB
         $this->_error;
     }
 
-    public function begin_transaction() {
+    public function begin_transaction()
+    {
         $this->_pdo->beginTransaction();
     }
 
-    public function commit() {
+    public function commit()
+    {
         return $this->_pdo->commit();
     }
 
-    public function rollback(){
+    public function rollback()
+    {
         $this->_pdo->rollBack();
+    }
+
+    public function update_table($tableName, $definition)
+    {
+
+        $sql = "ALTER TABLE {$tableName} ADD {$definition}";
+        if (!$this->query($sql)->error()) {
+            return true;
+        }
+        return false;
+
+
     }
 }

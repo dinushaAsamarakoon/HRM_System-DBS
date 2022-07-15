@@ -13,9 +13,9 @@ class HRManagerFunctionHandler extends Controller
     {
         Session::delete();
         if ($_POST) {
-            $this->EmployeeModel->findByUserName($_POST['username']);
-            if ($this->EmployeeModel && password_verify(Input::get('password'), $this->EmployeeModel->password)) {
-                $this->EmployeeModel->login();
+            $this->HRManagerModel->findByUserName($_POST['username']);
+            if ($this->HRManagerModel && password_verify(Input::get('password'), $this->EmployeeModel->password)) {
+                $this->HRManagerModel->login();
                 Router::redirect('HRManagerDashboard');
             } else {
                 $this->view->message = "Check Your Username and Password";
@@ -80,8 +80,10 @@ class HRManagerFunctionHandler extends Controller
             $attributeNames = $hRManager->getEmployeeAttributes();
             $attributes = [];
             foreach ($attributeNames as $an) {
+//                dnd($attributeNames);
                 $tempAttributes = [];
                 foreach ($hRManager->getPrimaryValues($an[0]) as $row) {
+
                     $tempAttributes[] = $row;
                 }
                 $attributes[$an[0]] = $tempAttributes;
@@ -101,26 +103,26 @@ class HRManagerFunctionHandler extends Controller
         }
     }
 
-    public function editEmployeeAction()
+    public function editEmployeeAction($id)
     {
 
         $validation = new Validate();
         if ($_POST) {
 
             $validation->check($_POST, [
-                'password' => [
-                    'display' => 'Password',
-                    'min' => 6
-                ],
-                'username' => [
-                    'display' => 'Username',
-                    'min' => 4
-                ],
-                'repassword' => [
-                    'display' => 'Confirm Password',
-                    'matches' => 'password'
-                ],
-                'contact_no' => [
+//                'password' => [
+//                    'display' => 'Password',
+//                    'min' => 6
+//                ],
+//                'username' => [
+//                    'display' => 'Username',
+//                    'min' => 4
+//                ],
+//                'repassword' => [
+//                    'display' => 'Confirm Password',
+//                    'matches' => 'password'
+//                ],
+                'phone_number' => [
                     'display' => 'Mobile Number',
                     'valid_contact' => true
                 ],
@@ -132,9 +134,9 @@ class HRManagerFunctionHandler extends Controller
 
             if ($validation->passed()) {
                 if ($_POST['job_title'] === 'supervisor') {
-                    $this->EmployeeModel->createNewSupervisor()->registerNewEmployee($_POST);
+                    $this->HRManagerModel->createNewSupervisor()->registerNewEmployee($_POST);
                 } else {
-                    $this->EmployeeModel->createNewNMEmployee()->registerNewEmployee($_POST);
+                    $this->HRManagerModel->createNewNMEmployee()->registerNewEmployee($_POST);
                 }
                 Router::redirect('HRManagerDashboard');
                 $_SESSION['message'] = "Employee added";
@@ -154,6 +156,12 @@ class HRManagerFunctionHandler extends Controller
                 $attributes[$an[0]] = $tempAttributes;
             }
             $this->view->allAttributes = $attributes;
+            $this->view->depts = $hRManager->getDeptNames();
+            $this->view->emp_status = $hRManager->getEmpStatus();
+            $this->view->emp_status_columns = $hRManager->get_columns_table('emp_status');
+            $this->view->sup_levels = $hRManager->getSupLevels();
+
+            $this->view->Employee = $hRManager->getEmployeeDetails($id);
             $this->view->render('employeeDetails/employee');
         }
     }
@@ -282,15 +290,11 @@ class HRManagerFunctionHandler extends Controller
     public function viewAllEmployeesAction(){
         $hrManager = HRManager::currentLoggedInEmployee();
         $this->view->allEmployees = $hrManager->getAllEmployees();
+//        dnd($this->view->allEmployees);
         $this->view->render('employeeDetails/all');
     }
 
-    public function viewEmployeeAction($id){
-        $hrManager = HRManager::currentLoggedInEmployee();
-        $this->view->Employee = $hrManager->getEmployeeDetails($id);
-        dnd($this->view->Employee);
-        $this->view->render('employeeDetails/employee');
-    }
+
 
 }
 
