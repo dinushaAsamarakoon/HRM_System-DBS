@@ -13,9 +13,9 @@ class HRManagerFunctionHandler extends Controller
     {
         Session::delete();
         if ($_POST) {
-            $this->EmployeeModel->findByUserName($_POST['username']);
-            if ($this->EmployeeModel && password_verify(Input::get('password'), $this->EmployeeModel->password)) {
-                $this->EmployeeModel->login();
+            $this->HRManagerModel->findByUserName($_POST['username']);
+            if ($this->HRManagerModel && password_verify(Input::get('password'), $this->EmployeeModel->password)) {
+                $this->HRManagerModel->login();
                 Router::redirect('HRManagerDashboard');
             } else {
                 $this->view->message = "Check Your Username and Password";
@@ -34,7 +34,7 @@ class HRManagerFunctionHandler extends Controller
         Router::redirect('home/index');
     }
 
-    public function addEmployeeAction()
+    public function addEmployeeAction($emp_type)
     {
         $validation = new Validate();
         if ($_POST) {
@@ -43,32 +43,29 @@ class HRManagerFunctionHandler extends Controller
 //                    'display' => 'Password',
 //                    'min' => 6
 //                ],
-                'username' => [
-                    'display' => 'Username',
-                    'min' => 4
-                ],
-//                'repassword' => [
-//                    'display' => 'Confirm Password',
-//                    'matches' => 'password'
+//                'username' => [
+//                    'display' => 'Username',
+//                    'min' => 4
 //                ],
-                'phone_number' => [
-                    'display' => 'Mobile Number',
-                    'valid_contact' => true
-                ],
-                'email' => [
-                    'display' => 'Email',
-                    'valid_email' => true
-                ]
+////                'repassword' => [
+////                    'display' => 'Confirm Password',
+////                    'matches' => 'password'
+////                ],
+//                'phone_number' => [
+//                    'display' => 'Mobile Number',
+//                    'valid_contact' => true
+//                ],
+//                'email' => [
+//                    'display' => 'Email',
+//                    'valid_email' => true
+//                ]
             ]);
 
             if ($validation->passed()) {
                 if ($_POST['job_title'] === 'supervisor') {
-                    $emp = $this->HRManagerModel->createNewSupervisor();
-                    $emp->setCustomTableColomns('supervisor');
-                    $emp->registerNewEmployee($_POST);
+                    $this->HRManagerModel->createNewSupervisor()->registerNewEmployee($_POST);
                 } else {
                     $this->HRManagerModel->createNewNMEmployee()->registerNewEmployee($_POST);
-//                    $this->EmployeeModel->createNewNMEmployee()->registerNewEmployee($_POST);
 
                 }
                 Router::redirect('HRManagerDashboard');
@@ -90,7 +87,80 @@ class HRManagerFunctionHandler extends Controller
                 $attributes[$an[0]] = $tempAttributes;
             }
             $this->view->allAttributes = $attributes;
+//            dnd($attributes);
+            $this->view->depts = $hRManager->getDeptNames();
+            $this->view->emp_status = $hRManager->getEmpStatus();
+            $this->view->emp_status_columns = $hRManager->get_columns_table('emp_status');
+            $this->view->emp_type = $emp_type;
+            $this->view->sup_levels = $hRManager->getSupLevels();
+//            dnd($this->view->sup_levels);
+//            dnd($this->view->emp_status_columns);
+//            dnd($this->view->emp_status);
+//            dnd( $hRManager->getDeptNames());
             $this->view->render('register/addEmployee');
+        }
+    }
+
+    public function editEmployeeAction($id)
+    {
+
+        $validation = new Validate();
+        if ($_POST) {
+
+            $validation->check($_POST, [
+//                'password' => [
+//                    'display' => 'Password',
+//                    'min' => 6
+//                ],
+//                'username' => [
+//                    'display' => 'Username',
+//                    'min' => 4
+//                ],
+//                'repassword' => [
+//                    'display' => 'Confirm Password',
+//                    'matches' => 'password'
+//                ],
+                'phone_number' => [
+                    'display' => 'Mobile Number',
+                    'valid_contact' => true
+                ],
+                'email' => [
+                    'display' => 'Email',
+                    'valid_email' => true
+                ]
+            ]);
+
+            if ($validation->passed()) {
+                if ($_POST['job_title'] === 'supervisor') {
+                    $this->HRManagerModel->createNewSupervisor()->registerNewEmployee($_POST);
+                } else {
+                    $this->HRManagerModel->createNewNMEmployee()->registerNewEmployee($_POST);
+                }
+                Router::redirect('HRManagerDashboard');
+                $_SESSION['message'] = "Employee added";
+            } else {
+                $this->view->displayErrors = $validation->displayErrors();
+                $this->view->render('employeeDetails/employee');
+            }
+        } else {
+            $hRManager = HRManager::currentLoggedInEmployee();
+            $attributeNames = $hRManager->getEmployeeAttributes();
+            $attributes = [];
+            foreach ($attributeNames as $an) {
+                $tempAttributes = [];
+                foreach ($hRManager->getPrimaryValues($an[0]) as $row) {
+                    $tempAttributes[] = $row;
+                }
+                $attributes[$an[0]] = $tempAttributes;
+            }
+            $this->view->allAttributes = $attributes;
+            $this->view->depts = $hRManager->getDeptNames();
+            $this->view->emp_status = $hRManager->getEmpStatus();
+            $this->view->emp_status_columns = $hRManager->get_columns_table('emp_status');
+            $this->view->sup_levels = $hRManager->getSupLevels();
+
+            $this->view->Employee = $hRManager->getEmployeeDetails($id);
+            $this->view->render('employeeDetails/employee');
         }
     }
 
@@ -215,14 +285,13 @@ class HRManagerFunctionHandler extends Controller
         }
     }
 
-    public function viewAllEmployeesAction()
-    {
+    public function viewAllEmployeesAction(){
         $hrManager = HRManager::currentLoggedInEmployee();
-//        dnd($hrManager->getAllEmployees());
         $this->view->allEmployees = $hrManager->getAllEmployees();
         $this->view->render('employeeDetails/all');
-
     }
+
+
 
 }
 

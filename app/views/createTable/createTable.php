@@ -30,7 +30,7 @@
     </nav>
 
 </div>
-<form action="<?=SROOT?>/AdminFunctionHandler/addEmployeeAttribute" method="post">
+<form action="<?=SROOT?>AdminFunctionHandler/addEmployeeAttribute" method="post">
 <div class="container p-lg-5 ">
 
     <div class="container-fluid ps-1 ">
@@ -88,7 +88,7 @@
                 <div class="card-body p-2 bg-opacity-10 shadow d-flex justify-content-center"
                      style="color: #0c63e4;">
 
-                    <p class="card-text"><a href="<?= SROOT ?>/AdminFunctionHandler/addEmployeeAttribute"></a>
+                    <p class="card-text"><a href="<?= SROOT ?>AdminFunctionHandler/addEmployeeAttribute"></a>
                         <button type="submit" class="btn btn-dark bg-opacity-10">Save</button>
                     </p>
 

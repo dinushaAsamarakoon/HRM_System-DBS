@@ -10,6 +10,11 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <!-- Font Awesome JS -->
+    <script src="https://kit.fontawesome.com/ec08fc2909.js" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
     <title>Employee By Department Report</title>
 </head>
 <body>
@@ -80,7 +85,7 @@
                                     <td><?php echo $employee->last_name; ?></td>
                                     <td><?php echo $employee->dept_name; ?></td>
                                     <td><?php echo $employee->job_title; ?></td>
-                                    <td><?= SROOT ?><?php $employee->id; ?></td>
+                                    <td><a class="btn btn-outline-success" href="<?= SROOT ?>HRManagerFunctionHandler/editEmployee/<?= $employee->id; ?>" target=""><i class="fa-solid fa-circle-info"></i> view</a></td>
                                 </tr>
                                 <?php
                             }

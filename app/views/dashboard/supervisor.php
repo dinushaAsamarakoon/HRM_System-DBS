@@ -19,10 +19,10 @@
 
                 <ul class="nav  " id="pills-tab" role="tablist">
 
-                    <li class="nav-item ">
+                    <!-- <li class="nav-item ">
                         <a class="nav-link" id="pills-notification-tab" data-toggle="pill" href="#pills-notifications" role="tab" aria-controls="pills-notifications" aria-selected="false"><i class="fa-regular fa-bell"></i></a>
 
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link active " id="pills-logout-tab" data-toggle=""
                            href="<?= SROOT ?>SupervisorFunctionHandler/logout"
@@ -56,9 +56,34 @@
                 <a href="<?=SROOT?>Profile/display/<?= $this->id;?>"><i class="fa-solid fa-user" ></i> Profile </a>
             </li>
             <li>
-                <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
+
+                <a onclick="showNotifications()">
+                    <i class="fa-solid fa-message"></i> Notifications
+                    <span class="border border-white rounded">
+                <?php if ($this->notifications) {
+                    echo count($this->notifications);
+                } else {
+                    echo 0;
+                } ?>
+                </span>
+
+                </a>
+                <div class="notifications text-center flex" id="n_list" style="visibility: hidden">
+                    <?php $notifications = $this->notifications;
+                    if ($notifications) {
+                        foreach ($notifications as $notification) { ?>
+                            <form action="<?= SROOT ?>SupervisorFunctionHandler/completeRequest" method="post">
+                                <?php $n = (array)$notification;
+                                echo 'Request ' . $n['status'] . ': ' . $n['reason']; ?>
+                                <input type="hidden" name="id" value="<?php echo $n['id'] ?>">
+                                <button class="btn btn-light p-1" type="submit">Mark as read</button>
+                            </form>
+                        <?php }
+                    } ?>
+                </div>
             </li>
             <li>
+
                 <a href="<?=SROOT?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
@@ -66,9 +91,6 @@
 
     <!-- Page Content -->
     <div class="container">
-
-
-
         <div class="row pt-lg-5">
             <div class="col-sm-12">
                 <div class="card h-100">

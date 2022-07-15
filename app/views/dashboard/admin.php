@@ -59,11 +59,11 @@
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="<?= SROOT ?>Profile/display/<?= $this->id;?>"><i class="fa-solid fa-user"></i> Profile </a>
+                <a href="<?= SROOT ?>Profile/display/<?= $this->id; ?>"><i class="fa-solid fa-user"></i> Profile </a>
             </li>
-            <!--            <li>-->
-            <!--                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>-->
-            <!--            </li>-->
+<!--            <li>-->
+<!--                <a href="#"><i class="fa-solid fa-message"></i> Notifications</a>-->
+<!--            </li>-->
             <li>
                 <a href="<?= SROOT ?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>

@@ -49,7 +49,7 @@
                     <div class="col-md-11 border-right shadow text_area shadow" >
                         <div class="p-3 py-5">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h2 class="text-right"><b>Apply For Leave</b></h2>
+                                <h2 class="text-right"><b>Leave Application</b></h2>
                             </div>
                             <div class="row mt-2" >
                                 <input type="hidden" name="emp_id" value="11">
@@ -78,8 +78,7 @@
                             </div>
                             <div  class="row mt-3">
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary" name="submit" >Apply Leave</button>
-                                    <button type="submit" class="btn btn-success" style="margin-left: 10px;" name="submit" >Cancel</button>
+                                    <button type="submit" class="btn btn-primary" name="submit" >Apply For Leave</button>
                                 </div>
                             </div>
                         </div>

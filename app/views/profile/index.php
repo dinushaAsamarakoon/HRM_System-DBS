@@ -51,12 +51,7 @@
                     <div class="col-md-6"><label class="labels">Marital status</label><input type="text" class="form-control"  value="<?php echo $p["marital_status"];?>" disabled></div>
                 </div>
 
-                <div class="row mt-2" >
-                    <div class="col-md-12"><label class="labels">Home address</label><input type="text" class="form-control"  value="<?php echo $p["address"];?>" disabled></div>
-                     <div class="col-md-12"><label class="labels">Email Address</label><input type="text" class="form-control"  value="<?php echo $p["email"];?>" disabled></div>
-                     <div class="col-md-12"><label class="labels">Qualification</label><textarea type="text" class="form-control" placeholder="" disabled style="place"><?php echo $p["qualification"];?></textarea></div>
 
-                </div>
                 <div class="row mt-2 ">
                     <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control"  value="<?php echo $p["phone_number"];?>" disabled></div>
                     <div class="col-md-6"><label class="labels">Job title</label><input type="text" class="form-control"  value="<?php echo $p['job_title'] ?>" disabled></div>
@@ -64,7 +59,13 @@
                 </div>
                 <div class="row mt-2 ">
                     <div class="col-md-6"><label class="labels">Pay grade</label><input type="text" class="form-control"  value="<?php echo $p['pay_grade'] ?>" disabled></div>
-                    <div class="col-md-6"><label class="labels">Employment status</label><input type="text" class="form-control"  value="<?php echo $p["emp_status"];?>" disabled></div>
+                    <div class="col-md-6"><label class="labels">Employment status id</label><input type="text" class="form-control"  value="<?php echo $p["emp_status_id"];?>" disabled></div>
+                </div>
+                <div class="row mt-2" >
+                    <div class="col-md-12"><label class="labels">National identity card number</label><input type="text" class="form-control"  value="" disabled></div>
+                    <div class="col-md-12"><label class="labels">Home address</label><input type="text" class="form-control"  value="<?php echo $p["address"];?>" disabled></div>
+                    <div class="col-md-12"><label class="labels">Email Address</label><input type="text" class="form-control"  value="<?php echo $p["email"];?>" disabled></div>
+                    <div class="col-md-12"><label class="labels">Qualification</label><textarea type="text" class="form-control" placeholder="" disabled style="place"><?php echo $p["qualification"];?></textarea></div>
                 </div>
             </div>
 

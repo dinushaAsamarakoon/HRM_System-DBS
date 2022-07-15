@@ -70,13 +70,13 @@
         <ul class="list-unstyled components " id="list1">
 
             <li>
-                <a href="<?= SROOT ?>Profile/display/<?= $this->id; ?>"><i class="fa-solid fa-user"></i>Profile</a>
+                <a href="<?= SROOT ?>Profile/display/<?= $this->id; ?>"><i class="fa-solid fa-user"></i> Profile</a>
             </li>
+<!--            <li>-->
+<!--                <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>-->
+<!--            </li>-->
             <li>
-                <a href="../notification/Notification.php"><i class="fa-solid fa-message"></i> Notifications</a>
-            </li>
-            <li>
-                <a href="<?= SROOT ?>app/"><i class="fa-solid fa-circle-question"></i> Help</a>
+                <a href="<?= SROOT ?>app/views/help/Help.php"><i class="fa-solid fa-circle-question"></i> Help</a>
             </li>
         </ul>
     </nav>
@@ -91,9 +91,31 @@
                     <div class="card-body shadow  px-lg-5">
                         <h5 class="card-title">Add the employee to the system</h5>
                         <p class="card-text">You can add the employee details to from this</p>
-                        <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee"
-                           class="btn btn-primary justify-content-center"><i
-                                    class="fa-solid fa-user-plus"></i>Add Employee</a>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-user-plus"></i>Add Employee
+                            </button>
+                            <div class="p-0">
+
+                                <div class="dropdown-menu w-100" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button">
+                                        <a  class="dropdown-item" id="NmEmployee" href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/nm_employee" >
+                                            Non managerial employee
+                                        </a>
+                                    </button>
+
+                                    <button class="dropdown-item" type="button">
+
+                                        <a href="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/supervisor" class="dropdown-item" id="Supervisor" >
+
+                                            Supervisor
+                                        </a>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
