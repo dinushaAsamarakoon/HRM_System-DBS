@@ -85,13 +85,11 @@
             <li>
                 <a onclick="showNotifications()">
                 <i class="fa-solid fa-message"></i> Notifications 
-                <span class="border border-white rounded">
                 <?php if ($this->notifications) {
                     echo count($this->notifications);
                 } else {
                     echo 0;
                 } ?>
-                </span>
                     
             </a>
             <div class="notifications text-center flex" id="n_list" style="visibility: hidden">
