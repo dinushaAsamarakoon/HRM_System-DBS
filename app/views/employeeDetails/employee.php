@@ -62,7 +62,7 @@
             <?php
             }
             $p = (array)$this->Employee[0];
-            dnd($p); ?>
+//            dnd($p); ?>
             <div class="container rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
                     <div class="col-md-8 border-right  text_area pt-3 ">
@@ -206,7 +206,7 @@
                                 var Idname1 = [];
                             </script>
                             <?php
-
+//                            dnd($this->allAttributes);
                             foreach ($this->allAttributes as $attribute => $val_array) {
 //                                    dnd($val_array);
 
@@ -222,18 +222,21 @@
                                                 aria-label=".form-select-lg example"
                                                 style="height: 38px;font-size: 15px; color: dimgrey"
                                                 id="<?php echo $attribute; ?>" disabled>
-<!--                                            <option value="" selected>select from --><?php //echo $attribute; ?><!-- menu-->
-<!--                                            </option>-->
+                                            <!--                                            <option value="" selected>select from -->
+                                            <?php //echo $attribute; ?><!-- menu-->
+                                            <!--                                            </option>-->
                                             <?php
                                             foreach ($val_array as $val) {
-                                                if (Session::get('job_class') == 'admin' ) {
+                                                if (Session::get('job_class') == 'admin') {
                                                     if ($attribute == 'job_title') {
                                                         if ($val[0] == 'hr_manager') { ?>
-                                                            <option value="<?php echo $val[0]; ?>" <?php if($val[0]==$p['job_title']){?>selected<?php }?>><?php echo $val[0]; ?></option>
+                                                            <option value="<?php echo $val[0]; ?>"
+                                                                    <?php if ($val[0] == $p[$attribute]){ ?>selected<?php } ?>><?php echo $val[0]; ?></option>
                                                         <?php }
 
                                                     } else { ?>
-                                                        <option value="<?php echo $val[0]; ?>" <?php if($val[0]==$p['job_title']){?>selected<?php }?>><?php echo $val[0]; ?></option>
+                                                        <option value="<?php echo $val[0]; ?>"
+                                                                <?php if ($val[0] == $p[$attribute]){ ?>selected<?php } ?>><?php echo $val[0]; ?></option>
                                                     <?php }
 
                                                     ?>
@@ -241,10 +244,12 @@
                                                 } else if (Session::get('job_class') == 'hr_manager') {
                                                     if ($attribute == 'job_title') {
                                                         if ($val[0] != 'hr_manager' and $val[0] != 'admin') { ?>
-                                                            <option value="<?php echo $val[0]; ?>"selected><?php echo $val[0]; ?></option>
+                                                            <option value="<?php echo $val[0]; ?>"
+                                                                    <?php if ($val[0] == $p[$attribute]){ ?>selected<?php } ?>><?php echo $val[0]; ?></option>
                                                         <?php }
                                                     } else { ?>
-                                                        <option value="<?php echo $val[0]; ?>"selected><?php echo $val[0]; ?></option>
+                                                        <option value="<?php echo $val[0]; ?>"
+                                                                <?php if ($val[0] == $p[$attribute]){ ?>selected<?php } ?>><?php echo $val[0]; ?></option>
                                                         <?php
                                                     }
                                                 }

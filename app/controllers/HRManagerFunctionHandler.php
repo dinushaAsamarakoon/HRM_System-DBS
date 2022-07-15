@@ -80,8 +80,10 @@ class HRManagerFunctionHandler extends Controller
             $attributeNames = $hRManager->getEmployeeAttributes();
             $attributes = [];
             foreach ($attributeNames as $an) {
+//                dnd($attributeNames);
                 $tempAttributes = [];
                 foreach ($hRManager->getPrimaryValues($an[0]) as $row) {
+
                     $tempAttributes[] = $row;
                 }
                 $attributes[$an[0]] = $tempAttributes;
@@ -288,6 +290,7 @@ class HRManagerFunctionHandler extends Controller
     public function viewAllEmployeesAction(){
         $hrManager = HRManager::currentLoggedInEmployee();
         $this->view->allEmployees = $hrManager->getAllEmployees();
+//        dnd($this->view->allEmployees);
         $this->view->render('employeeDetails/all');
     }
 
