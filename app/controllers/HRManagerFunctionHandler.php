@@ -105,7 +105,6 @@ class HRManagerFunctionHandler extends Controller
 
     public function editEmployeeAction($id)
     {
-        $this->view->selected_emp_id = $id;
         $validation = new Validate();
         if ($_POST) {
 
