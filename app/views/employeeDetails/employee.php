@@ -280,6 +280,7 @@
 
         document.getElementById('btnedit').addEventListener("click", ()=>{
         document.getElementById('btnsub').style.display='block';
+        document.getElementById('btnedit').style.display='none';
         document.getElementById('remove').style.display='none';
         document.getElementById('mbnum').disabled=false;
         for (let i=0;i<Idname1.length;i++){
