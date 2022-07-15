@@ -229,11 +229,11 @@
                                                 if (Session::get('job_class') == 'admin' ) {
                                                     if ($attribute == 'job_title') {
                                                         if ($val[0] == 'hr_manager') { ?>
-                                                            <option value="<?php echo $val[0]; ?>" selected><?php echo $val[0]; ?></option>
+                                                            <option value="<?php echo $val[0]; ?>" <?php if($val[0]==$p['job_title']){?>selected<?php }?>><?php echo $val[0]; ?></option>
                                                         <?php }
 
                                                     } else { ?>
-                                                        <option value="<?php echo $val[0]; ?>" selected><?php echo $val[0]; ?></option>
+                                                        <option value="<?php echo $val[0]; ?>" <?php if($val[0]==$p['job_title']){?>selected<?php }?>><?php echo $val[0]; ?></option>
                                                     <?php }
 
                                                     ?>
