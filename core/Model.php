@@ -147,7 +147,12 @@ class Model
             if ($column === 'id' && $table_id != 1) {
                 $fields[$column] = $this->_db->lastId();
             } else {
-                $fields[$column] = $this->$column;
+                if ($column != 'current_employee')
+                    $fields[$column] = $this->$column;
+                if ($column === 'registration_date') {
+                    date_default_timezone_set('Asia/Colombo');
+                    $fields[$column] = date('Y-m-d');
+                }
             }
         }
         // determine whether to update or insert

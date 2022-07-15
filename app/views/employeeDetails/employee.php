@@ -1,8 +1,6 @@
 <?php
-if (isset($this->Employee)) {
+if (!isset($this->allAttributes)) {
     Router::redirect('HRManagerDashboard');
-} else {
-    Router::redirect('');
 }
 
 ?>
