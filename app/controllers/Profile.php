@@ -13,4 +13,9 @@ class Profile extends Controller {
         $this->view->render('profile/index');
     }
 
+    public function viewAction($id) {
+        $this->view->profile = $this->EmployeeModel->getPersonalInfo($id);
+        $this->view->render('profile/view');
+    }
+
 }

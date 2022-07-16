@@ -69,7 +69,7 @@
 
 
             <li>
-                <a href="<?= SROOT ?>Profile/display/<?= $this->id; ?>"><i class="fa-solid fa-user"></i> Profile </a>
+                <a href="<?= SROOT ?>Profile/view/<?= $this->id; ?>"><i class="fa-solid fa-user"></i> Profile </a>
             </li>
             <li>
                 <a onclick="showNotifications()">
