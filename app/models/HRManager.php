@@ -80,12 +80,19 @@ class HRManager extends Employee
     }
 
     public
-    function getAllEmployees()
+    function getAllEmployees($dept_name='')
     {
+        if(empty($dept_name)){
+            return $this->_db->find('emp_info', [
+                'conditions' => ['job_title!=?'],
+                'bind' => ['admin']
+            ]);
+        }
         return $this->_db->find('emp_info', [
-            'conditions' => 'job_title!=?',
-            'bind' => ['admin']
+            'conditions' => ['job_title!=?','dept_name=?'],
+            'bind' => ['admin',$dept_name]
         ]);
+
     }
 
     public function getEmployeeDetails($id){
@@ -117,4 +124,29 @@ class HRManager extends Employee
     public function getSupIds(){
         return $this->_db->query("SELECT id FROM supervisor")->results();
     }
+
+    public function getAllEmpIds(){
+        return $this->_db->query("SELECT id FROM emp_record")->results();
+    }
+
+    public function getTotalLeavesByEmployee($id,$start='',$end=''){
+        $leaves = $this->_db->find('leave_request', [
+            'conditions' => ['emp_id=?','status=?'],
+            'bind' => [$id,'approved']
+        ]);
+//        dnd($leaves);
+
+
+        if(empty($start.$end)){
+            foreach ($leaves as $leave){
+                $date1 = new DateTime($leave->start_date);
+                $date2 = new DateTime($leave->end_date);
+                $interval = $date1->diff($date2);
+
+                dnd($interval->days);
+            }
+        }
+    }
+
+
 }

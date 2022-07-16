@@ -164,7 +164,7 @@ class HRManagerFunctionHandler extends Controller
             $emp_details = $hRManager->getEmployeeDetails($id);
             $this->view->Employee = $emp_details;
 //            dnd($emp_details[0]->job_title);
-            if($emp_details[0]->job_title=='supervisor'){
+            if ($emp_details[0]->job_title == 'supervisor') {
                 dnd($hRManager->getSupervisorLevel($id));
             }
             $this->view->render('employeeDetails/employee');
@@ -273,12 +273,45 @@ class HRManagerFunctionHandler extends Controller
         }
     }
 
-    public function viewAllEmployeesAction(){
+    public function viewAllEmployeesAction()
+    {
         $hrManager = HRManager::currentLoggedInEmployee();
         $this->view->allEmployees = $hrManager->getAllEmployees();
         $this->view->render('employeeDetails/all');
     }
 
+    public function viewAllEmployeesByDeptAction()
+    {
+        $hrManager = HRManager::currentLoggedInEmployee();
+        $this->view->depts = $hrManager->getDeptNames();
+        if (isset($_POST['filter_employee_by_dept_name'])) {
+            $this->view->allEmployees = $hrManager->getAllEmployees($_POST['filter_employee_by_dept_name']);
+        } else {
+            $this->view->allEmployees = $hrManager->getAllEmployees();
+        }
+        $this->view->render('employeeDept/EmployeeByDept');
+    }
+
+    public function viewLeaveRecordByDeptAction()
+    {
+        $hrManager = HRManager::currentLoggedInEmployee();
+//        $this->view->depts = $hrManager->getDeptNames();
+//        if (isset($_POST['filter_leave_record_by_dept_name'])) {
+//            $this->view->allLeaves = $hrManager->getAllEmployees($_POST['filter_leave_record_by_dept_name']);
+//        } else {
+//            $this->view->allLeaves = $hrManager->getAllEmployees();
+//        }
+//        $leaves = getTotalLeavesByEmployee($id,$start='',$end='');
+        $emp_leave_details = [];
+        foreach ($hrManager->getAllEmpIds() as $emp_id) {
+            if (isset($_POST['start_date'])) {
+                $emp_leave_details[$emp_id->id] = $hrManager->getTotalLeavesByEmployee($emp_id->id, $_POST['start_date'],$_POST['end_date']);
+            } else{
+                $emp_leave_details[$emp_id->id] = $hrManager->getTotalLeavesByEmployee($emp_id->id);
+            }
+        }
+        $this->view->render('leavesDept/LeavesDept');
+    }
 
 
 }

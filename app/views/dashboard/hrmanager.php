@@ -153,11 +153,11 @@
 
                                     <button class="dropdown-item" type="button"><i
                                                 class="fa-solid fa-arrow-left-long"></i><a
-                                                href="<?= SROOT ?>app/views/employeeDept/EmployeeByDept.php">Employee by
+                                                href="<?= SROOT ?>HRManagerFunctionHandler/viewAllEmployeesByDept">Employee by
                                             department report</a></button>
                                     <button class="dropdown-item" type="button"><i
                                                 class="fa-solid fa-arrow-left-long"></i><a
-                                                href="<?= SROOT ?>app/views/leavesDept/LeavesDept.php">Total leave
+                                                href="<?= SROOT ?>HRManagerFunctionHandler/viewLeaveRecordByDept">Total leave
                                             report</a></button>
                                     <button class="dropdown-item" type="button"><i
                                                 class="fa-solid fa-arrow-left-long"></i><a

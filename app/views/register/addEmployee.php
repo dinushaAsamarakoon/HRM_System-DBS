@@ -167,9 +167,7 @@
                                     <select class="form-select form-select-lg" name="dept_name"
                                             aria-label=".form-select-lg example"
                                             style="height: 38px;font-size: 15px; color: dimgrey">
-                                        <!--                                        --><?php //dnd($this->depts);?>
-                                        <?php foreach ($this->depts as $dept) {
-//                                                dnd($dept);?>
+                                        <?php foreach ($this->depts as $dept) {?>
                                             <option value="<?php echo $dept->dept_name; ?>"><?php echo $dept->dept_name; ?></option>
                                         <?php } ?>
 
