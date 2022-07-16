@@ -10,36 +10,28 @@
 </head>
 
 <body >
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-            >
+<div class="shadow p-3"  >
+    <nav class="navbar navbar-expand-lg bg-light" >
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"  data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div
-                    class="collapse navbar-collapse justify-content-end"
-                    id="navbarNav"
-            >
-                <ul class="navbar-nav">
+
+            <div class="collapse navbar-collapse justify-content-end  " id="navbarScroll3" style="padding-top: 9px;height: 50px;">
+
+                <ul class="nav nav-tabs" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?=SROOT?>EmployeeRegister/login">Sign Up</a>
+                        <a class="nav-link active"  href="<?=SROOT?>EmployeeRegister/login" style="color: #0c63e4;font-size: 20px;">Sign Up</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+</div>
 
     <header class="page-header gradient">
-        <div class="container pt-3">
-            <div class="row align-items-center justify-content-center mt-3">
+        <div class="container pt-1">
+            <div class="row align-items-center justify-content-center mt-2">
                 <div>
                     <h2 style="font-family: Cursive; font-weight:bold; font-size: 70px; color: #191c1f";>Welcome to <span style="color: darkslategray">Jupiter Apparels</span></h2>
                     <p style="color: #191c1f; font-size: 30px;">
