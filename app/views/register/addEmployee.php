@@ -10,7 +10,7 @@
 
     <?php
     require_once(ROOT . DS . 'app' . DS . 'views' . DS . 'header' . DS . 'headerFile.php'); ?>
-    <script src="<?=SROOT?>app/script/sweetalert.min.js"></script>
+    <script src="<?= SROOT ?>app/script/sweetalert.min.js"></script>
 
     <title>Add Employee</title>
 </head>
@@ -63,7 +63,7 @@
     <form action="<?= SROOT ?>AdminFunctionHandler/addHRManager" method="Post">
 
         <?php }else if (Session::get('job_class') == 'hr_manager') { ?>
-        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post">
+        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/<?= $this->emp_type ?>" method="Post">
             <?php } ?>
             <div class="rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
@@ -81,13 +81,15 @@
                                                                                                      name="first_name"
                                                                                                      class="form-control"
                                                                                                      value=""
-                                                                                                     placeholder="Enter employee's first name" required>
+                                                                                                     placeholder="Enter employee's first name"
+                                                                                                     required>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
                                                                                                     name="last_name"
                                                                                                     class="form-control"
                                                                                                     value=""
-                                                                                                    placeholder="Enter employee's last name" required>
+                                                                                                    placeholder="Enter employee's last name"
+                                                                                                    required>
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -95,13 +97,15 @@
                                                                                                    name="username"
                                                                                                    class="form-control"
                                                                                                    value=""
-                                                                                                   placeholder="Enter employee's last name" required>
+                                                                                                   placeholder="Enter employee's last name"
+                                                                                                   required>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Date of Birth</label><input type="date"
                                                                                                         name="birth_date"
                                                                                                         class="form-control"
                                                                                                         value=""
-                                                                                                        placeholder="Enter employee's birthday" required>
+                                                                                                        placeholder="Enter employee's birthday"
+                                                                                                        required>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -146,13 +150,15 @@
                                                                                                         name="email"
                                                                                                         class="form-control"
                                                                                                         value=""
-                                                                                                        placeholder="Enter mployee's email address" required>
+                                                                                                        placeholder="Enter mployee's email address"
+                                                                                                        required>
                                 </div>
                                 <div class="col-md-6"><label class="labels">Home address</label><input type="text"
                                                                                                        name="address"
                                                                                                        class="form-control"
                                                                                                        value=""
-                                                                                                       placeholder="Enter employee's resident address" required>
+                                                                                                       placeholder="Enter employee's resident address"
+                                                                                                       required>
                                 </div>
 
                             </div>
@@ -203,12 +209,12 @@
 
                         </div>
                         <div class="row mt-2 mb-3">
-                        <div class="col-md-12">
-                            <label for=" reg_date" class="form-label">Registration date</label>
-                            <input type="date" class="form-control" id="reg_date"
-                                   placeholder="Enter employee's registration date" name="reg_date">
+                            <div class="col-md-12">
+                                <label for=" reg_date" class="form-label" hidden>Registration date</label>
+                                <input type="date" class="form-control" id="reg_date"
+                                       placeholder="Enter employee's registration date" name="reg_date" hidden>
 
-                        </div>
+                            </div>
                         </div>
 
                     </div>
@@ -220,7 +226,8 @@
                                                                                                          name="phone_number"
                                                                                                          class="form-control"
                                                                                                          value=""
-                                                                                                         placeholder="Enter employee's mobile number" required>
+                                                                                                         placeholder="Enter employee's mobile number"
+                                                                                                         required>
                                 </div>
                             </div>
 
@@ -253,9 +260,12 @@
                                                     <?php
                                                 } else if (Session::get('job_class') == 'hr_manager') {
                                                     if ($attribute == 'job_title') {
-                                                        if ($val[0] != 'hr_manager' and $val[0] != 'admin') { ?>
-                                                            <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
-                                                        <?php }
+                                                        if ($val[0] != 'hr_manager' and $val[0] != 'admin') {
+                                                            if (($this->emp_type == 'supervisor' and $val[0] == 'supervisor') or ($this->emp_type == 'nm_employee' and $val[0] != 'supervisor')) {
+                                                                ?>
+                                                                <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
+                                                            <?php }
+                                                        }
                                                     } else { ?>
                                                         <option value="<?php echo $val[0]; ?>"><?php echo $val[0]; ?></option>
                                                         <?php
@@ -313,7 +323,8 @@
                             <div class="row mt-5 ">
                                 <div class="col-md-12 d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary w-75" name="submit"
-                                            style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); " onsubmit="alert1()">
+                                            style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); "
+                                            onsubmit="alert1()">
                                         Submit
                                     </button>
                                 </div>
@@ -368,9 +379,10 @@
 
 </div>
 <script>
-    function alert1(){
-     alert("Successful!");
+    function alert1() {
+        alert("Successful!");
     }
+
     // setTimeout(function(){window.location.reload();}, 5000)
 </script>
 <script>
