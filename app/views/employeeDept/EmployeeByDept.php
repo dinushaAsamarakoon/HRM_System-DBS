@@ -32,7 +32,7 @@
 
             <div class="collapse navbar-collapse justify-content-start" id="navbarScroll1">
                 <a class="navbar-brand">
-                    <img src="../../../images/jupiterCrop.jpg" style="height: 23px; width: 150px;">
+                    <img src="<?= SROOT?>images/jupiterCrop.jpg" style="height: 23px; width: 150px;">
                 </a>
             </div>
 
@@ -46,7 +46,7 @@
 
                 <ul class="nav" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="pills-logout-tab" data-toggle="pill" href="" role="tab"
+                        <a class="nav-link active" id="pills-logout-tab" data-toggle="pill" href="<?=SROOT?><?=Session::get('dashboard')?>" role="tab"
                            aria-controls="pills-logout" aria-selected="true">Dashboard</a>
                     </li>
                     <!-- <li class="nav-item">
@@ -60,45 +60,46 @@
 </div>
 
 <div class="container ">
-<!--    <form action="" method="">-->
-        <div class="container rounded bg-white mt-5 mb-5 ">
-            <div class="row justify-content-center">
+    <!--    <form action="" method="">-->
+    <div class="container rounded bg-white mt-5 mb-5 ">
+        <div class="row justify-content-center">
 
-                <div class="col-md-11 border-right shadow text_area shadow">
-                    <div class="p-3 py-5">
-                        <form action="<?= SROOT ?>HRManagerFunctionHandler/viewAllEmployeesByDept" method="Post">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h2 class="text-right"><b>Employee By Department</b></h2>
-                            </div>
+            <div class="col-md-11 border-right shadow text_area shadow">
+                <div class="p-3 py-5">
+                    <form action="<?= SROOT ?>HRManagerFunctionHandler/viewAllEmployeesByDept" method="Post">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="text-right"><b>Employee By Department</b></h2>
+                        </div>
 
-                            <label>
-                                <select class="custom-select mr-3" style="width:300px;" name="filter_employee_by_dept_name">
-                                    <option disabled selected hidden>Choose the department</option>
-                                    <?php foreach ($this->depts as $dept) { ?>
-                                        <option value="<?php echo $dept->dept_name; ?>"><?php echo $dept->dept_name; ?></option>
-                                    <?php } ?>
-                                </select>
-                            </label>
+                        <label>
+                            <select class="custom-select mr-3" style="width:300px;" name="filter_employee_by_dept_name">
+                                <option disabled selected hidden>Choose the department</option>
+                                <?php foreach ($this->depts as $dept) { ?>
+                                    <option value="<?php echo $dept->dept_name; ?>"><?php echo $dept->dept_name; ?></option>
+                                <?php } ?>
+                            </select>
+                        </label>
 
-                            <button type="submit" class="btn btn-primary text-center ml-10" name="submit">Filter
-                            </button>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn btn-primary text-center ml-10" name="submit">Filter
+                        </button>
+                    </form>
+                </div>
 
-                    <div id="download_table">
-                        <h4 class="text-lg-center mb-3"><i>Employees of the Department "selected dept"</i></h4>
+                <div id="download_table">
+                    <h4 class="text-lg-center mb-3"><i>Employees of the Department "selected dept"</i></h4>
 
-                        <table class="table table-hover mt-5">
-                            <thead class="table-info">
-                            <tr class="text-center">
-                                <th scope="col">Employee ID</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Department Name</th>
-                            </tr>
-                            </thead>
-                            <tbody class="text-center">
-                            <?php
+                    <table class="table table-hover mt-5">
+                        <thead class="table-info">
+                        <tr class="text-center">
+                            <th scope="col">Employee ID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Department Name</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center">
+                        <?php
+                        if ($this->allEmployees) {
                             foreach ($this->allEmployees as $emp) {
                                 ?>
                                 <tr>
@@ -107,19 +108,20 @@
                                     <td><?= $emp->last_name ?></td>
                                     <td><?= $emp->dept_name ?></td>
                                 </tr>
-                            <?php } ?>
+                            <?php }
+                        } ?>
 
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col  d-flex justify-content-end align-items-start mb-4">
-                        <button type="button" class="btn btn-success text-center" name="submit" onclick="exportPdf()">
-                            Download the Report
-                        </button>
-                    </div>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col  d-flex justify-content-end align-items-start mb-4">
+                    <button type="button" class="btn btn-success text-center" name="submit" onclick="exportPdf()">
+                        Download the Report
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 <!--</form>-->
 </div>

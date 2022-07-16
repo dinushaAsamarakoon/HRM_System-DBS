@@ -19,7 +19,7 @@
 
                 <ul class="nav" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="pills-logout-tab" data-toggle="pill" href="<?= SROOT ?>NMEmployeeDashboard" role="tab" aria-controls="pills-logout" aria-selected="true">Dashboard</a>
+                        <a class="nav-link active" id="pills-logout-tab" data-toggle="pill" href="<?=SROOT?><?=Session::get('dashboard')?>" role="tab" aria-controls="pills-logout" aria-selected="true">Dashboard</a>
                     </li>
                 </ul>
             </div>

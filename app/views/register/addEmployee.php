@@ -41,7 +41,7 @@
                 <ul class="nav  " id="pills-tab" role="tablist">
 
                     <li class="nav-item">
-                        <a class="nav-link active" id="pills-dashboard-tab" data-toggle="pill" href="Dashboard.php"
+                        <a class="nav-link active" id="pills-dashboard-tab" data-toggle="pill" href="<?=SROOT?><?=Session::get('dashboard')?>"
                            role="tab" aria-controls="pills-logout" aria-selected="true"
                            style="color: #0c63e4;font-size: 20px;">Dashboard</a>
 

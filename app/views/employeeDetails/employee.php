@@ -41,7 +41,7 @@ if (!isset($this->allAttributes)) {
                 <ul class="nav  " id="pills-tab" role="tablist">
 
                     <li class="nav-item">
-                        <a class="nav-link active" id="pills-dashboard-tab" data-toggle="pill" href="Dashboard.php"
+                        <a class="nav-link active" id="pills-dashboard-tab" data-toggle="pill" href="<?=SROOT?><?=Session::get('dashboard')?>"
                            role="tab" aria-controls="pills-logout" aria-selected="true"
                            style="color: #0c63e4;font-size: 20px;">Dashboard</a>
 
@@ -61,10 +61,6 @@ if (!isset($this->allAttributes)) {
     $p = (array)$this->Employee[0]; ?>
 
     <form action="<?= SROOT ?>HRManagerFunctionHandler/editEmployee/<?= $p['id'] ?>" method="Post">
-        <?php
-
-
-        //                        dnd($p); ?>
         <div class="container rounded bg-white mt-5 mb-5 ">
             <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
                 <div class="col-md-8 border-right  text_area pt-3 ">
@@ -76,7 +72,7 @@ if (!isset($this->allAttributes)) {
                 <div class="col-md-8 border-right  text_area  ">
                     <div class="p-3 py-5">
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">First Name</label><input type="text"
+                            <div class="col-md-6"><label class="labels" >First Name</label><input type="text"
                                                                                                  name="first_name"
                                                                                                  class="form-control"
                                                                                                  value="<?php echo $p["first_name"]; ?>"
@@ -171,8 +167,7 @@ if (!isset($this->allAttributes)) {
                                         aria-label=".form-select-lg example"
                                         style="height: 38px;font-size: 15px; color: dimgrey">
 
-                                    <?php foreach ($this->depts as $dept) {
-//                                                dnd($dept);?>
+                                    <?php foreach ($this->depts as $dept) {?>
                                         <option value="<?php echo $dept->dept_name; ?>"
                                                 <?php if ($dept->dept_name == $p["dept_name"]){ ?>selected<?php } ?>><?php echo $dept->dept_name; ?></option>
                                     <?php } ?>
@@ -306,6 +301,16 @@ if (!isset($this->allAttributes)) {
                                 </button>
                             </div>
                         </div>
+
+                        <form action="<?= SROOT ?>HRManagerFunctionHandler/removeEmployee/<?= $p['id'] ?>">
+                            <div class="row mt-3 " id="remove" style="display: block">
+                                <div class="col-md-12 d-flex justify-content-center">
+                                    <button class="btn btn-danger w-75">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
                 </div>
@@ -325,6 +330,7 @@ if (!isset($this->allAttributes)) {
         </div>
     </div>
 </form>
+
 >
 
 
