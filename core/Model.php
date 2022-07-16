@@ -167,21 +167,6 @@ class Model
         }
     }
 
-//    public function saveWithoutId($table, $columns)
-//    {
-//        $fields = [];
-//        foreach ($columns as $column) {
-//            $fields[$column] = $this->$column;
-//        }
-//
-//        // determine whether to update or insert
-////        if (property_exists($this, 'id') && $this->id != '') {
-////            return $this->update($this->id, $fields);
-////        } else {
-//        return $this->insertAttributeType($table, $fields);
-////        }
-//    }
-
     public function insert_into_table($tbl, $fields)
     {
         if (empty($fields)) {
@@ -275,6 +260,19 @@ class Model
             }
         }
         return $columns;
+    }
+
+    public function assignVal($params)
+    {
+        if (!empty($params)) {
+            foreach ($params as $key => $val) {
+                if (in_array($key, $this->_columnNames)) {
+                    $this->$key = sanitize($val);
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     public function getEmployeeAttributes()

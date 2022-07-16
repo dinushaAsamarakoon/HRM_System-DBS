@@ -35,7 +35,10 @@
                 <div class="d-flex justify-content-center align-items-center mb-3">
                     <h2 class="text-center">Profile Details</h2>
                 </div>
-                <?php $p = (array) $this->profile[0];?>
+
+                <?php $p = (array) $this->profile[0];
+//                dnd($p);?>
+                <form>
 
                 <div class="row mt-1" >
                     <div class="col-md-6"><label class="labels">First name</label><input type="text" class="form-control"  value="<?php echo $p["first_name"];?>" disabled></div>
@@ -66,6 +69,8 @@
                     <div class="col-md-12"><label class="labels">Email Address</label><input type="text" class="form-control"  value="<?php echo $p["email"];?>" disabled></div>
                     <div class="col-md-12"><label class="labels">Qualification</label><textarea type="text" class="form-control" placeholder="" disabled style="place"><?php echo $p["qualification"];?></textarea></div>
                 </div>
+
+                </form>
             </div>
 
         </div>

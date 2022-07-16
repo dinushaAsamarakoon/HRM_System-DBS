@@ -83,7 +83,7 @@
                 } ?>
 
             </a>
-            <div class="notifications text-center flex" id="n_list" style="visibility: hidden">
+            <div class="notifications text-center flex" id="n_list" style="visibility: visible">
                 <?php $notifications = $this->notifications;
 
                 if ($notifications) {

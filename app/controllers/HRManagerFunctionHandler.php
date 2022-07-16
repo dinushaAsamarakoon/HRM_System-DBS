@@ -95,6 +95,8 @@ class HRManagerFunctionHandler extends Controller
             $this->view->emp_status_columns = $hRManager->get_columns_table('emp_status');
             $this->view->emp_type = $emp_type;
             $this->view->sup_levels = $hRManager->getSupLevels();
+            $this->view->sup_ids = $hRManager->getSupIds();
+//            dnd($this->view->sup_ids);
 //            dnd($this->view->sup_levels);
 //            dnd($this->view->emp_status_columns);
 //            dnd($this->view->emp_status);
@@ -155,8 +157,12 @@ class HRManagerFunctionHandler extends Controller
             $this->view->emp_status = $hRManager->getEmpStatus();
             $this->view->emp_status_columns = $hRManager->get_columns_table('emp_status');
             $this->view->sup_levels = $hRManager->getSupLevels();
-
-            $this->view->Employee = $hRManager->getEmployeeDetails($id);
+            $emp_details = $hRManager->getEmployeeDetails($id);
+            $this->view->Employee = $emp_details;
+//            dnd($emp_details[0]->job_title);
+            if ($emp_details[0]->job_title == 'supervisor') {
+                dnd($hRManager->getSupervisorLevel($id));
+            }
             $this->view->render('employeeDetails/employee');
         }
     }
@@ -273,6 +279,9 @@ class HRManagerFunctionHandler extends Controller
         $this->view->allEmployees = $hrManager->getAllEmployees();
         $this->view->render('employeeDetails/all');
     }
+    public function redirectAction(){
+        $this->view->render('dashboard/hrmanager');
+    }
 
     public function searchEmployeeAction()
     {
@@ -285,6 +294,41 @@ class HRManagerFunctionHandler extends Controller
             $this->view->render('employeeDetails/all');
         }
     }
+    
+    public function viewAllEmployeesByDeptAction()
+    {
+        $hrManager = HRManager::currentLoggedInEmployee();
+        $this->view->depts = $hrManager->getDeptNames();
+        if (isset($_POST['filter_employee_by_dept_name'])) {
+            $this->view->allEmployees = $hrManager->getAllEmployees($_POST['filter_employee_by_dept_name']);
+        } else {
+            $this->view->allEmployees = $hrManager->getAllEmployees();
+        }
+        $this->view->render('employeeDept/EmployeeByDept');
+    }
+
+    public function viewLeaveRecordByDeptAction()
+    {
+        $hrManager = HRManager::currentLoggedInEmployee();
+        $emp_leave_details = [];
+        if (isset($_POST['filter_employee_by_dept_name'])) {
+            $emps = $hrManager->getAllEmployees($_POST['filter_employee_by_dept_name']);
+        }else{
+            $emps = $hrManager->getAllEmployees();
+        }
+
+        foreach ($emps as $emp) {
+            if (isset($_POST['start_date'])) {
+                $emp_leave_details[$emp->id] = [$emp->id,$emp->first_name,$emp->last_name,$hrManager->getTotalLeavesByEmployee($emp->id, $_POST['start_date'],$_POST['end_date']),$emp->dept_name];
+            } else{
+                $emp_leave_details[$emp->id] = [$emp->id,$emp->first_name,$emp->last_name,$hrManager->getTotalLeavesByEmployee($emp->id),$emp->dept_name];
+            }
+        }
+        $this->view->emp_leave_details = $emp_leave_details;
+        $this->view->depts = $hrManager->getDeptNames();
+        $this->view->render('leavesDept/LeavesDept');
+    }
+
 
 }
 

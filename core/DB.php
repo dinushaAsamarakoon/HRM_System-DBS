@@ -199,7 +199,6 @@ class DB
         }
 
         $sql = "SELECT * FROM {$table}{$conditionString}{$order}{$limit}";
-        // dnd($sql);
 
 
         if ($this->query($sql, $bind)) {

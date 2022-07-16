@@ -12,27 +12,18 @@ class LeaveRequest extends Model {
         date_default_timezone_set('Asia/Colombo');
         $emp = NMEmployee::currentLoggedInEmployee();
         $params['emp_id'] = $emp->id;
-        $sup_id = $emp->sup_id;
-        $params['sup_id'] = $sup_id;
-        $params['sup_id'] = '3';
+        $params['sup_id'] = $emp->sup_id;
         $params['apply_date'] = date('Y-m-d');
         $params['duration'] = 1 + (strtotime($params['end_date']) - strtotime($params['start_date'])) / (60*60*24);
         $params['status'] = 'pending';
-        $params['dept_name'] = 'NMI';
+        $params['dept_name'] = $emp->dept_name;
         $params['completed'] = '0';
-        $this->assign($params);
+        $this->assignVal($params);
         $this->save();
-    }
-
-    public function getLeaveRequest($id){
-        return $this->_db->find('leave_request',[
-            'conditions' => 'id=?',
-            'bind' => [$id]
-        ]);
     }
     
     public function getPendingRequests($sup_id){
-        return $this->_db->find('leave_request',[
+        return $this->_db->find('req_info',[
             'conditions' => 'sup_id=? and status=?',
             'bind' => [$sup_id, 'pending']
         ]);
@@ -47,8 +38,8 @@ class LeaveRequest extends Model {
     
     public function getIncompleteRequests($id){
         return $this->_db->find('leave_request',[
-            'conditions' => 'id=? and completed=?',
-            'bind' => [$id, false]
+            'conditions' => 'emp_id=? and completed=? and status!=?',
+            'bind' => [$id, false, 'pending']
         ]);
     }
 

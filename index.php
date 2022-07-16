@@ -23,7 +23,8 @@ spl_autoload_register(function ($className) {
     }
 });
 session_start();
-
+$result = mail('romanreings22261@gmail.com','check mail function','sample body');
+//dnd($result);
 $url = isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'], '/')) : [];
 
 
