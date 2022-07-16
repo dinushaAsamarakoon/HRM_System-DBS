@@ -59,7 +59,7 @@
 <div class="container " style="display: block;" id="create_account">
     <?php
     if (Session::get('job_class') == 'admin') { ?>
-    <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post">
+    <form action="<?= SROOT ?>AdminFunctionHandler/addHRManager" method="Post">
         <?php }else if (Session::get('job_class') == 'hr_manager') { ?>
         <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post" >
             <?php } ?>
