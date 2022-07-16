@@ -159,7 +159,7 @@
 
 
                             <div class="row mt-2">
-                                <div class="col-md-6"><label class="labels">Emergency contract Number</label><input
+                                <div class="col-md-6"><label class="labels">Emergency Contact Number</label><input
                                             type="text"
                                             name="emergency_contact"
                                             class="form-control"
