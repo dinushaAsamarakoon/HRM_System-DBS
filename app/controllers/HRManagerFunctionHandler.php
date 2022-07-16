@@ -274,6 +274,9 @@ class HRManagerFunctionHandler extends Controller
 //        dnd($this->view->allEmployees);
         $this->view->render('employeeDetails/all');
     }
+    public function redirectAction(){
+        $this->view->render('dashboard/hrmanager');
+    }
 
 
 

@@ -10,7 +10,7 @@
 
     <?php
     require_once(ROOT . DS . 'app' . DS . 'views' . DS . 'header' . DS . 'headerFile.php'); ?>
-
+    <script src="<?=SROOT?>app/script/sweetalert.min.js"></script>
 
     <title>Add Employee</title>
 </head>
@@ -61,7 +61,7 @@
     if (Session::get('job_class') == 'admin') { ?>
     <form action="<?= SROOT ?>AdminFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post">
         <?php }else if (Session::get('job_class') == 'hr_manager') { ?>
-        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post">
+        <form action="<?= SROOT ?>HRManagerFunctionHandler/addEmployee/<?= $this->emp_type?>" method="Post" >
             <?php } ?>
             <div class="rounded bg-white mt-5 mb-5 ">
                 <div class="row justify-content-center shadow-lg" style="border-radius: 45px;">
@@ -284,7 +284,7 @@
                             <div class="row mt-5 ">
                                 <div class="col-md-12 d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary w-75" name="submit"
-                                            style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); ">
+                                            style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); " onsubmit="alert1()">
                                         Submit
                                     </button>
                                 </div>
@@ -338,6 +338,12 @@
     </div>
 
 </div>
+<script>
+    function alert1(){
+     alert("Successful!");
+    }
+    // setTimeout(function(){window.location.reload();}, 5000)
+</script>
 <script>
     var create_account = document.getElementById("create_account");
     var table_data = document.getElementById("table_data");
