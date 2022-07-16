@@ -76,7 +76,7 @@ if (!isset($this->allAttributes)) {
                 <div class="col-md-8 border-right  text_area  ">
                     <div class="p-3 py-5">
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">First Name</label><input type="text"
+                            <div class="col-md-6"><label class="labels" >First Name</label><input type="text"
                                                                                                  name="first_name"
                                                                                                  class="form-control"
                                                                                                  value="<?php echo $p["first_name"]; ?>"
