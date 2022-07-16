@@ -23,7 +23,7 @@
 
             <div class="collapse navbar-collapse justify-content-start" id="navbarScroll1">
                 <a class="navbar-brand">
-                    <img src="../../../images/jupiterCrop.jpg" style="height: 23px; width: 150px;">
+                    <img src="<?= SROOT?>images/jupiterCrop.jpg" style="height: 23px; width: 150px;">
                 </a>
             </div>
 
@@ -66,10 +66,12 @@
 
 
                         <div class="row mt-2 mb-4">
-                            <div class="col-md-4 w-25"><label class="labels">From</label><input type="date" name="start_date"
+                            <div class="col-md-4 w-25"><label class="labels">From</label><input type="date"
+                                                                                                name="start_date"
                                                                                                 class="form-control">
                             </div>
-                            <div class="col-md-4 w-25"><label class="labels">To</label><input type="date" name="end_date"
+                            <div class="col-md-4 w-25"><label class="labels">To</label><input type="date"
+                                                                                              name="end_date"
                                                                                               class="form-control">
                             </div>
                         </div>
@@ -94,16 +96,18 @@
                         </thead>
                         <tbody class="text-center">
                         <?php
-                        foreach ($this->emp_leave_details as $emp_leave){
-                        ?>
-                        <tr>
-                            <th scope="row"><?= $emp_leave[0];?></th>
-                            <td><?= $emp_leave[1];?></td>
-                            <td><?= $emp_leave[2];?></td>
-                            <td><?= $emp_leave[3];?></td>
-                            <td><?= $emp_leave[4];?></td>
-                        </tr>
-                        <?php }?>
+                        if ($this->emp_leave_details) {
+                            foreach ($this->emp_leave_details as $emp_leave) {
+                                ?>
+                                <tr>
+                                    <th scope="row"><?= $emp_leave[0]; ?></th>
+                                    <td><?= $emp_leave[1]; ?></td>
+                                    <td><?= $emp_leave[2]; ?></td>
+                                    <td><?= $emp_leave[3]; ?></td>
+                                    <td><?= $emp_leave[4]; ?></td>
+                                </tr>
+                            <?php }
+                        } ?>
 
                         </tbody>
                     </table>
