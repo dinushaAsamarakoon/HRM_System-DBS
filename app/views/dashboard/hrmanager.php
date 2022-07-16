@@ -161,11 +161,11 @@
                                             report</a></button>
                                     <button class="dropdown-item" type="button"><i
                                                 class="fa-solid fa-arrow-left-long"></i><a
-                                                href="<?= SROOT ?>app/views/employeeReport/EmployeeReport.php">Employee
+                                                href="<?= SROOT ?>HRManagerFunctionHandler/viewEmployeeReport">Employee
                                             report</a></button>
                                     <button class="dropdown-item" type="button"><i
                                                 class="fa-solid fa-arrow-left-long"></i><a
-                                                href="<?= SROOT ?>app/views/customReport/CustomReport.php">Custom
+                                                href="<?= SROOT ?>HRManagerFunctionHandler/viewCustomReport">Custom
                                             report</a></button>
 
                                 </div>

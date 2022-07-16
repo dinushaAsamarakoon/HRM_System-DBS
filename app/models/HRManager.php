@@ -85,17 +85,53 @@ class HRManager extends Employee
     }
 
     public
-    function getAllEmployees($dept_name = '')
+    function getAllEmployees($dept_name ,$pay_grade,$job_title)
     {
-        if (empty($dept_name)) {
+        if (empty($dept_name) and empty($pay_grade) and empty($job_title)) {
             return $this->_db->find('emp_info', [
                 'conditions' => ['job_title!=?'],
                 'bind' => ['admin']
             ]);
+        }else if (empty($dept_name) and empty($pay_grade)) {
+            return $this->_db->find('emp_info', [
+                'conditions' => ['job_title!=?','job_title=?'],
+                'bind' => ['admin',$job_title]
+            ]);
+
+        }else if (empty($dept_name) and empty($job_title)) {
+            return $this->_db->find('emp_info', [
+                'conditions' => ['job_title!=?','pay_grade=?'],
+                'bind' => ['admin',$pay_grade]
+            ]);
+
+        }else if (empty($job_title) and empty($pay_grade)) {
+            return $this->_db->find('emp_info', [
+                'conditions' => ['job_title!=?','dept_name=?'],
+                'bind' => ['admin',$dept_name]
+            ]);
+
+        }else if (empty($dept_name)) {
+            return $this->_db->find('emp_info', [
+                'conditions' => ['job_title!=?','job_title=?','pay_grade=?'],
+                'bind' => ['admin',$job_title,$pay_grade]
+            ]);
+
+        }else if (empty($job_title)) {
+            return $this->_db->find('emp_info', [
+                'conditions' => ['job_title!=?','dept_name=?','pay_grade=?'],
+                'bind' => ['admin',$dept_name,$pay_grade]
+            ]);
+
+        }else if (empty($pay_grade)) {
+            return $this->_db->find('emp_info', [
+                'conditions' => ['job_title!=?','job_title=?','dept_name=?'],
+                'bind' => ['admin',$job_title,$dept_name]
+            ]);
+
         }
         return $this->_db->find('emp_info', [
-            'conditions' => ['job_title!=?', 'dept_name=?'],
-            'bind' => ['admin', $dept_name]
+            'conditions' => ['job_title!=?', 'dept_name=?', 'pay_grade=?', 'job_title=?'],
+            'bind' => ['admin', $dept_name,$pay_grade,$job_title]
         ]);
 
     }
@@ -111,6 +147,16 @@ class HRManager extends Employee
     public function getDeptNames()
     {
         return $this->_db->query("SELECT dept_name FROM department")->results();
+    }
+
+    public function getPayGrades()
+    {
+        return $this->_db->query("SELECT pay_grade FROM pay_grade")->results();
+    }
+
+    public function getJobTitles()
+    {
+        return $this->_db->query("SELECT title_name FROM job_title")->results();
     }
 
     public function getEmpStatus()
