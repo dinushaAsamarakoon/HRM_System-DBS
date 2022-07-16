@@ -28,7 +28,9 @@
 
             <div class="collapse navbar-collapse justify-content-start" id="navbarScroll1">
                 <a class="navbar-brand">
-                    <img src="../../../images/jupiterCrop.jpg" style="height: 23px; width: 150px;">
+                    <img src="<?=SROOT?>images/jupiterCrop.jpg" style="height: 23px; width: 150px;">
+
+
                 </a>
             </div>
 
@@ -42,7 +44,7 @@
 
                 <ul class="nav" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="pills-logout-tab" data-toggle="pill" href="" role="tab"
+                        <a class="nav-link active" id="pills-logout-tab" data-toggle="pill" href="<?=SROOT?>HRManagerFunctionHandler/redirect" role="tab"
                            aria-controls="pills-logout" aria-selected="true">Dashboard</a>
                     </li>
                 </ul>
