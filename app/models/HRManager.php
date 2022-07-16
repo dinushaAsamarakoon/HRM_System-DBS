@@ -24,6 +24,7 @@ class HRManager extends Employee
     {
         return new NMEmployee();
     }
+
     public function registerNewHRManager($params)
     {
         $this->assign($params);
@@ -36,11 +37,14 @@ class HRManager extends Employee
     }
 
 
-
-    public function removeEmployee($table, $field, $value)
+    public function removeEmployee($tables, $field, $value)
     {
         if ($field) {
-            $this->delete($table, $field, $value);
+            $this->_db->begin_transaction();
+            foreach ($tables as $table) {
+                $this->delete($table, $field, $value);
+            }
+            $this->_db->commit();
         }
     }
 
@@ -75,8 +79,9 @@ class HRManager extends Employee
         }
     }
 
-    public function reportGeneration($table, $params=[]){
-        return $this->findWithTable($table,$params);
+    public function reportGeneration($table, $params = [])
+    {
+        return $this->findWithTable($table, $params);
     }
 
     public
@@ -88,22 +93,31 @@ class HRManager extends Employee
         ]);
     }
 
-    public function getEmployeeDetails($id){
+    public function getEmployeeDetails($id)
+    {
         return $this->_db->find('emp_info', [
             'conditions' => 'id=?',
             'bind' => [$id]
         ]);
     }
 
-    public function getDeptNames(){
+    public function getDeptNames()
+    {
         return $this->_db->query("SELECT dept_name FROM department")->results();
     }
 
-    public function getEmpStatus(){
+    public function getEmpStatus()
+    {
         return $this->_db->query("SELECT * FROM emp_status")->results();
     }
 
-    public function getSupLevels(){
+    public function getSupLevels()
+    {
         return $this->_db->query("SELECT sup_level FROM supervisor")->results();
+    }
+
+    public function editEmployee($id, $params)
+    {
+        dnd($this->_db->update('emp_info', $id, $params));
     }
 }
