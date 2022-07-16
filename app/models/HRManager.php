@@ -118,6 +118,6 @@ class HRManager extends Employee
 
     public function editEmployee($id, $params)
     {
-        dnd($this->_db->update('emp_info', $id, $params));
+        $this->_db->update('emp_info', $id, $params);
     }
 }
