@@ -85,12 +85,19 @@ class HRManager extends Employee
     }
 
     public
-    function getAllEmployees()
+    function getAllEmployees($dept_name = '')
     {
+        if (empty($dept_name)) {
+            return $this->_db->find('emp_info', [
+                'conditions' => ['job_title!=?'],
+                'bind' => ['admin']
+            ]);
+        }
         return $this->_db->find('emp_info', [
-            'conditions' => 'job_title!=?',
-            'bind' => ['admin']
+            'conditions' => ['job_title!=?', 'dept_name=?'],
+            'bind' => ['admin', $dept_name]
         ]);
+
     }
 
     public function getEmployeeDetails($id)
@@ -116,8 +123,63 @@ class HRManager extends Employee
         return $this->_db->query("SELECT sup_level FROM supervisor")->results();
     }
 
+    public function getSupervisorLevel($sup_id)
+    {
+        return $this->_db->find('supervisor', [
+            'conditions' => 'id=?',
+            'bind' => [$sup_id]
+        ]);
+    }
+
+    public function getSupIds()
+    {
+        return $this->_db->query("SELECT id FROM supervisor")->results();
+    }
+
+    public function getAllEmpIds()
+    {
+        return $this->_db->query("SELECT id FROM emp_record")->results();
+    }
+
+    public function getTotalLeavesByEmployee($id, $start = '', $end = '')
+    {
+//        dnd($id);
+        $leaves = $this->_db->find('leave_request', [
+            'conditions' => ['emp_id=?', 'status=?'],
+            'bind' => [$id, 'approved']
+        ]);
+        $leaves_count = 0;
+        if ($leaves) {
+            if (empty($start . $end)) {
+                foreach ($leaves as $leave) {
+                    $leaves_count += $leave->duration;
+                }
+            } else {
+                $period_start = new DateTime($start);
+                $period_end = new DateTime($end);
+                foreach ($leaves as $leave) {
+                    $leave_start_date = new DateTime($leave->start_date);
+                    $leave_end_date = new DateTime($leave->end_date);
+                    if ($period_start <= $leave_start_date and $leave_end_date <= $period_end) {
+                        $leaves_count += $leave->duration;
+                    } else if ($period_start <= $leave_start_date and $leave_end_date >= $period_end) {
+                        $leaves_count += $leave_start_date->diff($period_end)->format('%a');
+                    } else if ($period_start >= $leave_start_date and $leave_end_date <= $period_end) {
+                        $leaves_count += $period_start->diff($leave_end_date)->format('%a');
+                    } else if ($period_start >= $leave_start_date and $leave_end_date >= $period_end) {
+                        $leaves_count += $period_start->diff($period_end)->format('%a');
+                    }
+                }
+            }
+        }
+        return $leaves_count;
+    }
+
+
     public function editEmployee($id, $params)
     {
-        $this->_db->update('emp_info', $id, $params);
+        $fields = $params;
+        unset($fields['submit']);
+        $this->_db->update('emp_info', $id, $fields);
     }
 }
