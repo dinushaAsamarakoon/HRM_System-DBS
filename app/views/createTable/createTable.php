@@ -21,7 +21,7 @@
 
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
                 <li class="nav-item ">
-                    <a class="nav-link " href="" style="color: #0c63e4;font-size: 20px;">Dashboard</a>
+                    <a class="nav-link " href="<?=SROOT?><?=Session::get('dashboard')?>" style="color: #0c63e4;font-size: 20px;">Dashboard</a>
                 </li>
 
             </ul>
