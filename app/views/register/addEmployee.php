@@ -123,12 +123,16 @@
                                         <label class="form-label"> Marital status </label><br>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
-                                                   id="inlineRadio3" value="Male" required>
+
+                                                   id="inlineRadio3" value="Married" required>
+
                                             <label class="form-check-label" for="inlineRadio3">Married</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="marital_status"
-                                                   id="inlineRadio4" value="Female" required>
+
+                                                   id="inlineRadio4" value="Unmarried" required>
+
                                             <label class="form-check-label" for="inlineRadio4">Unmarried</label>
                                         </div>
 
@@ -157,7 +161,7 @@
                             <div class="row mt-2">
                                 <div class="col-md-6"><label class="labels">Emergency contract Number</label><input
                                             type="text"
-                                            name="emergency_contract"
+                                            name="emergency_contact"
                                             class="form-control"
                                             value=""
                                             placeholder="Enter emergency contract number" required>
@@ -181,8 +185,8 @@
                             <div class="col-md-12">
                                 <label for=" Idnumber" class="form-label">National Identity card number</label>
                                 <input type="text" class="form-control" id="Idnumber"
-                                       placeholder="Enter employee's national ID card number" name="IdCardNumber" required>
 
+                                       placeholder="Enter employee's national ID card number" name="NIC" required>
                             </div>
                             <div class="row mt-2 mb-3">
                                 <div class="col-md-12"><label class="labels">Qualifications</label>
