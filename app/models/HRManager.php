@@ -123,6 +123,7 @@ class HRManager extends Employee
         return $this->_db->query("SELECT sup_level FROM supervisor")->results();
     }
 
+
     public function getSupervisorLevel($sup_id)
     {
         return $this->_db->find('supervisor', [
@@ -178,8 +179,9 @@ class HRManager extends Employee
 
     public function editEmployee($id, $params)
     {
-        $fields = $params;
-        unset($fields['submit']);
-        $this->_db->update('emp_info', $id, $fields);
+        $this->update_entry('emp_record', $id, $fields);
+        $this->update_entry('employee', $id, $fields);
+        if ($fields['job_title'] === 'supervisor')
+            $this->update_entry('supervisor', $id, $fields);
     }
 }

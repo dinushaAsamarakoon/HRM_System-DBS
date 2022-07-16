@@ -35,6 +35,7 @@
                 <div class="d-flex justify-content-center align-items-center mb-3">
                     <h2 class="text-center">Profile Details</h2>
                 </div>
+
                 <?php $p = (array) $this->profile[0];
 //                dnd($p);?>
                 <form>

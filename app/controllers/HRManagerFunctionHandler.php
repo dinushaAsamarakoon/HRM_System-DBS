@@ -169,9 +169,9 @@ class HRManagerFunctionHandler extends Controller
 
     public function removeEmployeeAction($id, $job_title)
     {
-        if ($job_title==='supervisor') {
+        if ($job_title === 'supervisor') {
             $this->HRManagerModel->removeEmployee(['employee', 'supervisor'], 'id', $id);
-        }else
+        } else
             $this->HRManagerModel->removeEmployee(['employee'], 'id', $id);
 
         $hrManager = HRManager::currentLoggedInEmployee();
@@ -283,6 +283,18 @@ class HRManagerFunctionHandler extends Controller
         $this->view->render('dashboard/hrmanager');
     }
 
+    public function searchEmployeeAction()
+    {
+        if ($_POST['search_name']!='') {
+            $this->view->allEmployees = $this->HRManagerModel->searchEmployee($_POST['search_name']);
+            $this->view->render('employeeDetails/all');
+        } else {
+            $hrManager = HRManager::currentLoggedInEmployee();
+            $this->view->allEmployees = $hrManager->getAllEmployees();
+            $this->view->render('employeeDetails/all');
+        }
+    }
+    
     public function viewAllEmployeesByDeptAction()
     {
         $hrManager = HRManager::currentLoggedInEmployee();
