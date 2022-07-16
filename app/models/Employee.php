@@ -27,11 +27,15 @@ class Employee extends Model
         Session::set('username', $this->username);
         switch ($this->job_title) {
             case "admin":
+                Session::set('dashboard','AdminDashboard');
             case "supervisor":
+                Session::set('dashboard','SupervisorDashboard');
             case "hr_manager":
+                Session::set('dashboard','HRManagerDashboard');
                 Session::set('job_class', $this->job_title);
                 break;
             default:
+                Session::set('dashboard','NMEmployeeDashboard');
                 Session::set('job_class', 'nm_employee');
                 break;
         }

@@ -80,7 +80,6 @@ class HRManagerFunctionHandler extends Controller
             $attributeNames = $hRManager->getEmployeeAttributes();
             $attributes = [];
             foreach ($attributeNames as $an) {
-//                dnd($attributeNames);
                 $tempAttributes = [];
                 foreach ($hRManager->getPrimaryValues($an[0]) as $row) {
 
@@ -89,18 +88,12 @@ class HRManagerFunctionHandler extends Controller
                 $attributes[$an[0]] = $tempAttributes;
             }
             $this->view->allAttributes = $attributes;
-//            dnd($attributes);
             $this->view->depts = $hRManager->getDeptNames();
             $this->view->emp_status = $hRManager->getEmpStatus();
             $this->view->emp_status_columns = $hRManager->get_columns_table('emp_status');
             $this->view->emp_type = $emp_type;
             $this->view->sup_levels = $hRManager->getSupLevels();
             $this->view->sup_ids = $hRManager->getSupIds();
-//            dnd($this->view->sup_ids);
-//            dnd($this->view->sup_levels);
-//            dnd($this->view->emp_status_columns);
-//            dnd($this->view->emp_status);
-//            dnd( $hRManager->getDeptNames());
             $this->view->render('register/addEmployee');
         }
     }
@@ -159,9 +152,6 @@ class HRManagerFunctionHandler extends Controller
             $this->view->sup_levels = $hRManager->getSupLevels();
             $emp_details = $hRManager->getEmployeeDetails($id);
             $this->view->Employee = $emp_details;
-            if ($emp_details[0]->job_title == 'supervisor') {
-                dnd($hRManager->getSupervisorLevel($id));
-            }
             $this->view->render('employeeDetails/employee');
         }
     }
@@ -286,7 +276,7 @@ class HRManagerFunctionHandler extends Controller
 
     public function searchEmployeeAction()
     {
-        if ($_POST['search_name']!='') {
+        if ($_POST['search_name'] != '') {
             $this->view->allEmployees = $this->HRManagerModel->searchEmployee($_POST['search_name']);
             $this->view->render('employeeDetails/all');
         } else {
@@ -295,7 +285,7 @@ class HRManagerFunctionHandler extends Controller
             $this->view->render('employeeDetails/all');
         }
     }
-    
+
     public function viewAllEmployeesByDeptAction()
     {
         $hrManager = HRManager::currentLoggedInEmployee();
@@ -340,15 +330,12 @@ class HRManagerFunctionHandler extends Controller
         $pay_garde = '';
         $job_title = '';
         if (isset($_POST['filter_by_dept_name_er'])) {
-//            dnd($_POST['filter_by_dept_name_er']);
             $dept_name = $_POST['filter_by_dept_name_er'];
         }
         if (isset($_POST['filter_by_pay_grade_er'])) {
-//            dnd($_POST['filter_by_pay_grade_er']);
             $pay_garde = $_POST['filter_by_pay_grade_er'];
         }
         if (isset($_POST['filter_by_job_title_er'])) {
-//            dnd($_POST['filter_by_job_title_er']);
             $job_title = $_POST['filter_by_job_title_er'];
         }
         $this->view->allEmployees = $hrManager->getAllEmployees($dept_name, $pay_garde, $job_title);

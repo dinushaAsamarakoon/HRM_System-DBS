@@ -223,7 +223,7 @@ class HRManager extends Employee
     }
 
 
-    public function editEmployee($id, $params)
+    public function editEmployee($id, $fields)
     {
         $this->update_entry('emp_record', $id, $fields);
         $this->update_entry('employee', $id, $fields);
