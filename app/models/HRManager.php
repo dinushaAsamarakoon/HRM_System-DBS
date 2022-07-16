@@ -24,6 +24,7 @@ class HRManager extends Employee
     {
         return new NMEmployee();
     }
+
     public function registerNewHRManager($params)
     {
         $this->assign($params);
@@ -36,11 +37,14 @@ class HRManager extends Employee
     }
 
 
-
-    public function removeEmployee($table, $field, $value)
+    public function removeEmployee($tables, $field, $value)
     {
         if ($field) {
-            $this->delete($table, $field, $value);
+            $this->_db->begin_transaction();
+            foreach ($tables as $table) {
+                $this->delete($table, $field, $value);
+            }
+            $this->_db->commit();
         }
     }
 
@@ -75,8 +79,9 @@ class HRManager extends Employee
         }
     }
 
-    public function reportGeneration($table, $params=[]){
-        return $this->findWithTable($table,$params);
+    public function reportGeneration($table, $params = [])
+    {
+        return $this->findWithTable($table, $params);
     }
 
     public
@@ -149,4 +154,9 @@ class HRManager extends Employee
     }
 
 
+
+    public function editEmployee($id, $params)
+    {
+        $this->_db->update('emp_info', $id, $params);
+    }
 }

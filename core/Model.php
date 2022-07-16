@@ -144,8 +144,9 @@ class Model
                 break;
         }
         foreach ($columnNames as $column) {
-            if ($column === 'id' && $table_id != 1) {
+            if ($column === 'id' && $table_id === 0) {
                 $fields[$column] = $this->_db->lastId();
+                Session::set('lastId', $this->_db->lastId());
             } else {
                 if ($column != 'current_employee')
                     $fields[$column] = $this->$column;
@@ -154,6 +155,9 @@ class Model
                     $fields[$column] = date('Y-m-d');
                 }
             }
+        }
+        if ($table_id===2) {
+            $fields['id'] = Session::get('lastId');
         }
         // determine whether to update or insert
         if (property_exists($this, 'id') && $this->id != '') {
@@ -235,7 +239,7 @@ class Model
     {
         if (!empty($params)) {
             foreach ($params as $key => $val) {
-                if (in_array($key, $this->_columnNames) || in_array($key, $this->_columnNames1)) {
+                if (in_array($key, $this->_columnNames) || in_array($key, $this->_columnNames1) || in_array($key, $this->_columnNames2)) {
                     $this->$key = sanitize($val);
                 }
             }

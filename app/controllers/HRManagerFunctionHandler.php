@@ -107,9 +107,9 @@ class HRManagerFunctionHandler extends Controller
 
     public function editEmployeeAction($id)
     {
+
         $validation = new Validate();
         if ($_POST) {
-
             $validation->check($_POST, [
 //                'password' => [
 //                    'display' => 'Password',
@@ -123,10 +123,10 @@ class HRManagerFunctionHandler extends Controller
 //                    'display' => 'Confirm Password',
 //                    'matches' => 'password'
 //                ],
-                'phone_number' => [
-                    'display' => 'Mobile Number',
-                    'valid_contact' => true
-                ],
+//                'phone_number' => [
+//                    'display' => 'Mobile Number',
+//                    'valid_contact' => true
+//                ],
                 'email' => [
                     'display' => 'Email',
                     'valid_email' => true
@@ -134,13 +134,9 @@ class HRManagerFunctionHandler extends Controller
             ]);
 
             if ($validation->passed()) {
-                if ($_POST['job_title'] === 'supervisor') {
-                    $this->HRManagerModel->createNewSupervisor()->registerNewEmployee($_POST);
-                } else {
-                    $this->HRManagerModel->createNewNMEmployee()->registerNewEmployee($_POST);
-                }
+                $this->HRManagerModel->editEmployee($id, $_POST);
                 Router::redirect('HRManagerDashboard');
-                $_SESSION['message'] = "Employee added";
+                $_SESSION['message'] = "Employee edited";
             } else {
                 $this->view->displayErrors = $validation->displayErrors();
                 $this->view->render('employeeDetails/employee');
@@ -171,9 +167,13 @@ class HRManagerFunctionHandler extends Controller
         }
     }
 
-    public function removeEmployeeAction($id)
+    public function removeEmployeeAction($id, $job_title)
     {
-        $this->HRManagerModel->removeEmployee('employee', 'id', $id);
+        if ($job_title==='supervisor') {
+            $this->HRManagerModel->removeEmployee(['employee', 'supervisor'], 'id', $id);
+        }else
+            $this->HRManagerModel->removeEmployee(['employee'], 'id', $id);
+
         $hrManager = HRManager::currentLoggedInEmployee();
         $this->view->allEmployees = $hrManager->getAllEmployees();
         $this->view->render('employeeDetails/all');
@@ -278,6 +278,9 @@ class HRManagerFunctionHandler extends Controller
         $hrManager = HRManager::currentLoggedInEmployee();
         $this->view->allEmployees = $hrManager->getAllEmployees();
         $this->view->render('employeeDetails/all');
+    }
+    public function redirectAction(){
+        $this->view->render('dashboard/hrmanager');
     }
 
     public function viewAllEmployeesByDeptAction()
