@@ -1,57 +1,59 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--    CSS only-->
-<!--    <link href="../../content/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../content/custom.css">
-    <!--Javascript only-->
-    <script src="../../content/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <?php
+    require_once(ROOT . DS . 'app' . DS . 'views' . DS . 'header' . DS . 'headerFile.php');
+    ?>
 
     <title>Home Page</title>
 </head>
+
 <body >
-<div class="shadow p-3 mb-5  rounded" >
 
-<!--    ============================================-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="collapse nav-tabs navbar-collapse justify-content-end " id="navbarTogglerDemo03">
-
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
-                <li class="nav-item ">
-                    <a class="nav-link " href="<?=SROOT?>EmployeeRegister/login" style="color: #0c63e4;font-size: 20px;">Sign In</a>
-                </li>
-
-            </ul>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                    class="collapse navbar-collapse justify-content-end"
+                    id="navbarNav"
+            >
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?=SROOT?>EmployeeRegister/login">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-</div>
-<!--==============================================================-->
-
-<div class="container-fluid">
-
-    <div >
-
-        <div  id="pills-tabContent">
-            <!--        This is the home page of the website-->
-            <div class="" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">hello</div>
-
+    <header class="page-header gradient">
+        <div class="container pt-3">
+            <div class="row align-items-center justify-content-center mt-3">
+                <div>
+                    <h2 style="font-family: Cursive; font-weight:bold; font-size: 70px; color: #191c1f";>Welcome to <span style="color: darkslategray">Jupiter Apparels</span></h2>
+                    <p style="color: #191c1f; font-size: 30px;">
+                        Life is a party, Dress like it.
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#fff" fill-opacity="1" d="M0,256L60,240C120,224,240,192,360,181.3C480,171,600,181,720,202.7C840,224,960,256,1080,261.3C1200,267,1320,245,1380,234.7L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        </svg>
+    </>
+
 </body>
 </html>
 
