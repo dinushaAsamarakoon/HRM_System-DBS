@@ -56,38 +56,34 @@
                                 Department
                             </label>
                         </div>
-                        <div class="form-check m-3">
-                            <input class="form-check-input" type="checkbox" value="" id="pay_grade" name="pay_grade">
-                            <label class="form-check-label" for="flexCheckChecked">
-                                Pay Grade
-                            </label>
-                        </div>
 
                         <div id="download_table">
                             <h4 class="text-lg-center mt-3"><i>Custom Report</i></h4>
 
-                            <table class="table table-hover mt-5">
+                            <table class="table">
                                 <thead class="table-info">
-                                <tr class="text-center">
+                                <tr >
                                     <th scope="col">Employee ID</th>
                                     <th scope="col">First Name</th>
-                                    <th scope="col">Last Name</th>
+                                    <th scope="col" >Last Name</th>
+                                    <th scope="col" style="display: none;" id="depname">dep_name</th>
                                 </tr>
                                 </thead>
-                                <tbody class="text-center">
+                                <tbody >
                                 <tr>
-                                    <th scope="row">1</th>
+                                     <th scope="row">1</th>
                                     <td>Dinusha</td>
-                                    <td>Samrakoon</td>
+                                    <td>Dinusha</td>
+                                    <td style="display: none;" id="dep_name">  cse</td>
+
+
+
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Udith</td>
-                                    <td>Kaushalya</td>
-                                </tr>
+
 
                                 </tbody>
                             </table>
+
                     </div>
 
                     <div class="col  d-flex justify-content-end align-items-start mb-4">
@@ -109,13 +105,26 @@
                 var docDefinition = {
                     content: [{
                         image: data,
-                        width: 500
+                        width: 480
                     }]
                 };
                 pdfMake.createPdf(docDefinition).download("CustomReport.pdf");
             }
         });
     }
+    document.getElementById('dept_name').addEventListener("click", ()=>{
+        if(document.getElementById('dept_name').checked){
+            document.getElementById('depname').style.display='block';
+            document.getElementById('dep_name').style.display='block';
+        }
+        else{
+            document.getElementById('depname').style.display='none';
+            document.getElementById('dep_name').style.display='none';
+        }
+
+    });
+
+
 </script>
 
 </html>
