@@ -124,14 +124,14 @@ if (!isset($this->allAttributes)) {
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="marital_status"
                                                id="inlineRadio3" value="Married"
-                                               <?php if ($p["marital_status"] == 'married'){ ?>checked<?php } ?>
+                                               <?php if ($p["marital_status"] == 'Married'){ ?>checked<?php } ?>
                                                disabled>
                                         <label class="form-check-label" for="inlineRadio3">Married</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="marital_status"
                                                id="inlineRadio4" value="Unmarried"
-                                               <?php if ($p["marital_status"] == 'single'){ ?>checked<?php } ?>
+                                               <?php if ($p["marital_status"] == 'Unmarried'){ ?>checked<?php } ?>
                                                disabled>
                                         <label class="form-check-label" for="inlineRadio4">Unmarried</label>
                                     </div>
@@ -316,7 +316,7 @@ if (!isset($this->allAttributes)) {
 
 </form>
 
-<form action="<?= SROOT ?>HRManagerFunctionHandler/removeEmployee/<?= $p['id'] ?>">
+<form action="<?= SROOT ?>HRManagerFunctionHandler/removeEmployee/<?= $p['id'] ?>/<?= $p['job_title'] ?>">
     <div class="row mt-3 " id="remove" style="display: block">
         <div class="col-md-12 d-flex justify-content-center">
             <button class="btn btn-danger w-75">

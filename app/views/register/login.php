@@ -80,8 +80,8 @@
                                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password" name="password">
                                         </div>
                                         <div class="mb-3 ">
-
-                                            <a href="" ><label class="form-label"  > <u>Forget password</u> </label></a>
+                                            <br>
+<!--                                            <a href="" ><label class="form-label"  > <u>Forget password</u> </label></a>-->
                                         </div>
                                         <div class="col text-center"><button type="submit" name="submit" class="btn btn-primary w-100"  style=" background: rgb(2,0,36);background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(93,13,220,0.5691410353203781) 0%, rgba(0,57,255,0.8128385143119747) 0%); ">Submit</button></div>
                                     </form>

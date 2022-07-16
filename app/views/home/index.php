@@ -21,7 +21,7 @@
 
                 <ul class="nav nav-tabs" id="pills-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active"  href="<?=SROOT?>EmployeeRegister/login" style="color: #0c63e4;font-size: 20px;">Sign Up</a>
+                        <a class="nav-link active"  href="<?=SROOT?>EmployeeRegister/login" style="color: #0c63e4;font-size: 20px;">Sign In</a>
                     </li>
                 </ul>
             </div>
