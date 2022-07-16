@@ -56,4 +56,15 @@ class Employee extends Model
         ]);
     }
 
+    public function searchEmployee($name){
+        $resEmployees = [];
+        $results = $this->_db->find( 'emp_info', ['conditions' => 'id>?', 'bind' => [0]]);
+        foreach ($results as $row) {
+            if (strpos(strtoupper($row->first_name.' '.$row->last_name), strtoupper($name)) !== false) {
+                $resEmployees[] = $row;
+            }
+        }
+        return $resEmployees;
+    }
+
 }

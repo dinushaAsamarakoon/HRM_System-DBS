@@ -156,7 +156,7 @@ class Model
                 }
             }
         }
-        if ($table_id===2) {
+        if ($table_id === 2) {
             $fields['id'] = Session::get('lastId');
         }
         // determine whether to update or insert
@@ -295,6 +295,29 @@ class Model
         } else {
             return $this->_db->update_table($tableName, $col_definition);
         }
+    }
+
+    public function update_entry($tbl, $id, $params)
+    {
+        $columnNames = [];
+        $fields = [];
+        switch ($tbl) {
+            case 'employee':
+                $columnNames = $this->_columnNames;
+                break;
+            case 'emp_record':
+                $columnNames = $this->_columnNames1;
+                break;
+            case 'supervisor':
+                $columnNames = $this->_columnNames2;
+                break;
+        }
+        foreach ($columnNames as $column) {
+            if (in_array($column, array_keys($params)))
+                $fields[$column] = $params[$column];
+        }
+        $this->_db->update($tbl, $id, $fields);
+
     }
 
 }

@@ -116,8 +116,11 @@ class HRManager extends Employee
         return $this->_db->query("SELECT sup_level FROM supervisor")->results();
     }
 
-    public function editEmployee($id, $params)
+    public function editEmployee($id, $fields)
     {
-        $this->_db->update('emp_info', $id, $params);
+        $this->update_entry('emp_record', $id, $fields);
+        $this->update_entry('employee', $id, $fields);
+        if ($fields['job_title'] === 'supervisor')
+            $this->update_entry('supervisor', $id, $fields);
     }
 }

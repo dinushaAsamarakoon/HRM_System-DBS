@@ -35,8 +35,7 @@
                 <div class="d-flex justify-content-center align-items-center mb-3">
                     <h2 class="text-center">Profile Details</h2>
                 </div>
-                <?php $p = (array) $this->profile[0];
-                dnd($p);?>
+                <?php $p = (array) $this->profile[0];?>
 
                 <div class="row mt-1" >
                     <div class="col-md-6"><label class="labels">First name</label><input type="text" class="form-control"  value="<?php echo $p["first_name"];?>" disabled></div>

@@ -12,8 +12,12 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <!-- Font Awesome JS -->
     <script src="https://kit.fontawesome.com/ec08fc2909.js" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+            crossorigin="anonymous"></script>
 
     <title>Employee By Department Report</title>
 </head>
@@ -33,8 +37,11 @@
             </div>
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarScroll2">
-                <button class="btn btn-secondary" style="margin-right: 5px;" type="submit">Search</button>
-                <form class="form-inline"><input class="form-control" type="text" placeholder="Search Employee"></form>
+
+                <form action="<?= SROOT ?>HRManagerFunctionHandler/searchEmployee" class="form-inline" method="post">
+                    <input class="form-control" type="text" name="search_name" placeholder="Search Employee">
+                    <button class="btn btn-secondary" style="margin-right: 5px;" type="submit">Search</button>
+                </form>
             </div>
 
             <div class="collapse navbar-collapse justify-content-end  " id="navbarScroll3"
@@ -85,7 +92,9 @@
                                     <td><?php echo $employee->last_name; ?></td>
                                     <td><?php echo $employee->dept_name; ?></td>
                                     <td><?php echo $employee->job_title; ?></td>
-                                    <td><a class="btn btn-outline-success" href="<?= SROOT ?>HRManagerFunctionHandler/editEmployee/<?= $employee->id ?>" target=""><i class="fa-solid fa-circle-info"></i> view</a></td>
+                                    <td><a class="btn btn-outline-success"
+                                           href="<?= SROOT ?>HRManagerFunctionHandler/editEmployee/<?= $employee->id ?>"
+                                           target=""><i class="fa-solid fa-circle-info"></i> view</a></td>
                                 </tr>
                                 <?php
                             }
