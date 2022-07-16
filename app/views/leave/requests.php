@@ -104,7 +104,7 @@
                                         </p>
                                     </div>
                                     <div class="row justify-content-center mb-1">
-                                    <div class="col col-xl-2 text-center mb-1">
+                                    <div class="col text-center mb-1">
                                     <form action="<?=SROOT?>EmployeeLeave/approval" method="post">
                                         <input type="hidden" name="id" value="<?php echo $r['req_id']?>">
                                         <input type="hidden" name="emp_id" value="<?php echo $r['emp_id']?>">
