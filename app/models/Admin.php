@@ -66,5 +66,9 @@ class Admin extends Employee
         return $this->_db->query("SELECT dept_name FROM department")->results();
     }
 
+    public function getEmpStatus(){
+        return $this->_db->query("SELECT * FROM emp_status")->results();
+    }
+
 
 }

@@ -82,6 +82,8 @@ class AdminFunctionHandler extends Controller
             }
             $this->view->allAttributes = $attributes;
             $this->view->depts = $admin->getDeptNames();
+            $this->view->emp_status_columns = $admin->get_columns_table('emp_status');
+            $this->view->emp_status = $admin->getEmpStatus();
             $this->view->emp_type = 'hr_manager';
             $this->view->render('register/addEmployee');
         }
