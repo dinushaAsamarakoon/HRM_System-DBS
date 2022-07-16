@@ -266,7 +266,7 @@ class DB
     public function update_table($tableName, $definition)
     {
 
-        $sql = "ALTER TABLE {$tableName} ADD {$definition}";
+        $sql = "ALTER TABLE {$tableName} ADD {$definition};";
         if (!$this->query($sql)->error()) {
             return true;
         }

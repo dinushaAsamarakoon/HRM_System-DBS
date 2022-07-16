@@ -321,6 +321,15 @@ if (!isset($this->allAttributes)) {
 
 </form>
 
+<form action="<?= SROOT ?>HRManagerFunctionHandler/removeEmployee/<?= $p['id'] ?>/<?= $p['job_title'] ?>">
+    <div class="row mt-3 " id="remove" style="display: block">
+        <div class="col-md-12 d-flex justify-content-center">
+            <button class="btn btn-danger w-75">
+                Remove
+            </button>
+        </div>
+    </div>
+</form>
 
 >
 

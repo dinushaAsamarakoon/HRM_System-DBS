@@ -100,7 +100,6 @@ class HRManagerFunctionHandler extends Controller
 
     public function editEmployeeAction($id)
     {
-
         $validation = new Validate();
         if ($_POST) {
             $validation->check($_POST, [
@@ -152,6 +151,7 @@ class HRManagerFunctionHandler extends Controller
             $this->view->sup_levels = $hRManager->getSupLevels();
             $emp_details = $hRManager->getEmployeeDetails($id);
             $this->view->Employee = $emp_details;
+
             $this->view->render('employeeDetails/employee');
         }
     }
