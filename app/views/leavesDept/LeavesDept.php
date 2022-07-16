@@ -27,11 +27,6 @@
                 </a>
             </div>
 
-            <!--            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll2">-->
-            <!--                <button class="btn btn-secondary" style="margin-right: 5px;" type="submit">Search</button>-->
-            <!--                <form class="form-inline"> <input class="form-control" type="text" placeholder="Search Employee"> </form>-->
-            <!--            </div>-->
-
             <div class="collapse navbar-collapse justify-content-end  " id="navbarScroll3"
                  style="padding-top: 9px;height: 50px;">
 
@@ -98,19 +93,17 @@
                         </tr>
                         </thead>
                         <tbody class="text-center">
+                        <?php
+                        foreach ($this->emp_leave_details as $emp_leave){
+                        ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Dinusha</td>
-                            <td>Samrakoon</td>
-                            <td>20</td>
-                            <td>20</td>
+                            <th scope="row"><?= $emp_leave[0];?></th>
+                            <td><?= $emp_leave[1];?></td>
+                            <td><?= $emp_leave[2];?></td>
+                            <td><?= $emp_leave[3];?></td>
+                            <td><?= $emp_leave[4];?></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Udith</td>
-                            <td>Kaushalya</td>
-                            <td>30</td>
-                        </tr>
+                        <?php }?>
 
                         </tbody>
                     </table>

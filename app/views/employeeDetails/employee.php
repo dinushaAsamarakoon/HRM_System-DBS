@@ -209,7 +209,7 @@ if (!isset($this->allAttributes)) {
 
                         <div class="row mt-4">
                             <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
-                                                                                                     name="phone_umber"
+                                                                                                     name="phone_number"
                                                                                                      class="form-control"
                                                                                                      id="mbnum"
                                                                                                      value="<?php echo $p["phone_number"]; ?>"
