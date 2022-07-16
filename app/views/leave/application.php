@@ -20,7 +20,7 @@
 
             <div class="collapse navbar-collapse justify-content-start" id="navbarScroll1">
                 <a class="navbar-brand">
-                    <img src="../../../images/jupiterCrop.jpg" style="height: 23px; width: 150px;">
+                    <img src="<?=SROOT?>images/jupiterCrop.jpg" style="height: 23px; width: 150px;">
                 </a>
             </div>
 

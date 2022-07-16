@@ -62,5 +62,9 @@ class Admin extends Employee
             $this->_db->commit();
         }
     }
+    public function getDeptNames(){
+        return $this->_db->query("SELECT dept_name FROM department")->results();
+    }
+
 
 }
